@@ -50,13 +50,8 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            LAST_MSG=$(git log -1 --pretty=%s)
-            if [[ "$LAST_MSG" == "chore: update schedule"* ]]; then
-              git commit --amend -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
-            else
-              git commit -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
-            fi
-            git push --force-with-lease
+            git commit -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
