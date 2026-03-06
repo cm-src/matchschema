@@ -1,0 +1,62 @@
+name: Update Schedule
+
+on:
+  # Run daily at 08:00 UTC
+  schedule:
+    - cron: '0 8 * * *'
+
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+  # Run when pushing to main (for testing)
+  push:
+    branches:
+      - main
+    paths:
+      - 'generator/**'
+      - '.github/workflows/update-schedule.yml'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Install dependencies
+        working-directory: generator
+        run: uv sync
+
+      - name: Generate schedule
+        working-directory: generator
+        run: uv run app.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            LAST_MSG=$(git log -1 --pretty=%s)
+            if [[ "$LAST_MSG" == "chore: update schedule"* ]]; then
+              git commit --amend -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
+            else
+              git commit -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
+            fi
+            git push --force-with-lease
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

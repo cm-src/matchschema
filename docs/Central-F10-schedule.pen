@@ -1,0 +1,3857 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "rvmDb",
+      "x": 0,
+      "y": 0,
+      "name": "Desktop Page",
+      "width": 1440,
+      "fill": "$neutral-50",
+      "layout": "vertical",
+      "padding": [
+        0,
+        0,
+        48,
+        0
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "ax73j",
+          "name": "Header",
+          "width": "fill_container",
+          "height": 80,
+          "fill": "$vinrod",
+          "padding": [
+            0,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "t49tg",
+              "name": "headerLeft",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "R1b6f",
+                  "name": "Logo",
+                  "width": 48,
+                  "height": 48,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./assets/central-logo_large.png",
+                    "mode": "fit"
+                  },
+                  "cornerRadius": 8
+                },
+                {
+                  "type": "text",
+                  "id": "zLeec",
+                  "name": "headerTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Central Basket F10/F11",
+                  "fontFamily": "$font-display",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cF9oV",
+              "name": "headerRight",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "KXMnO",
+                  "name": "Theme Toggle Button",
+                  "width": 48,
+                  "height": 48,
+                  "fill": "rgba(255,255,255,0.1)",
+                  "cornerRadius": 8,
+                  "stroke": {
+                    "thickness": 2,
+                    "fill": "rgba(255,255,255,0.4)"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Kga49",
+                      "name": "Sun Icon",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "sun",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "qAjoq",
+                  "name": "streamsBtn",
+                  "metadata": {
+                    "type": "link"
+                  },
+                  "height": 40,
+                  "fill": "$gul",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ubJv2",
+                      "name": "playIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "play",
+                      "iconFontFamily": "lucide",
+                      "fill": "$vinrod-dark"
+                    },
+                    {
+                      "type": "text",
+                      "id": "VavrU",
+                      "name": "streamsText",
+                      "fill": "$vinrod-dark",
+                      "content": "Se streams",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "2d7mj",
+          "name": "Filter Section",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000000A",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 8
+          },
+          "gap": 16,
+          "padding": [
+            24,
+            48
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "izQPs",
+              "name": "filterLeft",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ypKA0",
+                  "name": "SearchField",
+                  "width": 320,
+                  "height": 48,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 24,
+                  "gap": 12,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Wypj7",
+                      "name": "searchIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "search",
+                      "iconFontFamily": "lucide",
+                      "fill": "$neutral-400"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TVtdn",
+                      "name": "searchPlaceholder",
+                      "fill": "$neutral-400",
+                      "content": "Sök lag, motstånd, hall...",
+                      "fontFamily": "$font-body",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "1zYAL",
+                  "name": "filterChips",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "NRpni",
+                      "name": "FilterChip-Active",
+                      "height": 36,
+                      "fill": "$vinrod",
+                      "cornerRadius": 18,
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9cffI",
+                          "name": "chipAllText",
+                          "fill": "#FFFFFF",
+                          "content": "Alla",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "V0vkm",
+                      "name": "FilterChip",
+                      "height": 36,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 18,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vgSBP",
+                          "name": "chipVinrodText",
+                          "fill": "$neutral-700",
+                          "content": "Central vinröd",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YEuqO",
+                      "name": "FilterChip",
+                      "height": 36,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 18,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "CVzMy",
+                          "name": "chipGulText",
+                          "fill": "$neutral-700",
+                          "content": "Central gul",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "THqKc",
+                      "name": "smChip",
+                      "height": 36,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 18,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "b4yDv",
+                          "name": "smChipText",
+                          "fill": "$neutral-700",
+                          "content": "U16 SM",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Uf3C5",
+              "name": "filterRight",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "BSfFG",
+                  "name": "dateSegmented",
+                  "height": 40,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 20,
+                  "gap": 4,
+                  "padding": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "k6Wwk",
+                      "name": "dateActive",
+                      "height": "fill_container",
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 16,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "dMPUN",
+                          "name": "dateActiveText",
+                          "fill": "$neutral-900",
+                          "content": "Kommande",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "h3PmP",
+                      "name": "dateInactive",
+                      "height": "fill_container",
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "bnX8g",
+                          "name": "dateInactiveText",
+                          "fill": "$neutral-500",
+                          "content": "Alla",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Trszs",
+          "name": "Main Content",
+          "width": "fill_container",
+          "fill": "$neutral-50",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            32,
+            48
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "cVihu",
+              "name": "sectionHeader",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hQshR",
+                  "name": "sectionTitle",
+                  "fill": "$neutral-900",
+                  "content": "Matchschema",
+                  "fontFamily": "$font-display",
+                  "fontSize": 32,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "xXtR1",
+                  "name": "matchCount",
+                  "fill": "$neutral-500",
+                  "content": "4 matcher",
+                  "fontFamily": "$font-body",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "FzeZS",
+              "name": "Games Container",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "36ws9",
+                  "name": "DateDivider",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "KS88n",
+                      "name": "dateLine1a",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "XyjBZ",
+                      "name": "dateText1",
+                      "fill": "$neutral-500",
+                      "content": "Lör 16 nov 2025",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "4emyG",
+                      "name": "dateLine1b",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "sSMqV",
+                  "name": "GameCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0000000A",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": [
+                        3,
+                        0,
+                        0,
+                        3
+                      ],
+                      "id": "STtO6",
+                      "name": "strip1",
+                      "fill": "$vinrod",
+                      "width": 6,
+                      "height": "fill_container"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "IlHrM",
+                      "name": "gameCard1Content",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "padding": [
+                        20,
+                        24
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "VjBqm",
+                          "name": "gameCard1Left",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "JpjVH",
+                              "name": "gameCard1Title",
+                              "fill": "$neutral-900",
+                              "content": "Fryshuset F11 - Central vinröd",
+                              "fontFamily": "Outfit",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "kLLaG",
+                              "name": "gameCard1Meta",
+                              "gap": 16,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "EC5QN",
+                                  "name": "gameCard1Location",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "xXKxG",
+                                      "name": "locationIcon1",
+                                      "width": 14,
+                                      "height": 14,
+                                      "iconFontName": "map-pin",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$neutral-400"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "VoSGV",
+                                      "name": "locationText1",
+                                      "fill": "$neutral-500",
+                                      "content": "Tellusborgshallarna 2",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "BMhiK",
+                                  "name": "gameCard1Time",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "LmLGs",
+                                      "name": "timeIcon1",
+                                      "width": 14,
+                                      "height": 14,
+                                      "iconFontName": "clock",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$neutral-400"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "XOu0E",
+                                      "name": "timeText1",
+                                      "fill": "$neutral-500",
+                                      "content": "12:45–14:30",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "JSECo",
+                          "name": "gameCard1Right",
+                          "gap": 12,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "kHJdB",
+                              "name": "teamBadge1",
+                              "height": 28,
+                              "fill": "$vinrod-light",
+                              "cornerRadius": 14,
+                              "padding": [
+                                0,
+                                12
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "EZU5w",
+                                  "name": "teamBadge1Text",
+                                  "fill": "#FFFFFF",
+                                  "content": "Vinröd",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "menTy",
+                              "name": "detailsBtn1",
+                              "metadata": {
+                                "type": "link",
+                                "href": "https://www.profixio.com/app/leagueid17559/match/32405541"
+                              },
+                              "height": 40,
+                              "fill": "$neutral-100",
+                              "cornerRadius": 8,
+                              "stroke": {
+                                "thickness": 1,
+                                "fill": "$neutral-200"
+                              },
+                              "gap": 8,
+                              "padding": [
+                                0,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "XL4ub",
+                                  "name": "detailsText1",
+                                  "fill": "$neutral-700",
+                                  "content": "Matchdetaljer",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "icon_font",
+                                  "id": "nBwJJ",
+                                  "name": "externalIcon1",
+                                  "width": 14,
+                                  "height": 14,
+                                  "iconFontName": "external-link",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ORwvH",
+                  "name": "DateDivider",
+                  "width": "fill_container",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "dNf7x",
+                      "name": "dateLine2a",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "FUEjJ",
+                      "name": "dateText2",
+                      "fill": "$neutral-500",
+                      "content": "Lör 22 nov 2025",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal",
+                      "letterSpacing": 1
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "ATlmX",
+                      "name": "dateLine2b",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "7ovJx",
+                  "name": "GameCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 16,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0000000A",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 8
+                  },
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": [
+                        3,
+                        0,
+                        0,
+                        3
+                      ],
+                      "id": "cBhiZ",
+                      "name": "strip2",
+                      "fill": "$gul",
+                      "width": 6,
+                      "height": "fill_container"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "M5GFy",
+                      "name": "gameCard2Content",
+                      "width": "fill_container",
+                      "gap": 16,
+                      "padding": [
+                        20,
+                        24
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "D250j",
+                          "name": "gameCard2Left",
+                          "width": "fill_container",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "MMYu7",
+                              "name": "gameCard2Title",
+                              "fill": "$neutral-900",
+                              "content": "Spånga Basket F11 - KFUM Central Basket",
+                              "fontFamily": "Outfit",
+                              "fontSize": 18,
+                              "fontWeight": "normal"
+                            },
+                            {
+                              "type": "frame",
+                              "id": "HA8Cu",
+                              "name": "gameCard2Meta",
+                              "gap": 16,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "frame",
+                                  "id": "ZhMGp",
+                                  "name": "gameCard2Location",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "cNv2f",
+                                      "name": "locationIcon2",
+                                      "width": 14,
+                                      "height": 14,
+                                      "iconFontName": "map-pin",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$neutral-400"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "kuLTP",
+                                      "name": "locationText2",
+                                      "fill": "$neutral-500",
+                                      "content": "Tenstahallen",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "type": "frame",
+                                  "id": "lbmoy",
+                                  "name": "gameCard2Time",
+                                  "gap": 6,
+                                  "alignItems": "center",
+                                  "children": [
+                                    {
+                                      "type": "icon_font",
+                                      "id": "UQWDJ",
+                                      "name": "timeIcon2",
+                                      "width": 14,
+                                      "height": 14,
+                                      "iconFontName": "clock",
+                                      "iconFontFamily": "lucide",
+                                      "fill": "$neutral-400"
+                                    },
+                                    {
+                                      "type": "text",
+                                      "id": "z4yDQ",
+                                      "name": "timeText2",
+                                      "fill": "$neutral-500",
+                                      "content": "14:30–16:15",
+                                      "fontFamily": "Inter",
+                                      "fontSize": 14,
+                                      "fontWeight": "normal"
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "D28sj",
+                          "name": "gameCard2Right",
+                          "gap": 12,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "w0QXz",
+                              "name": "teamBadge2",
+                              "height": 28,
+                              "fill": "$gul",
+                              "cornerRadius": 14,
+                              "padding": [
+                                0,
+                                12
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "qeIXl",
+                                  "name": "teamBadge2Text",
+                                  "fill": "$vinrod-dark",
+                                  "content": "Gul",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "ouZ2q",
+                              "name": "detailsBtn2",
+                              "metadata": {
+                                "type": "link",
+                                "href": "https://www.profixio.com/app/leagueid17559/match/32405762"
+                              },
+                              "height": 40,
+                              "fill": "$neutral-100",
+                              "cornerRadius": 8,
+                              "stroke": {
+                                "thickness": 1,
+                                "fill": "$neutral-200"
+                              },
+                              "gap": 8,
+                              "padding": [
+                                0,
+                                16
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "KrLLT",
+                                  "name": "detailsText2",
+                                  "fill": "$neutral-700",
+                                  "content": "Matchdetaljer",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 14,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "icon_font",
+                                  "id": "JzQHj",
+                                  "name": "externalIcon2",
+                                  "width": 14,
+                                  "height": 14,
+                                  "iconFontName": "external-link",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-500"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "5Bzwb",
+              "name": "Table Toggle",
+              "width": "fill_container",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "p3Och",
+                  "name": "tableToggleBtn",
+                  "height": 44,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 22,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    24
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "5YFVR",
+                      "name": "tableToggleIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "table-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$neutral-600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "78ofB",
+                      "name": "tableToggleText",
+                      "fill": "$neutral-600",
+                      "content": "Visa tabell",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "uUYU4",
+                      "name": "chevronDown",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$neutral-400"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Jxwxr",
+              "name": "Table Section",
+              "clip": true,
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 16,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000000A",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "layout": "vertical",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "IVLHQ",
+                  "name": "tableHeader",
+                  "width": "fill_container",
+                  "height": 48,
+                  "fill": "$vinrod",
+                  "gap": 16,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rYxXh",
+                      "name": "tableHeaderTeam",
+                      "fill": "#FFFFFF",
+                      "content": "Lag",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WWmSB",
+                      "name": "tableHeaderMatch",
+                      "fill": "#FFFFFF",
+                      "content": "Match",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "nZHYw",
+                      "name": "tableHeaderLoc",
+                      "fill": "#FFFFFF",
+                      "content": "Plats",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "MCtOp",
+                      "name": "tableHeaderTime",
+                      "fill": "#FFFFFF",
+                      "content": "Tid",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "pBpoJ",
+                      "name": "tableHeaderLink",
+                      "fill": "#FFFFFF",
+                      "content": "Länk",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ef8xb",
+                  "name": "tableRow1",
+                  "width": "fill_container",
+                  "height": 56,
+                  "fill": "$neutral-50",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$neutral-200"
+                  },
+                  "gap": 16,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "jHHM1",
+                      "name": "row1Team",
+                      "width": 100,
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "Pss1y",
+                          "name": "row1TeamDot",
+                          "fill": "$vinrod",
+                          "width": 8,
+                          "height": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "lj5WQ",
+                          "name": "row1TeamText",
+                          "fill": "$neutral-700",
+                          "content": "Vinröd",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "cOa4S",
+                      "name": "row1Match",
+                      "fill": "$neutral-700",
+                      "content": "Fryshuset F11 - Central vinröd",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "unT9R",
+                      "name": "row1Loc",
+                      "fill": "$neutral-500",
+                      "content": "Tellusborgshallarna 2",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "W5Ksv",
+                      "name": "row1Time",
+                      "fill": "$neutral-500",
+                      "content": "16/11 12:45",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wBU90",
+                      "name": "row1Link",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.profixio.com/app/leagueid17559/match/32405541"
+                      },
+                      "width": 80,
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "ht8JM",
+                          "name": "row1LinkText",
+                          "fill": "$vinrod",
+                          "content": "Profixio",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "lRXIW",
+                          "name": "row1LinkIcon",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "external-link",
+                          "iconFontFamily": "lucide",
+                          "fill": "$vinrod"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "8tBl1",
+                  "name": "tableRow2",
+                  "width": "fill_container",
+                  "height": 56,
+                  "fill": "#FFFFFF",
+                  "stroke": {
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$neutral-200"
+                  },
+                  "gap": 16,
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "oK1Cy",
+                      "name": "row2Team",
+                      "width": 100,
+                      "gap": 8,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "EbYZ1",
+                          "name": "row2TeamDot",
+                          "fill": "$gul",
+                          "width": 8,
+                          "height": 8
+                        },
+                        {
+                          "type": "text",
+                          "id": "IHRXC",
+                          "name": "row2TeamText",
+                          "fill": "$neutral-700",
+                          "content": "Gul",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "text",
+                      "id": "DvR7X",
+                      "name": "row2Match",
+                      "fill": "$neutral-700",
+                      "content": "Spånga Basket - Central gul",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "FuOml",
+                      "name": "row2Loc",
+                      "fill": "$neutral-500",
+                      "content": "Tenstahallen",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "JnwBB",
+                      "name": "row2Time",
+                      "fill": "$neutral-500",
+                      "content": "22/11 14:30",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "YSoFt",
+                      "name": "row2Link",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.profixio.com/app/leagueid17559/match/32405762"
+                      },
+                      "width": 80,
+                      "gap": 4,
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "7Ym25",
+                          "name": "row2LinkText",
+                          "fill": "$vinrod",
+                          "content": "Profixio",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "icon_font",
+                          "id": "88RLP",
+                          "name": "row2LinkIcon",
+                          "width": 12,
+                          "height": 12,
+                          "iconFontName": "external-link",
+                          "iconFontFamily": "lucide",
+                          "fill": "$vinrod"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "lHcoH",
+              "name": "emptyDesktop",
+              "metadata": {
+                "state": "empty",
+                "shownWhenNoGames": true
+              },
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "padding": [
+                48,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "dxsu1",
+                  "name": "dIcon",
+                  "width": 64,
+                  "height": 64,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-300"
+                },
+                {
+                  "type": "text",
+                  "id": "ORwQc",
+                  "name": "dTitle",
+                  "fill": "$neutral-900",
+                  "content": "Inga matcher hittades",
+                  "fontFamily": "Outfit",
+                  "fontSize": 20,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "Rca3g",
+                  "name": "dDesc",
+                  "fill": "$neutral-500",
+                  "content": "Prova att ändra dina filter eller sökord",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "8aEpY",
+                  "name": "dBtn",
+                  "height": 40,
+                  "fill": "$vinrod",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    24
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "vl0wJ",
+                      "name": "dBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "Rensa filter",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "b7uPE",
+              "name": "downloadsSection",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 16,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000000A",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 8
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "myjge",
+                  "name": "downloadsTitle",
+                  "fill": "$neutral-700",
+                  "content": "Ladda ner",
+                  "fontFamily": "$font-display",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "BplSR",
+                  "name": "downloadsLinks",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "8rxkn",
+                      "name": "excelLink",
+                      "metadata": {
+                        "href": "./data/games.tsv",
+                        "type": "link"
+                      },
+                      "height": 40,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "c4bx0",
+                          "name": "excelIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "download",
+                          "iconFontFamily": "lucide",
+                          "fill": "$neutral-600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "58e8l",
+                          "name": "excelText",
+                          "fill": "$neutral-700",
+                          "content": "Excel/TSV",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "iKTAC",
+                      "name": "calendarLink",
+                      "metadata": {
+                        "href": "./data/calendar.ics",
+                        "type": "link"
+                      },
+                      "height": 40,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "iY8h1",
+                          "name": "calendarIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "calendar",
+                          "iconFontFamily": "lucide",
+                          "fill": "$neutral-600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "0kAqV",
+                          "name": "calendarText",
+                          "fill": "$neutral-700",
+                          "content": "Kalender (ICS)",
+                          "fontFamily": "$font-body",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "35uz1",
+          "name": "Footer",
+          "width": "fill_container",
+          "fill": "$neutral-900",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 48,
+          "children": [
+            {
+              "type": "frame",
+              "id": "AOdd0",
+              "name": "footerTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "zRIls",
+                  "name": "footerLeft",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "92jua",
+                      "name": "footerLogo",
+                      "width": 40,
+                      "height": 40,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./assets/central-logo_large.png",
+                        "mode": "fit"
+                      },
+                      "cornerRadius": 8
+                    },
+                    {
+                      "type": "text",
+                      "id": "G20lk",
+                      "name": "footerTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Central Basket",
+                      "fontFamily": "Outfit",
+                      "fontSize": 20,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "ZK0fw",
+                  "name": "footerRight",
+                  "gap": 12,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "vGSmr",
+                      "name": "instagramBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.instagram.com/centralbasketf10_11/"
+                      },
+                      "width": 48,
+                      "height": 48,
+                      "fill": "$neutral-700",
+                      "cornerRadius": 8,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "miL5x",
+                          "name": "instagramIcon",
+                          "width": 20,
+                          "height": 20,
+                          "iconFontName": "instagram",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "0q8m6",
+                      "name": "footerStreamsBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.youtube.com/@CentralBasketF10-t2w/streams"
+                      },
+                      "height": 40,
+                      "fill": "$gul",
+                      "cornerRadius": 8,
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "H54Gw",
+                          "name": "footerPlayIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "play",
+                          "iconFontFamily": "lucide",
+                          "fill": "$vinrod-dark"
+                        },
+                        {
+                          "type": "text",
+                          "id": "NakrJ",
+                          "name": "footerStreamsText",
+                          "fill": "$vinrod-dark",
+                          "content": "Se streams",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "wDb3L",
+              "name": "footerDivider",
+              "fill": "$neutral-700",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "5CYoR",
+              "name": "footerBottom",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "akf5n",
+                  "name": "footerNote",
+                  "fill": "$neutral-400",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "NgKV8",
+                  "name": "footerCopy",
+                  "fill": "$neutral-500",
+                  "content": "© 2026 C. Mathlin - MIT License",
+                  "fontFamily": "Inter",
+                  "fontSize": 13,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "Yy0Xw",
+      "x": 1500,
+      "y": 0,
+      "name": "Mobile Page",
+      "width": 390,
+      "fill": "$neutral-50",
+      "layout": "vertical",
+      "padding": [
+        0,
+        0,
+        32,
+        0
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "tjrjk",
+          "name": "Mobile Header",
+          "width": "fill_container",
+          "height": 64,
+          "fill": "$vinrod",
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "3UPLj",
+              "name": "mHeaderLeft",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "YrR6d",
+                  "name": "mLogo",
+                  "width": 36,
+                  "height": 36,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./assets/central-logo_large.png",
+                    "mode": "fit"
+                  },
+                  "cornerRadius": 6
+                },
+                {
+                  "type": "text",
+                  "id": "3iAVP",
+                  "name": "mHeaderTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Central Basket F10/F11",
+                  "fontFamily": "Outfit",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "4GufG",
+              "name": "Mobile Theme Toggle",
+              "width": 36,
+              "height": 36,
+              "fill": "rgba(255,255,255,0.1)",
+              "cornerRadius": 6,
+              "stroke": {
+                "thickness": 1,
+                "fill": "rgba(255,255,255,0.4)"
+              },
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "IkTWD",
+                  "name": "Mobile Sun Icon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "sun",
+                  "iconFontFamily": "lucide",
+                  "fill": "#FFFFFF"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "WvNy4",
+              "name": "mStreamsBtn",
+              "metadata": {
+                "type": "link",
+                "href": "https://www.youtube.com/@CentralBasketF10-t2w/streams"
+              },
+              "width": 36,
+              "height": 36,
+              "fill": "$gul",
+              "cornerRadius": 6,
+              "gap": 6,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "4MXbR",
+                  "name": "mPlayIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "play",
+                  "iconFontFamily": "lucide",
+                  "fill": "$vinrod-dark"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "gXFLl",
+          "name": "Mobile Filter",
+          "width": "fill_container",
+          "fill": "#FFFFFF",
+          "effect": {
+            "type": "shadow",
+            "shadowType": "outer",
+            "color": "#0000000A",
+            "offset": {
+              "x": 0,
+              "y": 2
+            },
+            "blur": 6
+          },
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "frame",
+              "id": "kClQI",
+              "name": "Mobile Search",
+              "width": "fill_container",
+              "height": 44,
+              "fill": "$neutral-100",
+              "cornerRadius": 22,
+              "gap": 10,
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "N57q3",
+                  "name": "mSearchIcon",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-400"
+                },
+                {
+                  "type": "text",
+                  "id": "HSe6d",
+                  "name": "mSearchText",
+                  "fill": "$neutral-400",
+                  "content": "Sök lag, motstånd, hall...",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "ouD31",
+              "name": "mChips",
+              "width": "fill_container",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Tp4Gm",
+                  "name": "mChipAll",
+                  "height": 32,
+                  "fill": "$vinrod",
+                  "cornerRadius": 16,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VTcUY",
+                      "name": "mChipAllText",
+                      "fill": "#FFFFFF",
+                      "content": "Alla",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "j3KwF",
+                  "name": "mChipVin",
+                  "height": 32,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "piB1e",
+                      "name": "mChipVinText",
+                      "fill": "$neutral-700",
+                      "content": "Vinröd",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PGyl8",
+                  "name": "mChipGul",
+                  "height": 32,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "bWH4x",
+                      "name": "mChipGulText",
+                      "fill": "$neutral-700",
+                      "content": "Gul",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "WtvE8",
+                  "name": "mSmChip",
+                  "height": 32,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "wlZW6",
+                      "name": "mSmChipText",
+                      "fill": "$neutral-700",
+                      "content": "U16 SM",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xslaW",
+              "name": "mDateFilter",
+              "width": "fill_container",
+              "height": 36,
+              "fill": "$neutral-100",
+              "cornerRadius": 18,
+              "gap": 3,
+              "padding": 3,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "bDvS2",
+                  "name": "mDateActive",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 15,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "5a1CU",
+                      "name": "mDateActiveText",
+                      "fill": "$neutral-900",
+                      "content": "Kommande",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "4Zj1y",
+                  "name": "mDateInactive",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "VDEW0",
+                      "name": "mDateInactiveText",
+                      "fill": "$neutral-500",
+                      "content": "Alla",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Pvx9y",
+          "name": "Mobile Main",
+          "width": "fill_container",
+          "fill": "$neutral-50",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            20,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "pILSK",
+              "name": "mSectionHeader",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Ebqed",
+                  "name": "mTitle",
+                  "fill": "$neutral-900",
+                  "content": "Matcher",
+                  "fontFamily": "Outfit",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "SwSsc",
+                  "name": "mCount",
+                  "fill": "$neutral-500",
+                  "content": "4 st",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "SqM2y",
+              "name": "Mobile Games",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "8TtOV",
+                  "name": "mDateDiv1",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "143g1",
+                      "name": "mDateLine1a",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "UbgzG",
+                      "name": "mDateText1",
+                      "fill": "$neutral-500",
+                      "content": "Lör 16 nov",
+                      "fontFamily": "Outfit",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "fkkgo",
+                      "name": "mDateLine1b",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wuNNN",
+                  "name": "Mobile GameCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0000000A",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 4
+                  },
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": [
+                        2,
+                        0,
+                        0,
+                        2
+                      ],
+                      "id": "6P7IN",
+                      "name": "mStrip1",
+                      "fill": "$vinrod",
+                      "width": 4,
+                      "height": "fill_container"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "WLZl0",
+                      "name": "mGame1Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "P3yXd",
+                          "name": "mGame1Title",
+                          "fill": "$neutral-900",
+                          "content": "Fryshuset F11 - Central vinröd",
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Mz2WZ",
+                          "name": "mGame1Meta",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "22hJy",
+                              "name": "mGame1Loc",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "UHYIx",
+                                  "name": "mLocIcon1",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "map-pin",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-400"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "EpThc",
+                                  "name": "mLocText1",
+                                  "fill": "$neutral-500",
+                                  "content": "Tellusborgshallarna 2",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "GQvJa",
+                              "name": "mGame1Time",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "yyJOE",
+                                  "name": "mTimeIcon1",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "calendar",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-400"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "Dl93s",
+                                  "name": "mTimeText1",
+                                  "fill": "$neutral-500",
+                                  "content": "16 nov, 12:45–14:30",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "bcOi2",
+                          "name": "mGame1Footer",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "ki8pN",
+                              "name": "mBadge1",
+                              "height": 24,
+                              "fill": "$vinrod-light",
+                              "cornerRadius": 12,
+                              "padding": [
+                                0,
+                                10
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "vSI3D",
+                                  "name": "mBadge1Text",
+                                  "fill": "#FFFFFF",
+                                  "content": "Vinröd",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "pyu1S",
+                              "name": "mLink1",
+                              "metadata": {
+                                "type": "link",
+                                "href": "https://www.profixio.com/app/leagueid17559/match/32405541"
+                              },
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "hLDNS",
+                                  "name": "mLinkText1",
+                                  "fill": "$vinrod",
+                                  "content": "Matchdetaljer",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "icon_font",
+                                  "id": "zO9UI",
+                                  "name": "mLinkIcon1",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "external-link",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$vinrod"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "jNBJW",
+                  "name": "mDateDiv2",
+                  "width": "fill_container",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "id": "DezdC",
+                      "name": "mDateLine2a",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    },
+                    {
+                      "type": "text",
+                      "id": "BlL1X",
+                      "name": "mDateText2",
+                      "fill": "$neutral-500",
+                      "content": "Lör 22 nov",
+                      "fontFamily": "Outfit",
+                      "fontSize": 13,
+                      "fontWeight": "normal",
+                      "letterSpacing": 0.5
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "0qD86",
+                      "name": "mDateLine2b",
+                      "fill": "$neutral-200",
+                      "width": "fill_container",
+                      "height": 1
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "7MLyX",
+                  "name": "Mobile GameCard",
+                  "width": "fill_container",
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#0000000A",
+                    "offset": {
+                      "x": 0,
+                      "y": 1
+                    },
+                    "blur": 4
+                  },
+                  "children": [
+                    {
+                      "type": "rectangle",
+                      "cornerRadius": [
+                        2,
+                        0,
+                        0,
+                        2
+                      ],
+                      "id": "jzJGV",
+                      "name": "mStrip2",
+                      "fill": "$gul",
+                      "width": 4,
+                      "height": "fill_container"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SVF53",
+                      "name": "mGame2Content",
+                      "width": "fill_container",
+                      "layout": "vertical",
+                      "gap": 10,
+                      "padding": 14,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "qgLRl",
+                          "name": "mGame2Title",
+                          "fill": "$neutral-900",
+                          "content": "Spånga Basket - KFUM Central gul",
+                          "fontFamily": "Outfit",
+                          "fontSize": 15,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "gXreV",
+                          "name": "mGame2Meta",
+                          "layout": "vertical",
+                          "gap": 6,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "NhX0d",
+                              "name": "mGame2Loc",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "IXSTa",
+                                  "name": "mLocIcon2",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "map-pin",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-400"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "rZMxc",
+                                  "name": "mLocText2",
+                                  "fill": "$neutral-500",
+                                  "content": "Tenstahallen",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "6p9bY",
+                              "name": "mGame2Time",
+                              "gap": 6,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "icon_font",
+                                  "id": "cHiBn",
+                                  "name": "mTimeIcon2",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "calendar",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$neutral-400"
+                                },
+                                {
+                                  "type": "text",
+                                  "id": "M5Wuj",
+                                  "name": "mTimeText2",
+                                  "fill": "$neutral-500",
+                                  "content": "22 nov, 14:30–16:15",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "GotZt",
+                          "name": "mGame2Footer",
+                          "width": "fill_container",
+                          "justifyContent": "space_between",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "2zyMG",
+                              "name": "mBadge2",
+                              "height": 24,
+                              "fill": "$gul",
+                              "cornerRadius": 12,
+                              "padding": [
+                                0,
+                                10
+                              ],
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "4iPCC",
+                                  "name": "mBadge2Text",
+                                  "fill": "$vinrod-dark",
+                                  "content": "Gul",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 11,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            },
+                            {
+                              "type": "frame",
+                              "id": "c8Qhi",
+                              "name": "mLink2",
+                              "metadata": {
+                                "type": "link",
+                                "href": "https://www.profixio.com/app/leagueid17559/match/32405762"
+                              },
+                              "gap": 4,
+                              "alignItems": "center",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "PD15W",
+                                  "name": "mLinkText2",
+                                  "fill": "$vinrod",
+                                  "content": "Matchdetaljer",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                },
+                                {
+                                  "type": "icon_font",
+                                  "id": "Q7EsU",
+                                  "name": "mLinkIcon2",
+                                  "width": 12,
+                                  "height": 12,
+                                  "iconFontName": "external-link",
+                                  "iconFontFamily": "lucide",
+                                  "fill": "$vinrod"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "y1HxU",
+              "name": "mTableToggle",
+              "width": "fill_container",
+              "justifyContent": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "HddsL",
+                  "name": "mTableBtn",
+                  "height": 40,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 20,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    20
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "TUQ9n",
+                      "name": "mTableIcon",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "table-2",
+                      "iconFontFamily": "lucide",
+                      "fill": "$neutral-600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "cpUnT",
+                      "name": "mTableText",
+                      "fill": "$neutral-600",
+                      "content": "Visa tabell",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "D6JeY",
+                      "name": "mChevron",
+                      "width": 14,
+                      "height": 14,
+                      "iconFontName": "chevron-down",
+                      "iconFontFamily": "lucide",
+                      "fill": "$neutral-400"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "vBcPz",
+              "name": "mEmpty",
+              "metadata": {
+                "state": "empty",
+                "shownWhenNoGames": true
+              },
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 32,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "yZDxq",
+                  "name": "mIcon",
+                  "width": 48,
+                  "height": 48,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-300"
+                },
+                {
+                  "type": "text",
+                  "id": "oSbgt",
+                  "name": "mTitle",
+                  "fill": "$neutral-900",
+                  "content": "Inga matcher hittades",
+                  "fontFamily": "Outfit",
+                  "fontSize": 18,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "d5IVO",
+                  "name": "mDesc",
+                  "fill": "$neutral-500",
+                  "content": "Prova att ändra dina filter",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "GmErv",
+                  "name": "mBtn",
+                  "height": 36,
+                  "fill": "$vinrod",
+                  "cornerRadius": 8,
+                  "gap": 8,
+                  "padding": [
+                    0,
+                    20
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tazwP",
+                      "name": "mBtnText",
+                      "fill": "#FFFFFF",
+                      "content": "Rensa filter",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "dBrTu",
+              "name": "mDownloadsSection",
+              "width": "fill_container",
+              "fill": "#FFFFFF",
+              "cornerRadius": 16,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000000A",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 6
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "5yJuR",
+                  "name": "mDownloadsTitle",
+                  "fill": "$neutral-700",
+                  "content": "Ladda ner",
+                  "fontFamily": "Outfit",
+                  "fontSize": 15,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "igfzD",
+                  "name": "mDownloadsLinks",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 10,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "UqwCT",
+                      "name": "mExcelLink",
+                      "metadata": {
+                        "href": "./data/games.tsv",
+                        "type": "link"
+                      },
+                      "width": "fill_container",
+                      "height": 40,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "tbs87",
+                          "name": "mExcelIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "download",
+                          "iconFontFamily": "lucide",
+                          "fill": "$neutral-600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "DpLqn",
+                          "name": "mExcelText",
+                          "fill": "$neutral-700",
+                          "content": "Excel/TSV",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "LvjzV",
+                      "name": "mCalendarLink",
+                      "metadata": {
+                        "href": "./data/calendar.ics",
+                        "type": "link"
+                      },
+                      "width": "fill_container",
+                      "height": 40,
+                      "fill": "$neutral-100",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "gap": 8,
+                      "padding": [
+                        0,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "SdVuV",
+                          "name": "mCalendarIcon",
+                          "width": 16,
+                          "height": 16,
+                          "iconFontName": "calendar",
+                          "iconFontFamily": "lucide",
+                          "fill": "$neutral-600"
+                        },
+                        {
+                          "type": "text",
+                          "id": "de9Eh",
+                          "name": "mCalendarText",
+                          "fill": "$neutral-700",
+                          "content": "Kalender (ICS)",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "MIiOZ",
+          "name": "Mobile Footer",
+          "width": "fill_container",
+          "fill": "$neutral-900",
+          "layout": "vertical",
+          "gap": 20,
+          "padding": [
+            32,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "uIp4u",
+              "name": "mFooterTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i3ZnA",
+                  "name": "mFooterLeft",
+                  "gap": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "yxdQj",
+                      "name": "mFooterLogo",
+                      "width": 32,
+                      "height": 32,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./assets/central-logo_large.png",
+                        "mode": "fit"
+                      },
+                      "cornerRadius": 6
+                    },
+                    {
+                      "type": "text",
+                      "id": "7cGNn",
+                      "name": "mFooterTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Central Basket",
+                      "fontFamily": "Outfit",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zELNS",
+                  "name": "mFooterRight",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "mBDkV",
+                      "name": "mInstagramBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.instagram.com/centralbasketf10_11/"
+                      },
+                      "width": 44,
+                      "height": 44,
+                      "fill": "$neutral-700",
+                      "cornerRadius": 6,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "RY4gS",
+                          "name": "mInstagramIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "instagram",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "aBMSN",
+                      "name": "mFooterBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.youtube.com/@CentralBasketF10-t2w/streams"
+                      },
+                      "width": 36,
+                      "height": 36,
+                      "fill": "$gul",
+                      "cornerRadius": 6,
+                      "gap": 6,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "p8fLE",
+                          "name": "mFooterPlay",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "play",
+                          "iconFontFamily": "lucide",
+                          "fill": "$vinrod-dark"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "8QipX",
+              "name": "mFooterDivider",
+              "fill": "$neutral-700",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "4YxW7",
+              "name": "mFooterBottom",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ni466",
+                  "name": "mFooterNote",
+                  "fill": "$neutral-400",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "9APuD",
+                  "name": "mFooterCopy",
+                  "fill": "$neutral-500",
+                  "content": "© 2026 C. Mathlin - MIT License",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "pCF5M",
+      "x": 2000,
+      "y": 0,
+      "name": "Landscape Page",
+      "width": 844,
+      "height": 390,
+      "fill": "$neutral-50",
+      "layout": "vertical",
+      "padding": [
+        0,
+        0,
+        24,
+        0
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "pNCDd",
+          "name": "Landscape Header",
+          "width": "fill_container",
+          "height": 56,
+          "fill": "$vinrod",
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "iwc17",
+              "name": "lsHeaderLeft",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "wVKF3",
+                  "name": "lsLogo",
+                  "width": 32,
+                  "height": 32,
+                  "fill": {
+                    "type": "image",
+                    "enabled": true,
+                    "url": "./assets/central-logo_large.png",
+                    "mode": "fit"
+                  },
+                  "cornerRadius": 6
+                },
+                {
+                  "type": "text",
+                  "id": "tWIyw",
+                  "name": "lsTitle",
+                  "fill": "#FFFFFF",
+                  "content": "Central Basket F10/F11",
+                  "fontFamily": "$font-display",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Dn77n",
+              "name": "lsHeaderRight",
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "OBQoQ",
+                  "name": "lsThemeBtn",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "rgba(255,255,255,0.1)",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "rgba(255,255,255,0.4)"
+                  },
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "alftM",
+                      "name": "lsThemeIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "sun",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "SIOyE",
+                  "name": "lsIgBtn",
+                  "metadata": {
+                    "type": "link",
+                    "href": "https://www.instagram.com/centralbasketf10_11/"
+                  },
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$neutral-700",
+                  "cornerRadius": 6,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "fD9cp",
+                      "name": "lsIgIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "instagram",
+                      "iconFontFamily": "lucide",
+                      "fill": "#FFFFFF"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "PBvRO",
+                  "name": "lsStreamBtn",
+                  "metadata": {
+                    "type": "link",
+                    "href": "https://www.youtube.com/@CentralBasketF10-t2w/streams"
+                  },
+                  "height": 40,
+                  "fill": "$gul",
+                  "cornerRadius": 6,
+                  "gap": 6,
+                  "padding": [
+                    0,
+                    12
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "nX8r5",
+                      "name": "lsStreamIcon",
+                      "width": 16,
+                      "height": 16,
+                      "iconFontName": "play",
+                      "iconFontFamily": "lucide",
+                      "fill": "$vinrod-dark"
+                    },
+                    {
+                      "type": "text",
+                      "id": "tKynj",
+                      "name": "lsHdrStreamText",
+                      "fill": "$vinrod-dark",
+                      "content": "Streams",
+                      "fontFamily": "Inter",
+                      "fontSize": 13,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "FlNZy",
+          "name": "Landscape Main",
+          "width": "fill_container",
+          "fill": "$neutral-50",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "VgIBJ",
+              "name": "lsFilter",
+              "width": "fill_container",
+              "height": 40,
+              "fill": "#FFFFFF",
+              "cornerRadius": 12,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000000A",
+                "offset": {
+                  "x": 0,
+                  "y": 2
+                },
+                "blur": 6
+              },
+              "gap": 12,
+              "padding": [
+                0,
+                12
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "E42Fg",
+                  "name": "lsSearchIcon",
+                  "width": 14,
+                  "height": 14,
+                  "iconFontName": "search",
+                  "iconFontFamily": "lucide",
+                  "fill": "$neutral-400"
+                },
+                {
+                  "type": "text",
+                  "id": "PH00j",
+                  "name": "lsSearchText",
+                  "fill": "$neutral-400",
+                  "content": "Sök lag, motstånd, hall...",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "aSZ81",
+                  "name": "lsDateToggle",
+                  "width": 140,
+                  "height": 36,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 18,
+                  "gap": 3,
+                  "padding": 3,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "aoBaf",
+                      "name": "lsDateActive",
+                      "height": 30,
+                      "fill": "#FFFFFF",
+                      "cornerRadius": 15,
+                      "stroke": {
+                        "thickness": 1,
+                        "fill": "$neutral-200"
+                      },
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "9Gc4k",
+                          "name": "lsDateActiveText",
+                          "fill": "$neutral-700",
+                          "content": "Kommande",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "nx5LM",
+                      "name": "lsDateInactive",
+                      "height": 30,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "05eES",
+                          "name": "lsDateInactiveText",
+                          "fill": "$neutral-500",
+                          "content": "Alla",
+                          "fontFamily": "Inter",
+                          "fontSize": 12,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "TjfXC",
+              "name": "lsChips",
+              "width": "fill_container",
+              "height": 36,
+              "gap": 8,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "5BRvx",
+                  "name": "lsChipAll",
+                  "height": 36,
+                  "fill": "$vinrod",
+                  "cornerRadius": 16,
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "DyPux",
+                      "name": "lsChipAllText",
+                      "fill": "#FFFFFF",
+                      "content": "Alla",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "kyLLv",
+                  "name": "lsChipVin",
+                  "height": 36,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qiGsK",
+                      "name": "lsChipVinText",
+                      "fill": "$neutral-700",
+                      "content": "Vinröd",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "HfEAG",
+                  "name": "lsChipGul",
+                  "height": 36,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "PCsNa",
+                      "name": "lsChipGulText",
+                      "fill": "$neutral-700",
+                      "content": "Gul",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "rqh55",
+                  "name": "lsChipSM",
+                  "height": 36,
+                  "fill": "$neutral-100",
+                  "cornerRadius": 16,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "$neutral-200"
+                  },
+                  "padding": [
+                    0,
+                    14
+                  ],
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gHio1",
+                      "name": "lsChipSMText",
+                      "fill": "$neutral-700",
+                      "content": "U16 SM",
+                      "fontFamily": "Inter",
+                      "fontSize": 12,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6Gvxw",
+              "name": "lsGames",
+              "width": "fill_container",
+              "fill": "$neutral-50",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "qhL6Y",
+                  "name": "lsGameCard",
+                  "width": "fill_container",
+                  "height": 80,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 12,
+                  "effect": {
+                    "type": "shadow",
+                    "shadowType": "outer",
+                    "color": "#00000008",
+                    "offset": {
+                      "x": 0,
+                      "y": 2
+                    },
+                    "blur": 4
+                  },
+                  "padding": [
+                    0,
+                    16
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "uyGGi",
+                      "name": "lsTeamStrip",
+                      "width": 4,
+                      "height": "fill_container",
+                      "fill": "$vinrod",
+                      "cornerRadius": [
+                        4,
+                        0,
+                        0,
+                        4
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "j0T0X",
+                      "name": "lsCardContent",
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        12
+                      ],
+                      "justifyContent": "space_between",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "sbYrW",
+                          "name": "lsCardLeft",
+                          "layout": "vertical",
+                          "gap": 4,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "xZghQ",
+                              "name": "lsCardTitle",
+                              "fill": "$neutral-900",
+                              "content": "Central Vinröd vs Alvik A1",
+                              "fontFamily": "Inter",
+                              "fontSize": 13,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "hwOCy",
+                              "name": "lsCardMeta",
+                              "fill": "$neutral-500",
+                              "content": "Ekeberghallen • 14:00-15:30",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "6hgcm",
+                          "name": "lsCardBadge",
+                          "height": 28,
+                          "fill": "$vinrod",
+                          "cornerRadius": 6,
+                          "padding": [
+                            0,
+                            10
+                          ],
+                          "justifyContent": "center",
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "dWYku",
+                              "name": "lsCardBadgeText",
+                              "fill": "#FFFFFF",
+                              "content": "Vinröd",
+                              "fontFamily": "Inter",
+                              "fontSize": 11,
+                              "fontWeight": "500"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "hbFdt",
+          "name": "Landscape Footer",
+          "width": "fill_container",
+          "fill": "$neutral-900",
+          "layout": "vertical",
+          "gap": 12,
+          "padding": 16,
+          "children": [
+            {
+              "type": "frame",
+              "id": "ETJwI",
+              "name": "lsFooterTop",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "cWS93",
+                  "name": "lsFooterLeft",
+                  "gap": 10,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "q6tk6",
+                      "name": "lsFooterLogo",
+                      "width": 28,
+                      "height": 28,
+                      "fill": {
+                        "type": "image",
+                        "enabled": true,
+                        "url": "./assets/central-logo_large.png",
+                        "mode": "fit"
+                      },
+                      "cornerRadius": 4
+                    },
+                    {
+                      "type": "text",
+                      "id": "wnrvQ",
+                      "name": "lsFooterTitle",
+                      "fill": "#FFFFFF",
+                      "content": "Central Basket",
+                      "fontFamily": "Outfit",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "bZq31",
+                  "name": "lsFooterRight",
+                  "gap": 8,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HrmZf",
+                      "name": "lsFooterIgBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.instagram.com/centralbasketf10_11/"
+                      },
+                      "width": 40,
+                      "height": 40,
+                      "fill": "$neutral-700",
+                      "cornerRadius": 6,
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "aQLby",
+                          "name": "lsFooterIgIcon",
+                          "width": 18,
+                          "height": 18,
+                          "iconFontName": "instagram",
+                          "iconFontFamily": "lucide",
+                          "fill": "#FFFFFF"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "BNGo1",
+                      "name": "lsFooterStreamBtn",
+                      "metadata": {
+                        "type": "link",
+                        "href": "https://www.youtube.com/@CentralBasketF10-t2w/streams"
+                      },
+                      "height": 40,
+                      "fill": "$gul",
+                      "cornerRadius": 6,
+                      "gap": 6,
+                      "padding": [
+                        0,
+                        12
+                      ],
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "icon_font",
+                          "id": "AHvca",
+                          "name": "lsFooterStreamIcon",
+                          "width": 14,
+                          "height": 14,
+                          "iconFontName": "play",
+                          "iconFontFamily": "lucide",
+                          "fill": "$vinrod-dark"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ryix0",
+                          "name": "lsFooterStreamText",
+                          "fill": "$vinrod-dark",
+                          "content": "Streams",
+                          "fontFamily": "Inter",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "1n8zm",
+              "name": "lsFooterDivider",
+              "fill": "$neutral-700",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "b8vTb",
+              "name": "lsFooterBottom",
+              "width": "fill_container",
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "fYLVN",
+                  "name": "lsFooterCopy",
+                  "fill": "$neutral-400",
+                  "content": "© 2026 C. Mathlin - MIT License",
+                  "fontFamily": "Inter",
+                  "fontSize": 11,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "font-body": {
+      "type": "string",
+      "value": "Inter"
+    },
+    "font-display": {
+      "type": "string",
+      "value": "Outfit"
+    },
+    "gul": {
+      "type": "color",
+      "value": "#FFD700"
+    },
+    "gul-dark": {
+      "type": "color",
+      "value": "#CCAC00"
+    },
+    "neutral-100": {
+      "type": "color",
+      "value": "#F4F4F5"
+    },
+    "neutral-200": {
+      "type": "color",
+      "value": "#E4E4E7"
+    },
+    "neutral-300": {
+      "type": "color",
+      "value": "#D4D4D8"
+    },
+    "neutral-400": {
+      "type": "color",
+      "value": "#A1A1AA"
+    },
+    "neutral-50": {
+      "type": "color",
+      "value": "#FAFAFA"
+    },
+    "neutral-500": {
+      "type": "color",
+      "value": "#71717A"
+    },
+    "neutral-600": {
+      "type": "color",
+      "value": "#52525B"
+    },
+    "neutral-700": {
+      "type": "color",
+      "value": "#3F3F46"
+    },
+    "neutral-800": {
+      "type": "color",
+      "value": "#27272A"
+    },
+    "neutral-900": {
+      "type": "color",
+      "value": "#18181B"
+    },
+    "radius-full": {
+      "type": "number",
+      "value": 9999
+    },
+    "radius-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "radius-md": {
+      "type": "number",
+      "value": 12
+    },
+    "radius-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "radius-xl": {
+      "type": "number",
+      "value": 24
+    },
+    "spacing-2xl": {
+      "type": "number",
+      "value": 32
+    },
+    "spacing-3xl": {
+      "type": "number",
+      "value": 48
+    },
+    "spacing-lg": {
+      "type": "number",
+      "value": 16
+    },
+    "spacing-md": {
+      "type": "number",
+      "value": 12
+    },
+    "spacing-sm": {
+      "type": "number",
+      "value": 8
+    },
+    "spacing-xl": {
+      "type": "number",
+      "value": 24
+    },
+    "spacing-xs": {
+      "type": "number",
+      "value": 4
+    },
+    "vinrod": {
+      "type": "color",
+      "value": "#8B1538"
+    },
+    "vinrod-dark": {
+      "type": "color",
+      "value": "#5E0E26"
+    },
+    "vinrod-light": {
+      "type": "color",
+      "value": "#B01E4A"
+    }
+  }
+}

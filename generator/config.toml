@@ -1,0 +1,57 @@
+# Central F10 Schedule Configuration
+# ================================
+# Each entry represents one team's calendar from Profixio.
+# URLs can be found in Profixio → Team → Calendar → Subscribe (ICS)
+#
+# Note: Profixio URLs contain signatures that may expire.
+# If downloads fail with 403, refresh URLs from Profixio UI.
+#
+# Team Colors:
+#   #550f38 - Club burgundy (Vinröd)
+#   #fec225 - Club gold (Gul)
+#   #00072e - SBBF blue
+#   #000000 - Black
+#   #ffffff - White
+
+# Field Reference:
+# ----------------
+# url          - Profixio ICS calendar URL (required)
+#               Found in Profixio → Team → Calendar → Subscribe
+#
+# filename     - Local cache filename (required)
+#               Must end with .ics, used for caching downloaded data
+#
+# team_name    - Full team name (required)
+#               Displayed in calendar exports and TSV, e.g. "Central F10 Vinröd"
+#
+# team_slug    - URL-safe identifier (required)
+#               Used for filtering in the web UI, must be unique, e.g. "f10vinrod"
+#
+# team_display - Short display name (required)
+#               Shown on team badges in the web UI, e.g. "Vinröd"
+#
+# team_color   - Hex color for UI elements (required)
+#               Used for team strips, badges, and filter chips, e.g. "#550f38"
+#
+# division     - Division/league name (optional)
+#               For documentation purposes only
+
+[[ics.files]]
+# Team: Central F10/F11 Vinröd (U16 Nivå 2)
+url = "https://www.profixio.com/app/api/calendars/teams/1402985/matches.ics?signature=0e7dd13ec4a4b551e3d0adc72a6a6353b41388baa59379faeeb1672360cf104d"
+filename = "f10vinrod.ics"
+team_name = "Central F10/F11 Vinröd"
+team_slug = "f10vinrod"
+team_display = "FU16 Röd"
+team_color = "#550f38"
+division = "Flickor U16 Nivå 2 Nord"
+
+[[ics.files]]
+# Team: Central F10/F11 Gul (U16 Nivå 2)
+url = "https://www.profixio.com/app/api/calendars/teams/1410624/matches.ics?signature=f55d58a863834031adfccd206225fde4b7576d3ecc7cfb7801230aad2dc0d701"
+filename = "f10gul.ics"
+team_name = "Central F10/F11 Gul"
+team_slug = "f10gul"
+team_display = "FU16 Gul"
+team_color = "#fec225"
+division = "Flickor U16 Nivå 2 Syd"

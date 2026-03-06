@@ -1,0 +1,25 @@
+[project]
+name = "central-f10-schedule"
+version = "0.2.0"
+description = "Basketball schedule generator for Central F10 teams - outputs JSON, TSV, and ICS"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "icalendar>=6.3.1",
+    "pydantic>=2.12.5",
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.2",
+    "ruff>=0.15.2",
+    "ty>=0.0.18",
+]
+
+[tool.ty.environment]
+python-version = "3.12"
+python-platform = "darwin"
+
+[tool.ty.rules]
+unresolved-import = "ignore"  # src/ modules work at runtime
