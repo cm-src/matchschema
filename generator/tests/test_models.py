@@ -116,3 +116,67 @@ class TestGameEvent:
                 team_display="Team",
                 team_color="red",  # Invalid - not a 7-char hex
             )
+
+    def test_game_event_valid_url_http(self) -> None:
+        """HTTP URL is accepted."""
+        event = GameEvent(
+            team="Central F10",
+            game="Game",
+            starttm=datetime(2025, 3, 15, 14, 0, tzinfo=timezone.utc),
+            endtm=datetime(2025, 3, 15, 16, 0, tzinfo=timezone.utc),
+            location="Arena",
+            gameid="test",
+            url="http://example.com/game",
+            team_slug="team",
+            team_display="Team",
+            team_color="#550f38",
+        )
+        assert event.url == "http://example.com/game"
+
+    def test_game_event_valid_url_https(self) -> None:
+        """HTTPS URL is accepted."""
+        event = GameEvent(
+            team="Central F10",
+            game="Game",
+            starttm=datetime(2025, 3, 15, 14, 0, tzinfo=timezone.utc),
+            endtm=datetime(2025, 3, 15, 16, 0, tzinfo=timezone.utc),
+            location="Arena",
+            gameid="test",
+            url="https://profixio.com/game/123",
+            team_slug="team",
+            team_display="Team",
+            team_color="#550f38",
+        )
+        assert event.url == "https://profixio.com/game/123"
+
+    def test_game_event_invalid_url_protocol(self) -> None:
+        """Non-HTTP(S) URL raises ValidationError."""
+        with pytest.raises(Exception, match="http or https protocol"):
+            GameEvent(
+                team="Central F10",
+                game="Game",
+                starttm=datetime(2025, 3, 15, 14, 0, tzinfo=timezone.utc),
+                endtm=datetime(2025, 3, 15, 16, 0, tzinfo=timezone.utc),
+                location="Arena",
+                gameid="test",
+                url="ftp://example.com",
+                team_slug="team",
+                team_display="Team",
+                team_color="#550f38",
+            )
+
+    def test_game_event_invalid_url_no_host(self) -> None:
+        """URL without host raises ValidationError."""
+        with pytest.raises(Exception, match="valid host"):
+            GameEvent(
+                team="Central F10",
+                game="Game",
+                starttm=datetime(2025, 3, 15, 14, 0, tzinfo=timezone.utc),
+                endtm=datetime(2025, 3, 15, 16, 0, tzinfo=timezone.utc),
+                location="Arena",
+                gameid="test",
+                url="https://",
+                team_slug="team",
+                team_display="Team",
+                team_color="#550f38",
+            )

@@ -3,6 +3,7 @@
 import re
 from datetime import datetime
 from typing import Any
+from urllib.parse import urlparse
 
 from pydantic import BaseModel, field_validator
 
@@ -47,6 +48,22 @@ class GameEvent(BaseModel):
             raise ValueError(
                 f"team_color must be a valid hex color like '#550f38', got '{v}'"
             )
+        return v
+
+    @field_validator("url")
+    @classmethod
+    def validate_url(cls, v: str) -> str:
+        """Validate URL is http or https."""
+        if not v:
+            return v
+        try:
+            parsed = urlparse(v)
+            if parsed.scheme not in ("http", "https"):
+                raise ValueError(f"URL must use http or https protocol, got '{v}'")
+            if not parsed.netloc:
+                raise ValueError(f"URL must have a valid host, got '{v}'")
+        except Exception as e:
+            raise ValueError(f"Invalid URL '{v}': {e}") from e
         return v
 
     @field_validator("endtm")
