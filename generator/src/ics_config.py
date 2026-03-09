@@ -1,7 +1,11 @@
 """Load and validate ICS configuration from config.toml."""
 
+import re
 import tomllib
 from typing import NotRequired, TypedDict
+
+# Hex color pattern: # followed by exactly 6 hex characters
+HEX_COLOR_PATTERN = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 
 class IcsFileEntry(TypedDict):
@@ -68,9 +72,9 @@ def load_ics_files() -> list[IcsFileEntry]:
 
         # Validate hex color format
         color = entry["team_color"]
-        if not color.startswith("#") or len(color) != 7:
+        if not HEX_COLOR_PATTERN.match(color):
             raise ValueError(
-                f"Entry {i}: team_color must be a 7-character hex color like '#550f38'"
+                f"Entry {i}: team_color must be a valid hex color like '#550f38', got '{color}'"
             )
 
         validated.append(entry)

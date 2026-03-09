@@ -1,9 +1,13 @@
 """Pydantic models for data validation."""
 
+import re
 from datetime import datetime
 from typing import Any
 
 from pydantic import BaseModel, field_validator
+
+# Hex color pattern: # followed by exactly 6 hex characters
+HEX_COLOR_PATTERN = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 
 class GameEvent(BaseModel):
@@ -39,8 +43,10 @@ class GameEvent(BaseModel):
     @classmethod
     def validate_color(cls, v: str) -> str:
         """Validate hex color format."""
-        if not v.startswith("#") or len(v) != 7:
-            raise ValueError(f"team_color must be a 7-character hex color, got '{v}'")
+        if not HEX_COLOR_PATTERN.match(v):
+            raise ValueError(
+                f"team_color must be a valid hex color like '#550f38', got '{v}'"
+            )
         return v
 
     @field_validator("endtm")

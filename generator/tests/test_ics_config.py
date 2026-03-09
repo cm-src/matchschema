@@ -247,9 +247,7 @@ team_color = "red"
 
         importlib.reload(ics_config)
 
-        with pytest.raises(
-            ValueError, match="team_color must be a 7-character hex color"
-        ):
+        with pytest.raises(ValueError, match="team_color must be a valid hex color"):
             ics_config.load_ics_files()
 
     def test_load_ics_files_missing_ics_section(self, temp_dir: Path) -> None:

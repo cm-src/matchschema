@@ -20,6 +20,7 @@ logger = logging.getLogger(__name__)
 REQUEST_TIMEOUT = 30
 MAX_RETRIES = 3
 RETRY_BACKOFF = 2
+MAX_ICS_SIZE = 10 * 1024 * 1024  # 10MB limit
 
 # Swedish timezone
 SWEDISH_TZ = ZoneInfo("Europe/Stockholm")
@@ -107,6 +108,16 @@ def _download_with_retry(url: str, file_path: Path) -> bool:
                 continue
 
             content = response.content
+
+            if len(content) > MAX_ICS_SIZE:
+                logger.error(
+                    "ICS file too large: %d bytes (max %d) from %s",
+                    len(content),
+                    MAX_ICS_SIZE,
+                    url,
+                )
+                return False
+
             if not _is_valid_ics_content(content):
                 logger.error(
                     "Invalid ICS content from %s - received HTML or unexpected format",
