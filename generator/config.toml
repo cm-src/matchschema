@@ -40,9 +40,9 @@
 # Team: Central F10/F11 Vinröd (U16 Nivå 2)
 url = "https://www.profixio.com/app/api/calendars/teams/1402985/matches.ics?signature=0e7dd13ec4a4b551e3d0adc72a6a6353b41388baa59379faeeb1672360cf104d"
 filename = "f10vinrod.ics"
-team_name = "Central F10/F11 Vinröd"
+team_name = "F10/F11 Vinröd"
 team_slug = "f10vinrod"
-team_display = "FU16 Röd"
+team_display = "FU16 VR"
 team_color = "#550f38"
 division = "Flickor U16 Nivå 2 Nord"
 
@@ -50,7 +50,7 @@ division = "Flickor U16 Nivå 2 Nord"
 # Team: Central F10/F11 Gul (U16 Nivå 2)
 url = "https://www.profixio.com/app/api/calendars/teams/1410624/matches.ics?signature=f55d58a863834031adfccd206225fde4b7576d3ecc7cfb7801230aad2dc0d701"
 filename = "f10gul.ics"
-team_name = "Central F10/F11 Gul"
+team_name = "F10/F11 Gul"
 team_slug = "f10gul"
 team_display = "FU16 Gul"
 team_color = "#fec225"
