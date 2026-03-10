@@ -4,7 +4,7 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Fryshuset F11 - Central vinröd
+SUMMARY:[F10/F11 Vinröd] Fryshuset F11 - Central vinröd
 DTSTART:20251116T114500Z
 DTEND:20251116T133000Z
 UID:central-32405541
@@ -12,7 +12,7 @@ LOCATION:Tellusborgshallarna 2
 URL:https://www.profixio.com/app/leagueid17559/match/32405541
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Spånga Basket F11 - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] Spånga Basket F11 - KFUM Central Basket
 DTSTART:20251122T133000Z
 DTEND:20251122T151500Z
 UID:central-32405762
@@ -20,7 +20,7 @@ LOCATION:Tenstahallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405762
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Central vinröd - Viby Vit
+SUMMARY:[F10/F11 Vinröd] Central vinröd - Viby Vit
 DTSTART:20251129T141500Z
 DTEND:20251129T160000Z
 UID:central-32405553
@@ -28,7 +28,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405553
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - Tyresö Röd
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - Tyresö Röd
 DTSTART:20251129T160000Z
 DTEND:20251129T174500Z
 UID:central-32405768
@@ -36,7 +36,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405768
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - KFUM Haga Haninge
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - KFUM Haga Haninge
 DTSTART:20251130T110000Z
 DTEND:20251130T124500Z
 UID:central-32405770
@@ -44,7 +44,7 @@ LOCATION:Tellusborgshallarna 3
 URL:https://www.profixio.com/app/leagueid17559/match/32405770
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Duvbo Vit - Central vinröd
+SUMMARY:[F10/F11 Vinröd] Duvbo Vit - Central vinröd
 DTSTART:20251130T164500Z
 DTEND:20251130T183000Z
 UID:central-32405556
@@ -52,7 +52,7 @@ LOCATION:Löthallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405556
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - Hammarby Vit
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - Hammarby Vit
 DTSTART:20251206T143000Z
 DTEND:20251206T161500Z
 UID:central-32405773
@@ -60,7 +60,7 @@ LOCATION:Thorildshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405773
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Skuru Basket Grön - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] Skuru Basket Grön - KFUM Central Basket
 DTSTART:20251207T080000Z
 DTEND:20251207T094500Z
 UID:central-32405776
@@ -68,7 +68,7 @@ LOCATION:Tollare Bollhall
 URL:https://www.profixio.com/app/leagueid17559/match/32405776
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Central vinröd - Sollentuna Basket
+SUMMARY:[F10/F11 Vinröd] Central vinröd - Sollentuna Basket
 DTSTART:20251207T124500Z
 DTEND:20251207T143000Z
 UID:central-32405562
@@ -76,7 +76,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405562
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Blackeberg Svart 1 - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] Blackeberg Svart 1 - KFUM Central Basket
 DTSTART:20251214T124500Z
 DTEND:20251214T143000Z
 UID:central-32428775
@@ -84,7 +84,7 @@ LOCATION:Vinstahallen 1 plan 2
 URL:https://www.profixio.com/app/leagueid17559/match/32428775
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - Kungsholmen Vit
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - Kungsholmen Vit
 DTSTART:20251221T124500Z
 DTEND:20251221T143000Z
 UID:central-32405789
@@ -92,7 +92,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405789
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Fryshuset Basket Vit - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] Fryshuset Basket Vit - KFUM Central Basket
 DTSTART:20260110T124500Z
 DTEND:20260110T143000Z
 UID:central-32405793
@@ -100,7 +100,7 @@ LOCATION:Vintervikens sph
 URL:https://www.profixio.com/app/leagueid17559/match/32405793
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - Skuru Basket Grön
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - Skuru Basket Grön
 DTSTART:20260118T123000Z
 DTEND:20260118T141500Z
 UID:central-32405800
@@ -108,7 +108,7 @@ LOCATION:Enskedehallen L
 URL:https://www.profixio.com/app/leagueid17559/match/32405800
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Stockholm Nordväst - Central vinröd
+SUMMARY:[F10/F11 Vinröd] Stockholm Nordväst - Central vinröd
 DTSTART:20260124T130000Z
 DTEND:20260124T144500Z
 UID:central-32405587
@@ -116,7 +116,7 @@ LOCATION:BAS Barkarby
 URL:https://www.profixio.com/app/leagueid17559/match/32405587
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - AIK Gul
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - AIK Gul
 DTSTART:20260124T163000Z
 DTEND:20260124T181500Z
 UID:central-32405803
@@ -124,7 +124,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405803
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Tyresö Röd - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] Tyresö Röd - KFUM Central Basket
 DTSTART:20260131T130000Z
 DTEND:20260131T144500Z
 UID:central-32405810
@@ -132,7 +132,7 @@ LOCATION:Forellhallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405810
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Örebro  - Central vinröd
+SUMMARY:[F10/F11 Vinröd] Örebro  - Central vinröd
 DTSTART:20260207T144500Z
 DTEND:20260207T163000Z
 UID:central-32405601
@@ -140,7 +140,7 @@ LOCATION:Enskedehallen L
 URL:https://www.profixio.com/app/leagueid17559/match/32405601
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Vinröd] Sollentuna Basket - Central vinröd
+SUMMARY:[F10/F11 Vinröd] Sollentuna Basket - Central vinröd
 DTSTART:20260208T143000Z
 DTEND:20260208T161500Z
 UID:central-32405605
@@ -148,7 +148,7 @@ LOCATION:Sollentuna Sporthall B
 URL:https://www.profixio.com/app/leagueid17559/match/32405605
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] KFUM Central Basket - Spånga Basket F11
+SUMMARY:[F10/F11 Gul] KFUM Central Basket - Spånga Basket F11
 DTSTART:20260214T123000Z
 DTEND:20260214T141500Z
 UID:central-32405812
@@ -156,7 +156,7 @@ LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405812
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] AIK Gul - KFUM Central Basket
+SUMMARY:[F10/F11 Gul] AIK Gul - KFUM Central Basket
 DTSTART:20260215T104500Z
 DTEND:20260215T123000Z
 UID:central-32405816
@@ -164,7 +164,7 @@ LOCATION:Vasalundshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32405816
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Duvbo Vit - Central gul
+SUMMARY:[F10/F11 Gul] Duvbo Vit - Central gul
 DTSTART:20260307T160000Z
 DTEND:20260307T174500Z
 UID:central-32566983
@@ -172,7 +172,7 @@ LOCATION:Löthallen
 URL:https://www.profixio.com/app/leagueid17559/match/32566983
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Central gul - AIK Gul
+SUMMARY:[F10/F11 Gul] Central gul - AIK Gul
 DTSTART:20260314T124500Z
 DTEND:20260314T143000Z
 UID:central-32566993
@@ -180,7 +180,7 @@ LOCATION:Tellusborgshallarna 2
 URL:https://www.profixio.com/app/leagueid17559/match/32566993
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Hammarby Vit - Central gul
+SUMMARY:[F10/F11 Gul] Hammarby Vit - Central gul
 DTSTART:20260321T130000Z
 DTEND:20260321T144500Z
 UID:central-32567009
@@ -188,7 +188,7 @@ LOCATION:Hagsätrahallen
 URL:https://www.profixio.com/app/leagueid17559/match/32567009
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[Central F10/F11 Gul] Central gul - Vallentuna
+SUMMARY:[F10/F11 Gul] Central gul - Vallentuna
 DTSTART:20260328T093000Z
 DTEND:20260328T111500Z
 UID:central-32580935
