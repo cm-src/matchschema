@@ -366,7 +366,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-  min-height: 600px; /* Reserve space for ~3-4 game cards + dividers */
+  min-height: 280px; /* Reserve space for ~2 game cards - balance CLS vs empty space */
 }
 
 /* Date Divider */
