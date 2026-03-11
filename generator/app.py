@@ -14,7 +14,7 @@ from pathlib import Path
 # Add src directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 
-from data_importer import generate_all  # type: ignore[import-not-found]
+from data_importer import generate_all
 
 # Configure logging
 logging.basicConfig(
