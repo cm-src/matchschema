@@ -4,14 +4,6 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[F10/F11 Vinröd] Fryshuset F11 - Central vinröd
-DTSTART:20251116T114500Z
-DTEND:20251116T133000Z
-UID:central-32405541
-LOCATION:Tellusborgshallarna 2
-URL:https://www.profixio.com/app/leagueid17559/match/32405541
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[F10/F11 Gul] Spånga Basket F11 - KFUM Central Basket
 DTSTART:20251122T133000Z
 DTEND:20251122T151500Z
