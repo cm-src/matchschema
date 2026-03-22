@@ -4,14 +4,6 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[F10/F11 Gul] Spånga Basket F11 - KFUM Central Basket
-DTSTART:20251122T133000Z
-DTEND:20251122T151500Z
-UID:central-32405762
-LOCATION:Tenstahallen
-URL:https://www.profixio.com/app/leagueid17559/match/32405762
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[F10/F11 Vinröd] Central vinröd - Viby Vit
 DTSTART:20251129T141500Z
 DTEND:20251129T160000Z
