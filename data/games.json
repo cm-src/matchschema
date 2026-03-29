@@ -1,31 +1,7 @@
 {
-  "updated": "2026-03-28T15:36:04.330863+00:00",
+  "updated": "2026-03-29T05:15:11.995045+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "32405553",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Central vinröd - Viby Vit",
-      "location": "Gärdeshallen",
-      "start": "2025-11-29T15:15:00+01:00",
-      "end": "2025-11-29T17:00:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405553"
-    },
-    {
-      "id": "32405768",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "KFUM Central Basket - Tyresö Röd",
-      "location": "Gärdeshallen",
-      "start": "2025-11-29T17:00:00+01:00",
-      "end": "2025-11-29T18:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405768"
-    },
     {
       "id": "32405770",
       "team": "f10gul",
@@ -277,6 +253,18 @@
       "start": "2026-03-28T17:45:00+01:00",
       "end": "2026-03-28T19:30:00+01:00",
       "url": "https://www.profixio.com/app/leagueid17559/match/32583717"
+    },
+    {
+      "id": "32578171",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central vinröd - Duvbo Röd",
+      "location": "Farstahallen S",
+      "start": "2026-04-18T17:15:00+02:00",
+      "end": "2026-04-18T19:00:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid17559/match/32578171"
     },
     {
       "id": "32580950",

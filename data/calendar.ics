@@ -4,22 +4,6 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[F10/F11 Vinröd] Central vinröd - Viby Vit
-DTSTART:20251129T141500Z
-DTEND:20251129T160000Z
-UID:central-32405553
-LOCATION:Gärdeshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32405553
-END:VEVENT
-BEGIN:VEVENT
-SUMMARY:[F10/F11 Gul] KFUM Central Basket - Tyresö Röd
-DTSTART:20251129T160000Z
-DTEND:20251129T174500Z
-UID:central-32405768
-LOCATION:Gärdeshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32405768
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[F10/F11 Gul] KFUM Central Basket - KFUM Haga Haninge
 DTSTART:20251130T110000Z
 DTEND:20251130T124500Z
@@ -186,6 +170,14 @@ DTEND:20260328T183000Z
 UID:central-32583717
 LOCATION:Gärdeshallen
 URL:https://www.profixio.com/app/leagueid17559/match/32583717
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[F10/F11 Vinröd] Central vinröd - Duvbo Röd
+DTSTART:20260418T151500Z
+DTEND:20260418T170000Z
+UID:central-32578171
+LOCATION:Farstahallen S
+URL:https://www.profixio.com/app/leagueid17559/match/32578171
 END:VEVENT
 BEGIN:VEVENT
 SUMMARY:[F10/F11 Gul] Hammarby Vit - Central gul
