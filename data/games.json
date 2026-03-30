@@ -1,31 +1,7 @@
 {
-  "updated": "2026-03-29T15:36:37.667472+00:00",
+  "updated": "2026-03-30T05:29:02.995529+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "32405770",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "KFUM Central Basket - KFUM Haga Haninge",
-      "location": "Tellusborgshallarna 3",
-      "start": "2025-11-30T12:00:00+01:00",
-      "end": "2025-11-30T13:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405770"
-    },
-    {
-      "id": "32405556",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Duvbo Vit - Central vinröd",
-      "location": "Löthallen",
-      "start": "2025-11-30T17:45:00+01:00",
-      "end": "2025-11-30T19:30:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405556"
-    },
     {
       "id": "32405773",
       "team": "f10gul",
