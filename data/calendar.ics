@@ -4,14 +4,6 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[F10/F11 Gul] KFUM Central Basket - Hammarby Vit
-DTSTART:20251206T143000Z
-DTEND:20251206T161500Z
-UID:central-32405773
-LOCATION:Thorildshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32405773
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[F10/F11 Gul] Skuru Basket Grön - KFUM Central Basket
 DTSTART:20251207T080000Z
 DTEND:20251207T094500Z
