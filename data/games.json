@@ -1,31 +1,7 @@
 {
-  "updated": "2026-04-06T15:53:08.477128+00:00",
+  "updated": "2026-04-07T05:13:10.747786+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "32405776",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "Skuru Basket Grön - KFUM Central Basket",
-      "location": "Tollare Bollhall",
-      "start": "2025-12-07T09:00:00+01:00",
-      "end": "2025-12-07T10:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405776"
-    },
-    {
-      "id": "32405562",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Central vinröd - Sollentuna Basket",
-      "location": "Gärdeshallen",
-      "start": "2025-12-07T13:45:00+01:00",
-      "end": "2025-12-07T15:30:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405562"
-    },
     {
       "id": "32428775",
       "team": "f10gul",
