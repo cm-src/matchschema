@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-08T05:15:23.249646+00:00",
+  "updated": "2026-04-08T16:17:22.934070+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -195,18 +195,6 @@
       "url": "https://www.profixio.com/app/leagueid17559/match/32583717"
     },
     {
-      "id": "32578171",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Central vinröd - Duvbo Röd",
-      "location": "Farstahallen S",
-      "start": "2026-04-18T17:15:00+02:00",
-      "end": "2026-04-18T19:00:00+02:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32578171"
-    },
-    {
       "id": "32580950",
       "team": "f10gul",
       "teamDisplay": "FU16 Gul",
@@ -217,6 +205,18 @@
       "start": "2026-04-19T15:00:00+02:00",
       "end": "2026-04-19T16:45:00+02:00",
       "url": "https://www.profixio.com/app/leagueid17559/match/32580950"
+    },
+    {
+      "id": "32578171",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central vinröd - Duvbo Röd",
+      "location": "Hjorthagshallen",
+      "start": "2026-04-20T19:15:00+02:00",
+      "end": "2026-04-20T21:00:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid17559/match/32578171"
     }
   ]
 }
