@@ -4,14 +4,6 @@ PRODID:-//Central F10 Basketball//central-f10//
 DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 BEGIN:VEVENT
-SUMMARY:[F10/F11 Gul] Blackeberg Svart 1 - KFUM Central Basket
-DTSTART:20251214T124500Z
-DTEND:20251214T143000Z
-UID:central-32428775
-LOCATION:Vinstahallen 1 plan 2
-URL:https://www.profixio.com/app/leagueid17559/match/32428775
-END:VEVENT
-BEGIN:VEVENT
 SUMMARY:[F10/F11 Gul] KFUM Central Basket - Kungsholmen Vit
 DTSTART:20251221T124500Z
 DTEND:20251221T143000Z
