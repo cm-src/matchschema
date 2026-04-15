@@ -2,10 +2,9 @@
 
 import re
 from datetime import datetime
-from typing import Any
 from urllib.parse import urlparse
 
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, ConfigDict, ValidationInfo, field_validator
 
 # Hex color pattern: # followed by exactly 6 hex characters
 HEX_COLOR_PATTERN = re.compile(r"^#[0-9A-Fa-f]{6}$")
@@ -13,6 +12,8 @@ HEX_COLOR_PATTERN = re.compile(r"^#[0-9A-Fa-f]{6}$")
 
 class GameEvent(BaseModel):
     """Validated game event from ICS calendar."""
+
+    model_config = ConfigDict(extra="forbid")
 
     team: str  # Full team name
     game: str
@@ -38,7 +39,9 @@ class GameEvent(BaseModel):
     @classmethod
     def strip_strings(cls, v: str) -> str:
         """Strip whitespace from string fields."""
-        return v.strip() if v else ""
+        if isinstance(v, str):
+            return v.strip()
+        return v
 
     @field_validator("team_color")
     @classmethod
@@ -56,36 +59,18 @@ class GameEvent(BaseModel):
         """Validate URL is http or https."""
         if not v:
             return v
-        try:
-            parsed = urlparse(v)
-            if parsed.scheme not in ("http", "https"):
-                raise ValueError(f"URL must use http or https protocol, got '{v}'")
-            if not parsed.netloc:
-                raise ValueError(f"URL must have a valid host, got '{v}'")
-        except Exception as e:
-            raise ValueError(f"Invalid URL '{v}': {e}") from e
+        parsed = urlparse(v)
+        if parsed.scheme not in ("http", "https"):
+            raise ValueError(f"URL must use http or https protocol, got '{v}'")
+        if not parsed.netloc:
+            raise ValueError(f"URL must have a valid host, got '{v}'")
         return v
 
     @field_validator("endtm")
     @classmethod
-    def end_after_start(cls, v: datetime, info: Any) -> datetime:
+    def end_after_start(cls, v: datetime, info: ValidationInfo) -> datetime:
         """Validate that end time is after start time."""
         starttm = info.data.get("starttm")
         if starttm and v < starttm:
             raise ValueError(f"endtm ({v}) must be after starttm ({starttm})")
         return v
-
-
-def validate_event(event: dict[str, Any]) -> GameEvent:
-    """Validate a raw event dict and return a GameEvent.
-
-    Args:
-        event: Raw event dict from ICS parsing.
-
-    Returns:
-        Validated GameEvent instance.
-
-    Raises:
-        ValueError: If event data is invalid.
-    """
-    return GameEvent.model_validate(event)

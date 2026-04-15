@@ -50,11 +50,11 @@
   }
 
   /**
-   * Initialize theme from sessionStorage
+   * Initialize theme from localStorage
    */
   function initTheme() {
     try {
-      const savedTheme = sessionStorage.getItem('theme');
+      const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'light' || savedTheme === 'dark') {
         currentTheme = savedTheme;
       } else {
@@ -64,7 +64,7 @@
       }
       applyTheme(currentTheme);
     } catch (e) {
-      console.warn('Could not access sessionStorage:', e);
+      console.warn('Could not access localStorage:', e);
       currentTheme = 'light';
       applyTheme('light');
     }
@@ -92,16 +92,16 @@
   }
 
   /**
-   * Toggle theme - save to sessionStorage
+   * Toggle theme - save to localStorage
    */
   function toggleTheme() {
     // Toggle between light and dark
     currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
     try {
-      sessionStorage.setItem('theme', currentTheme);
+      localStorage.setItem('theme', currentTheme);
     } catch (e) {
-      console.warn('Could not save theme to sessionStorage:', e);
+      console.warn('Could not save theme to localStorage:', e);
     }
 
     applyTheme(currentTheme);
@@ -117,7 +117,6 @@
     }
     const data = await response.json();
     gamesData = data.games || [];
-    console.log(`Loaded ${gamesData.length} games (updated: ${data.updated})`);
 
     // Build filter chips dynamically from team data
     buildFilterChips();
@@ -154,7 +153,11 @@
    */
   function attachEventListeners() {
     if (searchInput) {
-      searchInput.addEventListener('input', handleSearch);
+      let debounceTimer;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => handleSearch(e), 200);
+      });
     }
 
     chips.forEach(chip => {
@@ -239,8 +242,12 @@
     const clickedSegment = e.target;
     const dateFilter = clickedSegment.dataset.date;
 
-    segments.forEach(segment => segment.classList.remove('segment-active'));
+    segments.forEach(segment => {
+      segment.classList.remove('segment-active');
+      segment.setAttribute('aria-checked', 'false');
+    });
     clickedSegment.classList.add('segment-active');
+    clickedSegment.setAttribute('aria-checked', 'true');
 
     currentDateFilter = dateFilter;
     renderGames();
@@ -270,7 +277,11 @@
     currentDateFilter = 'upcoming';
     segments.forEach(segment => {
       segment.classList.remove('segment-active');
-      if (segment.dataset.date === 'upcoming') segment.classList.add('segment-active');
+      segment.setAttribute('aria-checked', 'false');
+      if (segment.dataset.date === 'upcoming') {
+        segment.classList.add('segment-active');
+        segment.setAttribute('aria-checked', 'true');
+      }
     });
 
     updateDownloadsTitle();
@@ -315,27 +326,26 @@
     // Show/hide sections based on results
     if (filtered.length === 0) {
       // Hide main content sections
-      if (sectionHeader) sectionHeader.style.display = 'none';
-      if (tableToggleWrapper) tableToggleWrapper.style.display = 'none';
-      if (tableSection) tableSection.style.display = 'none';
+      if (sectionHeader) sectionHeader.classList.add('is-hidden');
+      if (tableToggleWrapper) tableToggleWrapper.classList.add('is-hidden');
+      if (tableSection) tableSection.classList.add('is-hidden');
       gamesContainer.innerHTML = '';
-      gamesContainer.style.display = 'none';
+      gamesContainer.classList.add('is-hidden');
 
       // Show empty state, hide downloads (nothing to download)
-      emptyState.style.display = 'flex';
-      if (downloadsSection) downloadsSection.style.display = 'none';
+      emptyState.classList.remove('is-hidden');
+      if (downloadsSection) downloadsSection.classList.add('is-hidden');
       return;
     }
 
     // Show main content sections
-    if (sectionHeader) sectionHeader.style.display = 'flex';
-    if (tableToggleWrapper) tableToggleWrapper.style.display = 'flex';
-    // Table section visibility is controlled by toggle (remove inline display to let CSS work)
-    if (tableSection) tableSection.style.display = '';
-    gamesContainer.style.display = 'flex';
-    emptyState.style.display = 'none';
+    if (sectionHeader) sectionHeader.classList.remove('is-hidden');
+    if (tableToggleWrapper) tableToggleWrapper.classList.remove('is-hidden');
+    if (tableSection) tableSection.classList.remove('is-hidden');
+    gamesContainer.classList.remove('is-hidden');
+    emptyState.classList.add('is-hidden');
     // Ensure downloads section is visible
-    if (downloadsSection) downloadsSection.style.display = 'block';
+    if (downloadsSection) downloadsSection.classList.remove('is-hidden');
 
     // Update match count
     if (matchCount) {
@@ -388,13 +398,13 @@
    * Render a game card
    */
   function renderGameCard(game) {
-    const color = game.teamColor || '#6B7280';
+    const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
     const timeStr = formatTime(game.start, game.end);
     const dateAttr = game.start ? new Date(game.start).toISOString().split('T')[0] : '';
 
     return `
       <article class="game-card" data-team="${game.team}" data-date="${dateAttr}">
-        <div class="team-strip" style="background: ${escapeHtml(color)}"></div>
+        <div class="team-strip" style="background: ${color}"></div>
         <div class="game-card-content">
           <div class="game-card-left">
             <h3 class="game-title">${escapeHtml(game.game)}</h3>
@@ -412,8 +422,8 @@
             </div>
           </div>
           <div class="game-card-right">
-            <span class="team-badge" style="background: ${escapeHtml(color)}">${escapeHtml(game.teamDisplay)}</span>
-            <a href="${escapeHtml(game.url)}" target="_blank" rel="noopener noreferrer" class="btn-details">
+            <span class="team-badge" style="background: ${color}"${color === '#fec225' ? ' data-contrast="light"' : ''}>${escapeHtml(game.teamDisplay)}</span>
+            <a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="btn-details">
               Matchdetaljer
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
@@ -437,14 +447,14 @@
     }
 
     tbody.innerHTML = games.map(game => {
-      const color = game.teamColor || '#6B7280';
+      const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
       const dateStr = game.start ? formatShortDate(new Date(game.start)) : '';
 
       return `
         <tr>
           <td>
             <div class="table-team">
-              <span class="team-dot" style="background: ${escapeHtml(color)}"></span>
+              <span class="team-dot" style="background: ${color}"></span>
               ${escapeHtml(game.teamDisplay)}
             </div>
           </td>
@@ -452,7 +462,7 @@
           <td>${escapeHtml(game.location)}</td>
           <td>${dateStr}</td>
           <td>
-            <a href="${escapeHtml(game.url)}" target="_blank" rel="noopener noreferrer" class="table-link">
+            <a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="table-link">
               Profixio
               <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>
@@ -502,15 +512,6 @@
   }
 
   /**
-   * Check if two dates are the same day
-   */
-  function isSameDay(date1, date2) {
-    return date1.getFullYear() === date2.getFullYear() &&
-           date1.getMonth() === date2.getMonth() &&
-           date1.getDate() === date2.getDate();
-  }
-
-  /**
    * Escape HTML
    */
   function escapeHtml(str) {
@@ -518,6 +519,27 @@
     const div = document.createElement('div');
     div.textContent = str;
     return div.innerHTML;
+  }
+
+  /**
+   * Validate a CSS color value for safe inline style injection.
+   * Only allows 6-digit hex colors (e.g. #550f38).
+   */
+  function isValidCssColor(value) {
+    return /^#[0-9A-Fa-f]{6}$/.test(value);
+  }
+
+  /**
+   * Sanitize a URL for safe use in href attributes.
+   * Only allows http:// and https:// protocols to prevent javascript: URLs.
+   */
+  function sanitizeUrl(url) {
+    if (!url) return '#';
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url;
+    } catch { /* invalid URL */ }
+    return '#';
   }
 
   /**
@@ -549,38 +571,25 @@
     return `${baseUrl}?${params.toString()}`;
   }
 
-  // Quick tests for buildGoogleMapsSearchUrl (run in browser console)
-  // Uncomment to run: testGoogleMapsUrl()
-  function testGoogleMapsUrl() {
-    const tests = [
-      {
-        name: 'Swedish venue with special character',
-        query: 'Löthallen',
-        expected: 'api=1',
-        expectedEncoded: 'L%C3%B6thallen'
-      },
-      {
-        name: 'Address with commas and spaces',
-        query: 'City Hall, New York, NY',
-        expected: 'api=1',
-        expectedEncoded: 'City+Hall%2C+New+York%2C+NY'
-      },
-      {
-        name: 'Swedish sports hall',
-        query: 'Gärdeshallen',
-        expected: 'api=1',
-        expectedEncoded: 'G%C3%A4rdeshallen'
-      }
-    ];
+  /**
+   * Show an accessible toast notification instead of alert().
+   */
+  function showToast(message) {
+    // Remove any existing toast
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
 
-    console.log('Testing buildGoogleMapsSearchUrl:');
-    tests.forEach(test => {
-      const url = buildGoogleMapsSearchUrl(test.query);
-      const passed = url.includes(test.expected) && url.includes(test.expectedEncoded);
-      console.log(`${passed ? '✓' : '✗'} ${test.name}`);
-      console.log(`  Input: "${test.query}"`);
-      console.log(`  Output: ${url}`);
-    });
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.setAttribute('role', 'alert');
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    // Auto-dismiss after 3 seconds
+    setTimeout(() => {
+      toast.classList.add('toast-exit');
+      toast.addEventListener('animationend', () => toast.remove());
+    }, 3000);
   }
 
   /**
@@ -645,8 +654,8 @@
       lines.push(`UID:${uid}`);
       lines.push(`SUMMARY:${summary}`);
       lines.push(`LOCATION:${location}`);
-      lines.push(`DTSTART:${dtstart}`);
-      if (dtend) lines.push(`DTEND:${dtend}`);
+      lines.push(`DTSTART;TZID=Europe/Stockholm:${dtstart}`);
+      if (dtend) lines.push(`DTEND;TZID=Europe/Stockholm:${dtend}`);
       lines.push(`URL:${game.url}`);
       lines.push('END:VEVENT');
     }
@@ -671,12 +680,21 @@
   }
 
   /**
-   * Format date for ICS format (YYYYMMDDTHHMMSSZ)
+   * Format date for ICS using Stockholm wall-clock time (YYYYMMDDTHHMMSS).
+   * Uses TZID=Europe/Stockholm so calendar apps show venue time,
+   * not the viewer's local timezone.
    */
   function formatICSDate(isoString) {
     if (!isoString) return '';
     const date = new Date(isoString);
-    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const parts = new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Europe/Stockholm',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit',
+      hour12: false
+    }).formatToParts(date);
+    const get = (type) => parts.find(p => p.type === type)?.value || '';
+    return `${get('year')}${get('month')}${get('day')}T${get('hour')}${get('minute')}${get('second')}`;
   }
 
   /**
@@ -712,7 +730,7 @@
   function handleDownloadTsv() {
     const filtered = getFilteredGames();
     if (filtered.length === 0) {
-      alert('Inga matcher att ladda ner');
+      showToast('Inga matcher att ladda ner');
       return;
     }
 
@@ -729,7 +747,7 @@
   function handleDownloadIcs() {
     const filtered = getFilteredGames();
     if (filtered.length === 0) {
-      alert('Inga matcher att ladda ner');
+      showToast('Inga matcher att ladda ner');
       return;
     }
 

@@ -3,7 +3,7 @@
 from pathlib import Path
 
 # Generator directory (where this file lives)
-GENERATOR_DIR = Path(__file__).parent.parent
+GENERATOR_DIR = Path(__file__).parent.parent.parent
 
 # Project root (Pages repo root)
 PROJECT_ROOT = GENERATOR_DIR.parent
@@ -20,6 +20,8 @@ CALENDAR_ICS = DATA_DIR / "calendar.ics"
 # Config
 CONFIG_FILE = GENERATOR_DIR / "config.toml"
 
-# Ensure directories exist
-DATA_DIR.mkdir(parents=True, exist_ok=True)
-CACHE_DIR.mkdir(parents=True, exist_ok=True)
+
+def ensure_dirs() -> None:
+    """Create output and cache directories if they don't exist."""
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)

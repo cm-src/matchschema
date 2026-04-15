@@ -3,16 +3,22 @@
 import json
 import logging
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import requests
 from icalendar import Calendar, Event
 
-from ics_config import IcsFileEntry, load_ics_files
-from models import GameEvent
-from paths import CACHE_DIR, CALENDAR_ICS, GAMES_JSON, GAMES_TSV
+from central_f10.config import IcsFileEntry, load_ics_files
+from central_f10.models import GameEvent
+from central_f10.paths import (
+    CACHE_DIR,
+    CALENDAR_ICS,
+    GAMES_JSON,
+    GAMES_TSV,
+    ensure_dirs,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -39,7 +45,8 @@ def to_swedish_time(dt: datetime | None) -> datetime | None:
         return None
     # Ensure it's in UTC first, then convert to Swedish time
     if dt.tzinfo is None:
-        dt = dt.replace(tzinfo=timezone.utc)
+        logger.warning("Received naive datetime, assuming UTC: %s", dt)
+        dt = dt.replace(tzinfo=UTC)
     return dt.astimezone(SWEDISH_TZ)
 
 
@@ -71,8 +78,8 @@ def download_ics_files(files: list[IcsFileEntry], save_dir: Path) -> dict[str, b
     results: dict[str, bool] = {}
 
     for entry in files:
-        url = entry["url"]
-        filename = entry["filename"]
+        url = entry.url
+        filename = entry.filename
         file_path = save_dir / filename
 
         success = _download_with_retry(url, file_path)
@@ -162,26 +169,17 @@ def _is_valid_ics_content(content: bytes) -> bool:
     """Validate that content is valid ICS format."""
     try:
         text = content.decode("utf-8", errors="ignore").strip().lower()
-        return text.startswith("begin:vcalendar")
-    except Exception:
+        return text.startswith("begin:vcalendar") and "end:vcalendar" in text
+    except UnicodeDecodeError:
         return False
 
 
-def read_ical(
-    ics_file: Path,
-    team_name: str,
-    team_slug: str,
-    team_display: str,
-    team_color: str,
-) -> list[GameEvent]:
+def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
     """Parse ICS file and return validated events.
 
     Args:
         ics_file: Path to ICS file.
-        team_name: Full team name from config.
-        team_slug: URL-safe identifier from config.
-        team_display: Short display name from config.
-        team_color: Hex color from config.
+        entry: ICS file entry with team metadata from config.
 
     Returns:
         List of validated GameEvent instances.
@@ -200,17 +198,21 @@ def read_ical(
         dtstart = comp.get("DTSTART")
         dtend = comp.get("DTEND")
 
+        # Use per-event URL if present, fall back to calendar-level URL
+        event_url = str(comp.get("URL", "") or "").strip()
+        url = event_url if event_url else cal_url
+
         raw_event = {
-            "team": team_name,
-            "team_slug": team_slug,
-            "team_display": team_display,
-            "team_color": team_color,
+            "team": entry.team_name,
+            "team_slug": entry.team_slug,
+            "team_display": entry.team_display,
+            "team_color": entry.team_color,
             "game": str(comp.get("SUMMARY", "") or "").strip(),
             "starttm": dtstart.dt if dtstart else None,
             "endtm": dtend.dt if dtend else None,
             "location": str(comp.get("LOCATION", "") or "").strip(),
             "gameid": str(comp.get("UID", "") or "").replace("pro-mce-", "").strip(),
-            "url": str(comp.get("URL", "") or "").strip() if not cal_url else cal_url,
+            "url": url,
         }
 
         try:
@@ -228,7 +230,7 @@ def generate_json(events: list[GameEvent]) -> None:
     Times are converted to Swedish timezone (CET/CEST) for local display.
     """
     games_data = {
-        "updated": datetime.now(timezone.utc).isoformat(),
+        "updated": datetime.now(tz=UTC).isoformat(),
         "timezone": "Europe/Stockholm",
         "games": [
             {
@@ -243,7 +245,7 @@ def generate_json(events: list[GameEvent]) -> None:
                 "end": format_swedish_time(event.endtm),
                 "url": event.url,
             }
-            for event in sorted(events, key=lambda e: e.starttm)
+            for event in events
         ],
     }
 
@@ -253,6 +255,11 @@ def generate_json(events: list[GameEvent]) -> None:
     logger.info("Generated %s (%d games)", GAMES_JSON, len(events))
 
 
+def _escape_tsv(value: str) -> str:
+    """Escape tabs and newlines in TSV field values."""
+    return value.replace("\t", "\\t").replace("\n", "\\n").replace("\r", "\\r")
+
+
 def generate_tsv(events: list[GameEvent]) -> None:
     """Generate games.tsv for Excel/Sheets import.
 
@@ -260,16 +267,16 @@ def generate_tsv(events: list[GameEvent]) -> None:
     """
     lines = ["team\tgame\tlocation\tstart\tend\turl"]
 
-    for event in sorted(events, key=lambda e: e.starttm):
+    for event in events:
         start_local = to_swedish_time(event.starttm)
         end_local = to_swedish_time(event.endtm)
         start_str = start_local.strftime("%Y-%m-%d %H:%M") if start_local else ""
         end_str = end_local.strftime("%Y-%m-%d %H:%M") if end_local else ""
         lines.append(
-            f"{event.team}\t{event.game}\t{event.location}\t{start_str}\t{end_str}\t{event.url}"
+            f"{_escape_tsv(event.team)}\t{_escape_tsv(event.game)}\t{_escape_tsv(event.location)}\t{start_str}\t{end_str}\t{_escape_tsv(event.url)}"
         )
 
-    GAMES_TSV.write_text("\n".join(lines), encoding="utf-8")
+    GAMES_TSV.write_text("\n".join(lines) + "\n", encoding="utf-8")
     logger.info("Generated %s", GAMES_TSV)
 
 
@@ -278,25 +285,38 @@ def generate_ics(events: list[GameEvent]) -> None:
     cal = Calendar()
     cal.add("prodid", "-//Central F10 Basketball//central-f10//")
     cal.add("version", "2.0")
+    cal.add("calscale", "GREGORIAN")
+    cal.add("method", "PUBLISH")
     cal.add("name", "Central F10 Matchschema")
     cal.add("description", "Basketball schedule for Central F10 teams")
+    cal.add("x-publish-url", "https://basket.mtln.se/")
 
-    for event in sorted(events, key=lambda e: e.starttm):
+    for event in events:
         cal_event = Event()
         cal_event.add("uid", f"central-{event.gameid}")
+        cal_event.add("dtstamp", datetime.now(tz=UTC))
         cal_event.add("summary", f"[{event.team}] {event.game}")
         cal_event.add("location", event.location)
         cal_event.add("dtstart", event.starttm)
         cal_event.add("dtend", event.endtm)
-        cal_event.add("url", event.url)
+        if event.url:
+            cal_event.add("url", event.url)
         cal.add_component(cal_event)
 
     CALENDAR_ICS.write_bytes(cal.to_ical())
     logger.info("Generated %s", CALENDAR_ICS)
 
 
-def generate_all() -> int:
+def generate_all(
+    *,
+    config_path: Path | None = None,
+    dry_run: bool = False,
+) -> int:
     """Main function: download ICS files and generate all outputs.
+
+    Args:
+        config_path: Path to config.toml. Defaults to CONFIG_FILE.
+        dry_run: If True, download and parse but don't write outputs.
 
     Returns:
         Number of events processed.
@@ -304,15 +324,17 @@ def generate_all() -> int:
     Raises:
         RuntimeError: If no events were imported from any source.
     """
+    ensure_dirs()
+
     # Load config (validates all required fields)
-    files = load_ics_files()
+    files = load_ics_files(config_file=config_path)
     logger.info("Loading %d ICS sources from config", len(files))
 
     # Build filename -> metadata map
     team_meta: dict[str, IcsFileEntry] = {}
     config_filenames: set[str] = set()
     for entry in files:
-        filename = entry["filename"]
+        filename = entry.filename
         config_filenames.add(filename)
         team_meta[filename] = entry
 
@@ -332,7 +354,8 @@ def generate_all() -> int:
 
     if successful == 0:
         raise RuntimeError(
-            "All ICS downloads failed. Check URLs in config.toml and network connectivity."
+            "All ICS downloads failed. "
+            "Check URLs in config.toml and network connectivity."
         )
 
     # Find and parse all .ics files
@@ -346,23 +369,27 @@ def generate_all() -> int:
             logger.warning("No config metadata for %s, skipping", ics_file.name)
             continue
 
-        events = read_ical(
-            ics_file,
-            team_name=meta["team_name"],
-            team_slug=meta["team_slug"],
-            team_display=meta["team_display"],
-            team_color=meta["team_color"],
-        )
+        events = read_ical(ics_file, entry=meta)
         all_events.extend(events)
         logger.info("Parsed %d events from %s", len(events), ics_file.name)
 
     if not all_events:
         raise RuntimeError("No events found in any ICS files.")
 
-    # Generate outputs
-    generate_json(all_events)
-    generate_tsv(all_events)
-    generate_ics(all_events)
+    # Sort once by start time
+    sorted_events = sorted(all_events, key=lambda e: e.starttm)
 
-    logger.info("Complete! Processed %d events", len(all_events))
-    return len(all_events)
+    if dry_run:
+        logger.info(
+            "Dry run: skipping output generation (%d events)",
+            len(sorted_events),
+        )
+        return len(sorted_events)
+
+    # Generate outputs (already sorted)
+    generate_json(sorted_events)
+    generate_tsv(sorted_events)
+    generate_ics(sorted_events)
+
+    logger.info("Complete! Processed %d events", len(sorted_events))
+    return len(sorted_events)

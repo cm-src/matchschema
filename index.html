@@ -68,16 +68,16 @@
       <div class="filter-left">
         <div class="search-field">
           <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="text" id="searchInput" placeholder="Sök lag, motstånd, hall..." class="search-input">
+          <input type="text" id="searchInput" placeholder="Sök lag, motstånd, hall..." class="search-input" aria-label="Sök matcher">
         </div>
-        <div class="filter-chips" id="filterChips">
+        <div class="filter-chips" id="filterChips" role="group" aria-label="Filtrera efter lag">
           <!-- Populated dynamically from games.json -->
         </div>
       </div>
       <div class="filter-right">
-        <div class="date-segmented">
-          <button class="segment segment-active" data-date="upcoming">Kommande</button>
-          <button class="segment" data-date="all">Alla</button>
+        <div class="date-segmented" role="radiogroup" aria-label="Datumfilter">
+          <button class="segment segment-active" data-date="upcoming" role="radio" aria-checked="true">Kommande</button>
+          <button class="segment" data-date="all" role="radio" aria-checked="false">Alla</button>
         </div>
       </div>
     </div>
@@ -88,7 +88,7 @@
     <div class="content-container">
       <div class="section-header">
         <h2 class="section-title">Matchschema</h2>
-        <span class="match-count" id="matchCount">Laddar...</span>
+        <span class="match-count" id="matchCount" aria-live="polite">Laddar...</span>
       </div>
 
       <!-- Games Container (populated by JavaScript) -->
@@ -111,11 +111,11 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th>Lag</th>
-                <th>Match</th>
-                <th>Plats</th>
-                <th>Tid</th>
-                <th>Länk</th>
+                <th scope="col">Lag</th>
+                <th scope="col">Match</th>
+                <th scope="col">Plats</th>
+                <th scope="col">Tid</th>
+                <th scope="col">Länk</th>
               </tr>
             </thead>
             <tbody>
@@ -126,7 +126,7 @@
       </div>
 
       <!-- Empty State (hidden by default) -->
-      <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-state is-hidden" id="emptyState" aria-live="polite">
         <div class="empty-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </div>
@@ -156,14 +156,13 @@
   <footer class="footer">
     <div class="footer-container">
       <div class="footer-top">
-        <div class="footer-left">      
-          <span class="footer-title"></span>
+        <div class="footer-left">
         </div>
         <div class="footer-social">
           <a href="https://www.instagram.com/centralbasketf10_11/" target="_blank" rel="noopener noreferrer" class="btn-social" aria-label="Instagram">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           </a>
-          <a href="https://www.youtube.com/@CentralBasketF10-t2w/streams" target="_blank" rel="noopener noreferrer" class="btn-streams-footer" aria-label="Se streams på YouTube">
+          <a href="https://www.youtube.com/@CentralBasketF10-t2w/streams" target="_blank" rel="noopener noreferrer" class="btn-streams" aria-label="Se streams på YouTube">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             <span>Se streams</span>
           </a>
@@ -183,13 +182,12 @@
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('./sw.js')
           .then((reg) => {
-            console.log('SW registered:', reg.scope);
-            // Check for updates every 5 minutes
+            // Check for updates every 30 minutes
             setInterval(() => {
-              reg.update().then(() => console.log('SW update check completed'));
-            }, 5 * 60 * 1000);
+              reg.update();
+            }, 30 * 60 * 1000);
           })
-          .catch((err) => console.log('SW registration failed:', err));
+          .catch((err) => console.error('SW registration failed:', err));
       });
     }
   </script>

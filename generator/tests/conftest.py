@@ -68,8 +68,11 @@ team_color = "#fec225"
 
 
 @pytest.fixture
-def minimal_team_meta() -> dict:
-    """Minimal team metadata for testing read_ical."""
+def minimal_team_meta() -> dict[str, str]:
+    """Minimal team metadata for testing read_ical.
+
+    Dict form is suitable for unpacking into IcsFileEntry().
+    """
     return {
         "team_name": "Central F10 Vinröd",
         "team_slug": "vinrod",

@@ -2,6 +2,8 @@
 # Start local development server for testing index.html
 # Usage: ./serve.sh [port]
 
+set -e
+
 PORT=${1:-8000}
 
 cd "$(dirname "$0")"

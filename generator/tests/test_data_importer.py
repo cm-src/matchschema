@@ -1,12 +1,6 @@
 """Tests for data_importer module."""
 
-import sys
-from pathlib import Path
-
-
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
-
-from data_importer import _is_valid_ics_content
+from central_f10.data_importer import _is_valid_ics_content
 
 
 class TestIsValidIcsContent:
@@ -30,6 +24,10 @@ class TestIsValidIcsContent:
 
     def test_is_valid_ics_content_case_insensitive(self) -> None:
         """ICS detection is case insensitive."""
-        # The function lowercases before checking
         content = b"BEGIN:VCALENDAR\nVERSION:2.0\nEND:VCALENDAR"
         assert _is_valid_ics_content(content) is True
+
+    def test_is_valid_ics_content_requires_end_tag(self) -> None:
+        """ICS content missing END:VCALENDAR returns False."""
+        content = b"BEGIN:VCALENDAR\nVERSION:2.0"
+        assert _is_valid_ics_content(content) is False

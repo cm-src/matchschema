@@ -1,13 +1,68 @@
 """Tests for ICS config loading and validation."""
 
-import importlib
-import sys
 from pathlib import Path
 
 import pytest
+from pydantic import ValidationError
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
+from central_f10.config import IcsFileEntry, load_ics_files
+
+
+def _base_entry_kwargs(**overrides: object) -> dict:
+    """Return valid IcsFileEntry kwargs with optional overrides."""
+    defaults = {
+        "url": "https://profixio.com/calendar.ics",
+        "filename": "team1.ics",
+        "team_name": "Team",
+        "team_slug": "team",
+        "team_display": "Team",
+        "team_color": "#550f38",
+    }
+    defaults.update(overrides)
+    return defaults
+
+
+class TestIcsFileEntry:
+    """Tests for IcsFileEntry Pydantic model."""
+
+    def test_valid_entry(self) -> None:
+        """Valid entry passes validation."""
+        entry = IcsFileEntry(**_base_entry_kwargs())
+        assert entry.url == "https://profixio.com/calendar.ics"
+        assert entry.filename == "team1.ics"
+        assert entry.team_name == "Team"
+
+    @pytest.mark.parametrize(
+        "field,value,match",
+        [
+            ("url", "ftp://invalid.com/calendar.ics", "http or https protocol"),
+            ("filename", "team1.txt", "filename must end with .ics"),
+            ("team_color", "red", "hex color"),
+        ],
+    )
+    def test_invalid_field(self, field: str, value: str, match: str) -> None:
+        """Invalid field value raises ValidationError."""
+        with pytest.raises(ValidationError, match=match):
+            IcsFileEntry(**_base_entry_kwargs(**{field: value}))
+
+    def test_missing_required_field(self) -> None:
+        """Missing required field raises ValidationError."""
+        with pytest.raises(ValidationError):
+            IcsFileEntry(
+                url="https://profixio.com/calendar.ics",
+                filename="team1.ics",
+                # Missing team_name and others
+            )
+
+    def test_optional_division(self) -> None:
+        """Division field is optional and defaults to None."""
+        entry = IcsFileEntry(**_base_entry_kwargs())
+        assert entry.division is None
+
+    def test_model_validate_from_dict(self) -> None:
+        """model_validate works with dict input (from TOML)."""
+        entry = IcsFileEntry.model_validate(_base_entry_kwargs())
+        assert entry.url == "https://profixio.com/calendar.ics"
 
 
 class TestLoadIcsFiles:
@@ -18,237 +73,81 @@ class TestLoadIcsFiles:
         config_file = temp_dir / "config.toml"
         config_file.write_text(valid_config_toml)
 
-        # Patch paths.CONFIG_FILE and reload ics_config to pick up the change
-        import paths
-
-        original = paths.CONFIG_FILE
-        paths.CONFIG_FILE = config_file
-
-        # Reload ics_config to use the patched paths
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        try:
-            result = ics_config.load_ics_files()
-            assert len(result) == 2
-            assert result[0]["url"] == "https://profixio.com/calendar1.ics"
-            assert result[0]["filename"] == "team1.ics"
-            assert result[0]["team_name"] == "Central F10 Vinröd"
-            assert result[0]["team_slug"] == "vinrod"
-            assert result[0]["team_display"] == "Vinröd"
-            assert result[0]["team_color"] == "#550f38"
-        finally:
-            paths.CONFIG_FILE = original
-            importlib.reload(ics_config)
+        result = load_ics_files(config_file)
+        assert len(result) == 2
+        assert result[0].url == "https://profixio.com/calendar1.ics"
+        assert result[0].filename == "team1.ics"
+        assert result[0].team_name == "Central F10 Vinröd"
+        assert result[0].team_slug == "vinrod"
+        assert result[0].team_display == "Vinröd"
+        assert result[0].team_color == "#550f38"
 
     def test_load_ics_files_missing_file(self, temp_dir: Path) -> None:
         """Missing config file raises FileNotFoundError."""
-        import paths
-
-        paths.CONFIG_FILE = temp_dir / "nonexistent.toml"
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
         with pytest.raises(FileNotFoundError, match="Config file not found"):
-            ics_config.load_ics_files()
+            load_ics_files(temp_dir / "nonexistent.toml")
 
-    def test_load_ics_files_missing_url(self, temp_dir: Path) -> None:
-        """Missing url field raises ValueError."""
+    @pytest.mark.parametrize(
+        "missing_field",
+        ["url", "filename", "team_slug", "team_display", "team_color"],
+    )
+    def test_load_ics_files_missing_required_field(
+        self, temp_dir: Path, missing_field: str
+    ) -> None:
+        """Missing required field raises ValueError."""
         config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-filename = "team1.ics"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-team_color = "#550f38"
-""")
+        # Build a config missing one field
+        fields = {
+            "url": "https://profixio.com/calendar.ics",
+            "filename": "team1.ics",
+            "team_name": "Team",
+            "team_slug": "team",
+            "team_display": "Team",
+            "team_color": "#550f38",
+        }
+        del fields[missing_field]
+        lines = ["[ics]", "[[ics.files]]"]
+        for k, v in fields.items():
+            lines.append(f'{k} = "{v}"')
+        config_file.write_text("\n".join(lines))
 
-        import paths
+        with pytest.raises(
+            ValueError,
+            match=missing_field,
+        ):
+            load_ics_files(config_file)
 
-        paths.CONFIG_FILE = config_file
+    @pytest.mark.parametrize(
+        "field,value,match",
+        [
+            ("url", "ftp://invalid.com/calendar.ics", "http or https protocol"),
+            ("filename", "team1.txt", "filename must end with .ics"),
+            ("team_color", "red", "hex color"),
+        ],
+    )
+    def test_load_ics_files_invalid_field(
+        self, temp_dir: Path, field: str, value: str, match: str
+    ) -> None:
+        """Invalid field in config raises ValueError."""
+        base = {
+            "url": "https://profixio.com/calendar.ics",
+            "filename": "team1.ics",
+            "team_name": "Team",
+            "team_slug": "team",
+            "team_display": "Team",
+            "team_color": "#550f38",
+        }
+        base[field] = value
 
-        import ics_config
+        lines = ["[ics]", "[[ics.files]]"]
+        for k, v in base.items():
+            lines.append(f'{k} = "{v}"')
 
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="missing required field 'url'"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_missing_filename(self, temp_dir: Path) -> None:
-        """Missing filename field raises ValueError."""
         config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-team_color = "#550f38"
-""")
+        config_file.write_text("\n".join(lines))
 
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="missing required field 'filename'"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_missing_team_slug(self, temp_dir: Path) -> None:
-        """Missing team_slug field raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-filename = "team1.ics"
-team_name = "Team"
-team_display = "Team"
-team_color = "#550f38"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="missing required field 'team_slug'"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_missing_team_display(self, temp_dir: Path) -> None:
-        """Missing team_display field raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-filename = "team1.ics"
-team_name = "Team"
-team_slug = "team"
-team_color = "#550f38"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="missing required field 'team_display'"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_missing_team_color(self, temp_dir: Path) -> None:
-        """Missing team_color field raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-filename = "team1.ics"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="missing required field 'team_color'"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_invalid_url(self, temp_dir: Path) -> None:
-        """Non-http URL raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "ftp://invalid.com/calendar.ics"
-filename = "team1.ics"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-team_color = "#550f38"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="URL must start with http"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_invalid_extension(self, temp_dir: Path) -> None:
-        """Non-.ics filename raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-filename = "team1.txt"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-team_color = "#550f38"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="filename must end with .ics"):
-            ics_config.load_ics_files()
-
-    def test_load_ics_files_invalid_color(self, temp_dir: Path) -> None:
-        """Invalid hex color raises ValueError."""
-        config_file = temp_dir / "config.toml"
-        config_file.write_text("""
-[ics]
-[[ics.files]]
-url = "https://profixio.com/calendar.ics"
-filename = "team1.ics"
-team_name = "Team"
-team_slug = "team"
-team_display = "Team"
-team_color = "red"
-""")
-
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
-        with pytest.raises(ValueError, match="team_color must be a valid hex color"):
-            ics_config.load_ics_files()
+        with pytest.raises(ValueError, match=match):
+            load_ics_files(config_file)
 
     def test_load_ics_files_missing_ics_section(self, temp_dir: Path) -> None:
         """Missing [ics] section raises ValueError."""
@@ -258,13 +157,5 @@ team_color = "red"
 key = "value"
 """)
 
-        import paths
-
-        paths.CONFIG_FILE = config_file
-
-        import ics_config
-
-        importlib.reload(ics_config)
-
         with pytest.raises(ValueError, match="Config missing required key"):
-            ics_config.load_ics_files()
+            load_ics_files(config_file)

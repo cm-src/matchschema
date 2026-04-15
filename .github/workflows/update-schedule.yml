@@ -11,6 +11,8 @@ on:
       - 'generator/**'
       - '.github/workflows/update-schedule.yml'
 
+permissions: {}
+
 jobs:
   update:
     runs-on: ubuntu-latest
@@ -19,17 +21,18 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        # v5 — https://github.com/actions/checkout/releases/tag/v5
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        # v5 — https://github.com/actions/setup-python/releases/tag/v5
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
 
       - name: Install uv
-        run: |
-          curl -LsSf https://astral.sh/uv/install.sh | sh
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+        # v5.4.2 — https://github.com/astral-sh/setup-uv/releases/tag/v5
+        uses: astral-sh/setup-uv@d4b2f3b6ecc6e67c4457f6d3e41ec42d3d0fcb86
 
       - name: Install dependencies
         working-directory: generator
@@ -50,4 +53,3 @@ jobs:
             git commit -m "chore: update schedule $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi
-          
