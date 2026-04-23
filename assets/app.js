@@ -545,13 +545,10 @@
   /**
    * Build a Google Maps search URL using the official Maps URLs API.
    * @param {string} query - The search query (e.g., venue name)
-   * @param {Object} [opts] - Optional parameters
-   * @param {string} [opts.utm_source] - UTM source for analytics
-   * @param {string} [opts.utm_campaign] - UTM campaign for analytics
    * @returns {string} - Google Maps URL
    * @see https://developers.google.com/maps/documentation/urls/get-started
    */
-  function buildGoogleMapsSearchUrl(query, opts) {
+  function buildGoogleMapsSearchUrl(query) {
     const baseUrl = 'https://www.google.com/maps/search/';
     const params = new URLSearchParams();
 
@@ -559,14 +556,6 @@
     params.set('api', '1');
     // Use 'query' parameter for search (official parameter name)
     params.set('query', query);
-
-    // Add optional UTM parameters
-    if (opts?.utm_source) {
-      params.set('utm_source', opts.utm_source);
-    }
-    if (opts?.utm_campaign) {
-      params.set('utm_campaign', opts.utm_campaign);
-    }
 
     return `${baseUrl}?${params.toString()}`;
   }
@@ -763,5 +752,19 @@
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+
+  // Register service worker for PWA
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => {
+          // Check for updates every 30 minutes
+          setInterval(() => {
+            reg.update();
+          }, 30 * 60 * 1000);
+        })
+        .catch((err) => console.error('SW registration failed:', err));
+    });
   }
 })();

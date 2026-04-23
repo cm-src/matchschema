@@ -12,7 +12,7 @@ This repository has a clear separation between frontend and generator:
 - **`generator/`** — Python tooling that fetches schedules and generates data files
 - **`data/`** — Generated JSON/TSV/ICS files (committed by GitHub Actions)
 
-The generator runs on a schedule (daily at 08:00 UTC) and on pushes to `generator/`.
+The generator runs on a schedule (06:00 and 18:00 CET / 05:00 and 17:00 UTC) and on pushes to `generator/`.
 
 ## Features
 

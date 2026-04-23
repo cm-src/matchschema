@@ -202,6 +202,11 @@ def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
         event_url = str(comp.get("URL", "") or "").strip()
         url = event_url if event_url else cal_url
 
+        gameid = str(comp.get("UID", "") or "").replace("pro-mce-", "").strip()
+        if not gameid:
+            logger.warning("Skipping event with empty gameid in %s", ics_file.name)
+            continue
+
         raw_event = {
             "team": entry.team_name,
             "team_slug": entry.team_slug,
@@ -211,7 +216,7 @@ def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
             "starttm": dtstart.dt if dtstart else None,
             "endtm": dtend.dt if dtend else None,
             "location": str(comp.get("LOCATION", "") or "").strip(),
-            "gameid": str(comp.get("UID", "") or "").replace("pro-mce-", "").strip(),
+            "gameid": gameid,
             "url": url,
         }
 
