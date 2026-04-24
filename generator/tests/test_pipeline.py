@@ -375,7 +375,7 @@ class TestReadIcal:
         assert event.team == "Central F10 Vinröd"
         assert "Central F10 Vinrod vs Opponent" in event.game
         assert event.location == "Sports Hall Arena"
-        assert event.gameid == "test123"
+        assert event.gameid == "pro-mce-test123"
         assert event.team_slug == "vinrod"
         assert event.team_display == "Vinröd"
         assert event.team_color == "#550f38"
@@ -401,13 +401,13 @@ class TestReadIcal:
         assert events[0].team == "Custom Team Name"
         assert events[0].team_slug == "custom"
 
-    def test_strips_pro_mce_prefix_from_uid(
+    def test_keeps_full_uid(
         self,
         temp_dir: Path,
         sample_ics_content: bytes,
         minimal_team_meta: dict,
     ) -> None:
-        """read_ical strips 'pro-mce-' prefix from gameid."""
+        """read_ical keeps the full UID as gameid."""
         ics_file = temp_dir / "test.ics"
         ics_file.write_bytes(sample_ics_content)
 
@@ -418,7 +418,39 @@ class TestReadIcal:
         )
         events = read_ical(ics_file, entry=entry)
 
-        assert events[0].gameid == "test123"  # "pro-mce-test123" -> "test123"
+        assert events[0].gameid == "pro-mce-test123"
+
+    def test_synthesizes_cupmanager_url(
+        self,
+        temp_dir: Path,
+        minimal_team_meta: dict,
+    ) -> None:
+        """read_ical synthesizes match URL for Cup Manager events."""
+        ics_content = b"""BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Cup Manager//EN
+BEGIN:VEVENT
+UID:77691369-72857252@cupmanager.net
+DTSTART:20260315T140000Z
+DTEND:20260315T160000Z
+SUMMARY:Central F10 vs Lund
+LOCATION:Lund Arena
+END:VEVENT
+END:VCALENDAR
+"""
+        ics_file = temp_dir / "test.ics"
+        ics_file.write_bytes(ics_content)
+
+        entry = IcsFileEntry(
+            url="https://basketballfestival.se/service/GetTeamCalendarService?teamId=72857252",
+            filename="test.ics",
+            **minimal_team_meta,
+        )
+        events = read_ical(ics_file, entry=entry)
+
+        assert len(events) == 1
+        assert events[0].gameid == "77691369-72857252@cupmanager.net"
+        assert events[0].url == "https://basketballfestival.se/2026/result/match/77691369"
 
     def test_skips_invalid_events(
         self, temp_dir: Path, minimal_team_meta: dict

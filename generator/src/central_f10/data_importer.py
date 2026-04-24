@@ -5,6 +5,7 @@ import logging
 import time
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 
 import requests
@@ -202,10 +203,18 @@ def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
         event_url = str(comp.get("URL", "") or "").strip()
         url = event_url if event_url else cal_url
 
-        gameid = str(comp.get("UID", "") or "").replace("pro-mce-", "").strip()
+        raw_uid = str(comp.get("UID", "") or "").strip()
+        gameid = raw_uid
         if not gameid:
             logger.warning("Skipping event with empty gameid in %s", ics_file.name)
             continue
+
+        # Synthesize Cup Manager detail URLs when none is provided
+        if not url and "@cupmanager.net" in raw_uid:
+            year = dtstart.dt.year if dtstart else datetime.now().year
+            gameid_for_url = raw_uid.split("-")[0]
+            domain = urlparse(entry.url).netloc
+            url = f"https://{domain}/{year}/result/match/{gameid_for_url}"
 
         raw_event = {
             "team": entry.team_name,
