@@ -10,7 +10,7 @@ from central_f10.config import IcsFileEntry, load_ics_files
 
 def _base_entry_kwargs(**overrides: object) -> dict:
     """Return valid IcsFileEntry kwargs with optional overrides."""
-    defaults = {
+    defaults: dict[str, object] = {
         "url": "https://profixio.com/calendar.ics",
         "filename": "team1.ics",
         "team_name": "Team",
@@ -48,7 +48,7 @@ class TestIcsFileEntry:
     def test_missing_required_field(self) -> None:
         """Missing required field raises ValidationError."""
         with pytest.raises(ValidationError):
-            IcsFileEntry(
+            IcsFileEntry(  # ty: ignore[missing-argument]
                 url="https://profixio.com/calendar.ics",
                 filename="team1.ics",
                 # Missing team_name and others

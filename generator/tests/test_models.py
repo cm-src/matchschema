@@ -10,7 +10,7 @@ from central_f10.models import GameEvent
 
 def _base_event_kwargs(**overrides: object) -> dict:
     """Return valid GameEvent kwargs with optional overrides."""
-    defaults = {
+    defaults: dict[str, object] = {
         "team": "Central F10 Vinröd",
         "game": "Central F10 Vinröd vs Opponent",
         "starttm": datetime(2025, 3, 15, 14, 0, tzinfo=UTC),
@@ -42,7 +42,7 @@ class TestGameEvent:
     def test_game_event_missing_required(self) -> None:
         """Missing required field raises ValidationError."""
         with pytest.raises(ValidationError):
-            GameEvent(
+            GameEvent(  # ty: ignore[missing-argument]
                 team="Central F10",
                 game="Game",
                 # Missing starttm, endtm, location, gameid,

@@ -53,7 +53,7 @@ def _make_event(
 
 def _make_entry(**overrides: object) -> IcsFileEntry:
     """Create an IcsFileEntry with sensible defaults for tests."""
-    defaults = {
+    defaults: dict[str, object] = {
         "url": "https://profixio.com/calendar.ics",
         "filename": "test.ics",
         "team_name": "Central F10 Vinröd",
@@ -62,7 +62,7 @@ def _make_entry(**overrides: object) -> IcsFileEntry:
         "team_color": "#550f38",
     }
     defaults.update(overrides)
-    return IcsFileEntry(**defaults)  # type: ignore[arg-type]
+    return IcsFileEntry(**defaults)  # ty: ignore[invalid-argument-type]
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +79,8 @@ class TestToSwedishTime:
         result = to_swedish_time(dt)
         assert result is not None
         assert result.hour == 15  # 14:00 UTC = 15:00 CET
-        assert result.tzinfo.key == "Europe/Stockholm"  # type: ignore[union-attr]
+        assert result.tzinfo is not None
+        assert result.tzinfo.key == "Europe/Stockholm"  # ty: ignore[unresolved-attribute]
 
     def test_utc_summer_time(self) -> None:
         """UTC summer time (CEST = UTC+2) converts correctly."""
