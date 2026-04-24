@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-24T17:51:38.294220+00:00",
+  "updated": "2026-04-24T17:59:34.158621+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -205,6 +205,90 @@
       "start": "2026-05-09T17:00:00+02:00",
       "end": "2026-05-09T18:45:00+02:00",
       "url": "https://www.profixio.com/app/leagueid17559/match/32580954"
+    },
+    {
+      "id": "77691369-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against TNT Towers BK",
+      "location": "Mölnlycke Idrottshall B - Idrottsgatan 2, 435 35 Mölnlycke, 435 35, Mölnlycke",
+      "start": "2026-05-14T09:00:00+02:00",
+      "end": "2026-05-14T09:45:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691373-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Haga Haninge",
+      "location": "Mölnlycke Idrottshall B - Idrottsgatan 2, 435 35 Mölnlycke, 435 35, Mölnlycke",
+      "start": "2026-05-14T12:00:00+02:00",
+      "end": "2026-05-14T12:45:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691237-72923534@cupmanager.net",
+      "team": "f10vit",
+      "teamDisplay": "FU16 vit",
+      "teamFull": "F10/F11 Vit",
+      "teamColor": "#ffffff",
+      "game": "GU16: match against Köping Stars",
+      "location": "Lundbystrand 2 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-14T14:15:00+02:00",
+      "end": "2026-05-14T15:00:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691239-72923534@cupmanager.net",
+      "team": "f10vit",
+      "teamDisplay": "FU16 vit",
+      "teamFull": "F10/F11 Vit",
+      "teamColor": "#ffffff",
+      "game": "GU16: match against Högsbo Basket",
+      "location": "Lundbystrand 2 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-14T18:45:00+02:00",
+      "end": "2026-05-14T19:30:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691242-72923534@cupmanager.net",
+      "team": "f10vit",
+      "teamDisplay": "FU16 vit",
+      "teamFull": "F10/F11 Vit",
+      "teamColor": "#ffffff",
+      "game": "GU16: match against KFUM Tigers Helsingborg Blaze",
+      "location": "Lundbystrand 2 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-15T14:15:00+02:00",
+      "end": "2026-05-15T15:00:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691378-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Tyresö Basket",
+      "location": "Mölnlycke Idrottshall B - Idrottsgatan 2, 435 35 Mölnlycke, 435 35, Mölnlycke",
+      "start": "2026-05-15T15:45:00+02:00",
+      "end": "2026-05-15T16:30:00+02:00",
+      "url": ""
+    },
+    {
+      "id": "77691382-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Eastside Basketklubb Eagles",
+      "location": "Mölnlycke Idrottshall B - Idrottsgatan 2, 435 35 Mölnlycke, 435 35, Mölnlycke",
+      "start": "2026-05-15T21:00:00+02:00",
+      "end": "2026-05-15T21:45:00+02:00",
+      "url": ""
     }
   ]
 }
