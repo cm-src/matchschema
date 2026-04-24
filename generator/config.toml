@@ -72,6 +72,6 @@ url = "https://basketballfestival.se/service/GetTeamCalendarService?teamId=72923
 filename = "f10vit_goteborg26.ics"
 team_name = "F10/F11 Vit"
 team_slug = "f10vit"
-team_display = "FU16 vit"
+team_display = "FU16 Vit"
 team_color = "#ffffff"
-division = "Flickor U16 vit"
+division = "Flickor U16 Vit"
