@@ -1,5 +1,5 @@
 // Simple service worker for PWA offline support
-const CACHE_NAME = 'central-basket-v2';
+const CACHE_NAME = 'central-basket-v3';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
