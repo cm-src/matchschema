@@ -503,6 +503,13 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   color: var(--vinrod-dark);
 }
 
+/* White team gets ghost/outline badge — visible on any background */
+.team-badge[data-contrast="white"] {
+  background: transparent;
+  color: var(--vinrod-dark);
+  border: 2px solid var(--vinrod);
+}
+
 .btn-details {
   display: flex;
   align-items: center;
@@ -631,6 +638,11 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+.team-dot[data-contrast="white"] {
+  background: #ffffff;
+  border: 2px solid var(--vinrod);
 }
 
 .table-link {
@@ -1264,6 +1276,11 @@ body.dark-mode .date-line {
   background-color: var(--neutral-700);
 }
 
+body.dark-mode .team-badge[data-contrast="white"] {
+  color: var(--text-dark-primary);
+  border-color: var(--text-dark-secondary);
+}
+
 body.dark-mode .btn-details {
   background-color: var(--neutral-800);
   border-color: var(--neutral-700);
@@ -1301,6 +1318,11 @@ body.dark-mode .data-table tr:nth-child(even) {
 
 body.dark-mode .data-table tr:hover {
   background-color: var(--neutral-800);
+}
+
+body.dark-mode .team-dot[data-contrast="white"] {
+  background: #ffffff;
+  border-color: var(--text-dark-secondary);
 }
 
 body.dark-mode .downloads-section {
