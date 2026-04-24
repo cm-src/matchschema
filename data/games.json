@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-24T22:57:36.547808+00:00",
+  "updated": "2026-04-24T23:15:10.075666+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -233,7 +233,7 @@
     {
       "id": "77691237-72923534@cupmanager.net",
       "team": "f10vit",
-      "teamDisplay": "FU16 vit",
+      "teamDisplay": "FU16 Vit",
       "teamFull": "F10/F11 Vit",
       "teamColor": "#ffffff",
       "game": "GU16: match against Köping Stars",
@@ -245,7 +245,7 @@
     {
       "id": "77691239-72923534@cupmanager.net",
       "team": "f10vit",
-      "teamDisplay": "FU16 vit",
+      "teamDisplay": "FU16 Vit",
       "teamFull": "F10/F11 Vit",
       "teamColor": "#ffffff",
       "game": "GU16: match against Högsbo Basket",
@@ -257,7 +257,7 @@
     {
       "id": "77691242-72923534@cupmanager.net",
       "team": "f10vit",
-      "teamDisplay": "FU16 vit",
+      "teamDisplay": "FU16 Vit",
       "teamFull": "F10/F11 Vit",
       "teamColor": "#ffffff",
       "game": "GU16: match against KFUM Tigers Helsingborg Blaze",
