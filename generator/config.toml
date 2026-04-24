@@ -1,10 +1,10 @@
 # Central F10 Schedule Configuration
 # ================================
 # Each entry represents one team's calendar from Profixio.
-# URLs can be found in Profixio → Team → Calendar → Subscribe (ICS)
+# URLs can be found in e.g. Profixio → Team → Calendar → Subscribe (ICS)
 #
 # Note: Profixio URLs contain signatures that may expire.
-# If downloads fail with 403, refresh URLs from Profixio UI.
+# If downloads fail with 403, refresh URLs from e.g. Profixio UI.
 #
 # Team Colors:
 #   #550f38 - Club burgundy (Vinröd)
@@ -16,7 +16,7 @@
 # Field Reference:
 # ----------------
 # url          - Profixio ICS calendar URL (required)
-#               Found in Profixio → Team → Calendar → Subscribe
+#               Found in e.g. Profixio → Team → Calendar → Subscribe
 #
 # filename     - Local cache filename (required)
 #               Must end with .ics, used for caching downloaded data
@@ -25,7 +25,7 @@
 #               Displayed in calendar exports and TSV, e.g. "Central F10 Vinröd"
 #
 # team_slug    - URL-safe identifier (required)
-#               Used for filtering in the web UI, must be unique, e.g. "f10vinrod"
+#               Used for filtering in the web UI, must be unique per team, e.g. "f10vinrod"
 #
 # team_display - Short display name (required)
 #               Shown on team badges in the web UI, e.g. "Vinröd"
@@ -37,7 +37,7 @@
 #               For documentation purposes only
 
 [[ics.files]]
-# Team: Central F10/F11 Vinröd (U16 Nivå 2)
+# Team: Central F10/F11 Vinröd
 url = "https://www.profixio.com/app/api/calendars/teams/1402985/matches.ics?signature=0e7dd13ec4a4b551e3d0adc72a6a6353b41388baa59379faeeb1672360cf104d"
 filename = "f10vinrod.ics"
 team_name = "F10/F11 Vinröd"
@@ -47,7 +47,17 @@ team_color = "#550f38"
 division = "Flickor U16 Nivå 2 Nord"
 
 [[ics.files]]
-# Team: Central F10/F11 Gul (U16 Nivå 2)
+# Team: Central F10/F11 Vinröd
+url = "https://basketballfestival.se/service/GetTeamCalendarService?teamId=72857252"
+filename = "f10vinrod_goteborg26.ics"
+team_name = "F10/F11 Vinröd"
+team_slug = "f10vinrod"
+team_display = "FU16 VR"
+team_color = "#550f38"
+division = "Flickor U16 VR Göteborgs basketfestival"
+
+[[ics.files]]
+# Team: Central F10/F11 Gul
 url = "https://www.profixio.com/app/api/calendars/teams/1410624/matches.ics?signature=f55d58a863834031adfccd206225fde4b7576d3ecc7cfb7801230aad2dc0d701"
 filename = "f10gul.ics"
 team_name = "F10/F11 Gul"
@@ -55,3 +65,13 @@ team_slug = "f10gul"
 team_display = "FU16 Gul"
 team_color = "#fec225"
 division = "Flickor U16 Nivå 2 Syd"
+
+[[ics.files]]
+# Team: Central F10/F11 Vit
+url = "https://basketballfestival.se/service/GetTeamCalendarService?teamId=72923534"
+filename = "f10vit_goteborg26.ics"
+team_name = "F10/F11 Vit"
+team_slug = "f10vit"
+team_display = "FU16 vit"
+team_color = "#ffffff"
+division = "Flickor U16 vit"
