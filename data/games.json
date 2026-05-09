@@ -1,19 +1,7 @@
 {
-  "updated": "2026-05-09T20:33:54.850072+00:00",
+  "updated": "2026-05-09T23:36:29.744916+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "pro-mce-32405793",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "Fryshuset Basket Vit - KFUM Central Basket",
-      "location": "Vintervikens sph",
-      "start": "2026-01-10T13:45:00+01:00",
-      "end": "2026-01-10T15:30:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405793"
-    },
     {
       "id": "pro-mce-32405800",
       "team": "f10gul",
