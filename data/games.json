@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-15T18:16:29.666695+00:00",
+  "updated": "2026-05-15T20:50:25.099310+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -279,6 +279,18 @@
       "url": "https://basketballfestival.se/2026/result/match/77691382"
     },
     {
+      "id": "77691458-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against KFUM Kristianstad Basket C4 Queens 10/11",
+      "location": "Lundbystrand 5 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-16T10:30:00+02:00",
+      "end": "2026-05-16T11:15:00+02:00",
+      "url": "https://basketballfestival.se/2026/result/match/77691458"
+    },
+    {
       "id": "77691452-72923534@cupmanager.net",
       "team": "f10vit",
       "teamDisplay": "FU16 Vit",
@@ -296,11 +308,23 @@
       "teamDisplay": "FU16 Vit",
       "teamFull": "F10/F11 Vit",
       "teamColor": "#ffffff",
-      "game": "GU16: match against 1:st in Group L",
+      "game": "GU16: match against Norrköpings basketlag G16 orange Orange",
       "location": "Lundbystrand 4 - Anders Carlssons Gata, 41755, Göteborg",
       "start": "2026-05-16T16:30:00+02:00",
       "end": "2026-05-16T17:15:00+02:00",
       "url": "https://basketballfestival.se/2026/result/match/77691451"
+    },
+    {
+      "id": "77691457-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Fryshuset Basket 2 Röd",
+      "location": "Lundbystrand 1 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-16T17:15:00+02:00",
+      "end": "2026-05-16T18:00:00+02:00",
+      "url": "https://basketballfestival.se/2026/result/match/77691457"
     },
     {
       "id": "77691450-72923534@cupmanager.net",
@@ -315,6 +339,18 @@
       "url": "https://basketballfestival.se/2026/result/match/77691450"
     },
     {
+      "id": "77691456-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Winner of match 16002612",
+      "location": "Lundbystrand 1 - Anders Carlssons Gata, 41755, Göteborg",
+      "start": "2026-05-16T21:00:00+02:00",
+      "end": "2026-05-16T21:45:00+02:00",
+      "url": "https://basketballfestival.se/2026/result/match/77691456"
+    },
+    {
       "id": "77691449-72923534@cupmanager.net",
       "team": "f10vit",
       "teamDisplay": "FU16 Vit",
@@ -327,11 +363,35 @@
       "url": "https://basketballfestival.se/2026/result/match/77691449"
     },
     {
+      "id": "77691449-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
+      "game": "GU16: match against Winner of match 16003016",
+      "location": "Valhalla Sporthall B - Valhallagatan 3, 412 51, Göteborg",
+      "start": "2026-05-17T09:00:00+02:00",
+      "end": "2026-05-17T09:45:00+02:00",
+      "url": "https://basketballfestival.se/2026/result/match/77691449"
+    },
+    {
       "id": "77691436-72923534@cupmanager.net",
       "team": "f10vit",
       "teamDisplay": "FU16 Vit",
       "teamFull": "F10/F11 Vit",
       "teamColor": "#ffffff",
+      "game": "GU16: match against Winner of match 17001401",
+      "location": "Idrottshögskolan - Skånegatan 14B, 411 40, Göteborg",
+      "start": "2026-05-17T12:00:00+02:00",
+      "end": "2026-05-17T12:45:00+02:00",
+      "url": "https://basketballfestival.se/2026/result/match/77691436"
+    },
+    {
+      "id": "77691436-72857252@cupmanager.net",
+      "team": "f10vinrod",
+      "teamDisplay": "FU16 VR",
+      "teamFull": "F10/F11 Vinröd",
+      "teamColor": "#550f38",
       "game": "GU16: match against Winner of match 17001401",
       "location": "Idrottshögskolan - Skånegatan 14B, 411 40, Göteborg",
       "start": "2026-05-17T12:00:00+02:00",
