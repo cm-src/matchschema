@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-16T07:09:00.144568+00:00",
+  "updated": "2026-05-16T17:45:43.068914+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -325,78 +325,6 @@
       "start": "2026-05-16T17:15:00+02:00",
       "end": "2026-05-16T18:00:00+02:00",
       "url": "https://basketballfestival.se/2026/result/match/77691457"
-    },
-    {
-      "id": "77691450-72923534@cupmanager.net",
-      "team": "f10vit",
-      "teamDisplay": "FU16 Vit",
-      "teamFull": "F10/F11 Vit",
-      "teamColor": "#ffffff",
-      "game": "GU16: match against Winner of match 16002911",
-      "location": "Lundbystrand 5 - Anders Carlssons Gata, 41755, Göteborg",
-      "start": "2026-05-16T20:15:00+02:00",
-      "end": "2026-05-16T21:00:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691450"
-    },
-    {
-      "id": "77691456-72857252@cupmanager.net",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "GU16: match against Winner of match 16002612",
-      "location": "Lundbystrand 1 - Anders Carlssons Gata, 41755, Göteborg",
-      "start": "2026-05-16T21:00:00+02:00",
-      "end": "2026-05-16T21:45:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691456"
-    },
-    {
-      "id": "77691449-72923534@cupmanager.net",
-      "team": "f10vit",
-      "teamDisplay": "FU16 Vit",
-      "teamFull": "F10/F11 Vit",
-      "teamColor": "#ffffff",
-      "game": "GU16: match against Winner of match 16003016",
-      "location": "Valhalla Sporthall B - Valhallagatan 3, 412 51, Göteborg",
-      "start": "2026-05-17T09:00:00+02:00",
-      "end": "2026-05-17T09:45:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691449"
-    },
-    {
-      "id": "77691449-72857252@cupmanager.net",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "GU16: match against Winner of match 16003016",
-      "location": "Valhalla Sporthall B - Valhallagatan 3, 412 51, Göteborg",
-      "start": "2026-05-17T09:00:00+02:00",
-      "end": "2026-05-17T09:45:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691449"
-    },
-    {
-      "id": "77691436-72923534@cupmanager.net",
-      "team": "f10vit",
-      "teamDisplay": "FU16 Vit",
-      "teamFull": "F10/F11 Vit",
-      "teamColor": "#ffffff",
-      "game": "GU16: match against Winner of match 17001401",
-      "location": "Idrottshögskolan - Skånegatan 14B, 411 40, Göteborg",
-      "start": "2026-05-17T12:00:00+02:00",
-      "end": "2026-05-17T12:45:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691436"
-    },
-    {
-      "id": "77691436-72857252@cupmanager.net",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "GU16: match against Winner of match 17001401",
-      "location": "Idrottshögskolan - Skånegatan 14B, 411 40, Göteborg",
-      "start": "2026-05-17T12:00:00+02:00",
-      "end": "2026-05-17T12:45:00+02:00",
-      "url": "https://basketballfestival.se/2026/result/match/77691436"
     }
   ]
 }
