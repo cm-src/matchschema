@@ -1,31 +1,7 @@
 {
-  "updated": "2026-05-23T20:37:57.699943+00:00",
+  "updated": "2026-05-23T23:46:32.595790+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "pro-mce-32405587",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Stockholm Nordväst - Central vinröd",
-      "location": "BAS Barkarby",
-      "start": "2026-01-24T14:00:00+01:00",
-      "end": "2026-01-24T15:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405587"
-    },
-    {
-      "id": "pro-mce-32405803",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "KFUM Central Basket - AIK Gul",
-      "location": "Gärdeshallen",
-      "start": "2026-01-24T17:30:00+01:00",
-      "end": "2026-01-24T19:15:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405803"
-    },
     {
       "id": "pro-mce-32405810",
       "team": "f10gul",
