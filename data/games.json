@@ -1,19 +1,7 @@
 {
-  "updated": "2026-06-07T20:59:13.368130+00:00",
+  "updated": "2026-06-07T23:57:32.262345+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "pro-mce-32405605",
-      "team": "f10vinrod",
-      "teamDisplay": "FU16 VR",
-      "teamFull": "F10/F11 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Sollentuna Basket - Central vinröd",
-      "location": "Sollentuna Sporthall B",
-      "start": "2026-02-08T15:30:00+01:00",
-      "end": "2026-02-08T17:15:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32405605"
-    },
     {
       "id": "pro-mce-32405812",
       "team": "f10gul",
