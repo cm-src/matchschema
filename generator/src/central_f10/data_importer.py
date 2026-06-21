@@ -211,7 +211,7 @@ def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
 
         # Synthesize Cup Manager detail URLs when none is provided
         if not url and "@cupmanager.net" in raw_uid:
-            year = dtstart.dt.year if dtstart else datetime.now().year
+            year = dtstart.dt.year if dtstart else datetime.now(tz=UTC).year
             gameid_for_url = raw_uid.split("-")[0]
             domain = urlparse(entry.url).netloc
             url = f"https://{domain}/{year}/result/match/{gameid_for_url}"
@@ -309,7 +309,7 @@ def generate_ics(events: list[GameEvent]) -> None:
         cal_event = Event()
         cal_event.add("uid", f"central-{event.gameid}")
         cal_event.add("dtstamp", datetime.now(tz=UTC))
-        cal_event.add("summary", f"[{event.team}] {event.game}")
+        cal_event.add("summary", f"[{event.team_display}] {event.game}")
         cal_event.add("location", event.location)
         cal_event.add("dtstart", event.starttm)
         cal_event.add("dtend", event.endtm)

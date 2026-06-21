@@ -450,7 +450,9 @@ END:VCALENDAR
 
         assert len(events) == 1
         assert events[0].gameid == "77691369-72857252@cupmanager.net"
-        assert events[0].url == "https://basketballfestival.se/2026/result/match/77691369"
+        assert (
+            events[0].url == "https://basketballfestival.se/2026/result/match/77691369"
+        )
 
     def test_skips_invalid_events(
         self, temp_dir: Path, minimal_team_meta: dict
@@ -722,10 +724,10 @@ class TestGenerateIcs:
         assert "DTSTAMP" in content
 
     def test_team_in_summary(self, temp_dir: Path) -> None:
-        """ICS event summary includes team name."""
+        """ICS event summary includes the team display name."""
         output_file = temp_dir / "calendar.ics"
         with patch("central_f10.data_importer.CALENDAR_ICS", output_file):
-            generate_ics([_make_event(team="Central F10 Vinrod")])
+            generate_ics([_make_event(team_display="Central F10 Vinrod")])
 
         content = output_file.read_text()
         assert "[Central F10 Vinrod]" in content

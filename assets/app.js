@@ -8,6 +8,7 @@
 
   // State
   let gamesData = [];
+  let updatedTimestamp = null;
   let currentFilter = 'all';
   let currentDateFilter = 'upcoming';
   let searchQuery = '';
@@ -18,15 +19,12 @@
   const filterChips = document.getElementById('filterChips');
   let chips = document.querySelectorAll('.chip'); // Will be updated after dynamic build
   const segments = document.querySelectorAll('.segment');
-  const tableToggle = document.getElementById('tableToggle');
-  const tableSection = document.getElementById('tableSection');
   const gamesContainer = document.getElementById('gamesContainer');
   const matchCount = document.getElementById('matchCount');
+  const updatedText = document.getElementById('updatedText');
   const emptyState = document.getElementById('emptyState');
   const clearFiltersBtn = document.getElementById('clearFilters');
   const sectionHeader = document.querySelector('.section-header');
-  const sectionTitle = document.querySelector('.section-title');
-  const tableToggleWrapper = document.querySelector('.table-toggle');
   const downloadsSection = document.querySelector('.downloads-section');
   const downloadsTitle = document.getElementById('downloadsTitle');
   const downloadTsvBtn = document.getElementById('downloadTsv');
@@ -117,9 +115,26 @@
     }
     const data = await response.json();
     gamesData = data.games || [];
+    updatedTimestamp = data.updated || null;
 
     // Build filter chips dynamically from team data
     buildFilterChips();
+    renderUpdated();
+  }
+
+  /**
+   * Render the "last updated" timestamp in Swedish timezone.
+   */
+  function renderUpdated() {
+    if (!updatedText || !updatedTimestamp) return;
+    const date = new Date(updatedTimestamp);
+    if (isNaN(date.getTime())) return;
+    const formatted = new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Europe/Stockholm',
+      day: 'numeric', month: 'short', year: 'numeric',
+      hour: '2-digit', minute: '2-digit'
+    }).format(date);
+    updatedText.textContent = `Uppdaterad ${formatted}`;
   }
 
   /**
@@ -137,9 +152,9 @@
     });
 
     // Build HTML: "Alla" chip first, then team chips
-    let html = '<button class="chip chip-active" data-filter="all">Alla</button>';
+    let html = '<button class="chip chip-active" data-filter="all" aria-pressed="true">Alla</button>';
     teamMap.forEach((display, slug) => {
-      html += `<button class="chip" data-filter="${escapeHtml(slug)}">${escapeHtml(display)}</button>`;
+      html += `<button class="chip" data-filter="${escapeHtml(slug)}" aria-pressed="false">${escapeHtml(display)}</button>`;
     });
 
     filterChips.innerHTML = html;
@@ -168,10 +183,6 @@
       segment.addEventListener('click', handleSegmentClick);
     });
 
-    if (tableToggle) {
-      tableToggle.addEventListener('click', toggleTable);
-    }
-
     if (clearFiltersBtn) {
       clearFiltersBtn.addEventListener('click', clearFilters);
     }
@@ -197,18 +208,18 @@
    * Check if filter chips overflow and add indicator class
    */
   function checkChipOverflow() {
-    const filterChips = document.querySelector('.filter-chips');
-    if (!filterChips) return;
+    const chipsEl = document.querySelector('.filter-chips');
+    if (!chipsEl) return;
 
     // Only apply in landscape mode (max-height: 500px)
     if (window.matchMedia('(max-height: 500px)').matches) {
-      if (filterChips.scrollWidth > filterChips.clientWidth) {
-        filterChips.classList.add('has-overflow');
+      if (chipsEl.scrollWidth > chipsEl.clientWidth) {
+        chipsEl.classList.add('has-overflow');
       } else {
-        filterChips.classList.remove('has-overflow');
+        chipsEl.classList.remove('has-overflow');
       }
     } else {
-      filterChips.classList.remove('has-overflow');
+      chipsEl.classList.remove('has-overflow');
     }
   }
 
@@ -227,8 +238,12 @@
     const clickedChip = e.target;
     const filter = clickedChip.dataset.filter;
 
-    chips.forEach(chip => chip.classList.remove('chip-active'));
+    chips.forEach(chip => {
+      chip.classList.remove('chip-active');
+      chip.setAttribute('aria-pressed', 'false');
+    });
     clickedChip.classList.add('chip-active');
+    clickedChip.setAttribute('aria-pressed', 'true');
 
     currentFilter = filter;
     updateDownloadsTitle();
@@ -254,14 +269,6 @@
   }
 
   /**
-   * Toggle table visibility
-   */
-  function toggleTable() {
-    const isOpen = tableSection.classList.toggle('open');
-    tableToggle.setAttribute('aria-expanded', isOpen);
-  }
-
-  /**
    * Clear all filters
    */
   function clearFilters() {
@@ -271,7 +278,11 @@
     currentFilter = 'all';
     chips.forEach(chip => {
       chip.classList.remove('chip-active');
-      if (chip.dataset.filter === 'all') chip.classList.add('chip-active');
+      chip.setAttribute('aria-pressed', 'false');
+      if (chip.dataset.filter === 'all') {
+        chip.classList.add('chip-active');
+        chip.setAttribute('aria-pressed', 'true');
+      }
     });
 
     currentDateFilter = 'upcoming';
@@ -292,25 +303,28 @@
    * Filter games based on current filters
    */
   function getFilteredGames() {
+    // Today's date in Swedish timezone (venue dates in games.json are Europe/Stockholm)
+    const todayStockholm = new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Europe/Stockholm',
+      year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+
     return gamesData.filter(game => {
       // Team filter
       const teamMatch = currentFilter === 'all' || game.team === currentFilter;
 
-      // Date filter - "Kommande" means today and onwards
+      // Date filter - "Kommande" means today and onwards (compare Stockholm dates)
       let dateMatch = true;
       if (currentDateFilter === 'upcoming' && game.start) {
-        const gameDate = new Date(game.start);
-        const today = new Date();
-        // Compare only date parts (ignore time)
-        const gameDay = new Date(gameDate.getFullYear(), gameDate.getMonth(), gameDate.getDate());
-        const todayDay = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-        dateMatch = gameDay >= todayDay;
+        // game.start is ISO with Stockholm offset; slice(0,10) is the venue date
+        dateMatch = game.start.slice(0, 10) >= todayStockholm;
       }
 
       // Search filter
       const searchMatch = !searchQuery ||
         game.game.toLowerCase().includes(searchQuery) ||
         game.location.toLowerCase().includes(searchQuery) ||
+        game.teamDisplay.toLowerCase().includes(searchQuery) ||
         game.teamFull.toLowerCase().includes(searchQuery);
 
       return teamMatch && dateMatch && searchMatch;
@@ -327,8 +341,6 @@
     if (filtered.length === 0) {
       // Hide main content sections
       if (sectionHeader) sectionHeader.classList.add('is-hidden');
-      if (tableToggleWrapper) tableToggleWrapper.classList.add('is-hidden');
-      if (tableSection) tableSection.classList.add('is-hidden');
       gamesContainer.innerHTML = '';
       gamesContainer.classList.add('is-hidden');
 
@@ -340,8 +352,6 @@
 
     // Show main content sections
     if (sectionHeader) sectionHeader.classList.remove('is-hidden');
-    if (tableToggleWrapper) tableToggleWrapper.classList.remove('is-hidden');
-    if (tableSection) tableSection.classList.remove('is-hidden');
     gamesContainer.classList.remove('is-hidden');
     emptyState.classList.add('is-hidden');
     // Ensure downloads section is visible
@@ -352,9 +362,6 @@
       matchCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'match' : 'matcher'}`;
     }
 
-    // Always update table (even when hidden)
-    updateTable(filtered);
-
     // Group by date
     const grouped = groupByDate(filtered);
 
@@ -362,6 +369,12 @@
     gamesContainer.innerHTML = Object.entries(grouped)
       .map(([date, games]) => renderDateGroup(date, games))
       .join('');
+
+    // Apply team colors via CSS custom property (CSP-safe: no inline style attributes)
+    gamesContainer.querySelectorAll('.game-card').forEach(card => {
+      const color = card.dataset.color;
+      if (color) card.style.setProperty('--team-color', color);
+    });
   }
 
   /**
@@ -400,11 +413,10 @@
   function renderGameCard(game) {
     const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
     const timeStr = formatTime(game.start, game.end);
-    const dateAttr = game.start ? new Date(game.start).toISOString().split('T')[0] : '';
 
     return `
-      <article class="game-card" data-team="${game.team}" data-date="${dateAttr}">
-        <div class="team-strip" style="background: ${color}"></div>
+      <article class="game-card" data-color="${color}">
+        <div class="team-strip"></div>
         <div class="game-card-content">
           <div class="game-card-left">
             <h3 class="game-title">${escapeHtml(game.game)}</h3>
@@ -422,7 +434,7 @@
             </div>
           </div>
           <div class="game-card-right">
-            <span class="team-badge"${color === '#ffffff' ? ' data-contrast="white"' : ` style="background: ${color}"${color === '#fec225' ? ' data-contrast="light"' : ''}`}>${escapeHtml(game.teamDisplay)}</span>
+            <span class="team-badge"${color === '#ffffff' ? ' data-contrast="white"' : `${color === '#fec225' ? ' data-contrast="light"' : ''}`}>${escapeHtml(game.teamDisplay)}</span>
             ${game.url ? `<a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="btn-details">
               Matchdetaljer
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -431,45 +443,6 @@
         </div>
       </article>
     `;
-  }
-
-  /**
-   * Update table view
-   */
-  function updateTable(games) {
-    const tbody = document.querySelector('.data-table tbody');
-    if (!tbody) return;
-
-    // Clear table if no games
-    if (games.length === 0) {
-      tbody.innerHTML = '';
-      return;
-    }
-
-    tbody.innerHTML = games.map(game => {
-      const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
-      const dateStr = game.start ? formatShortDate(new Date(game.start)) : '';
-
-      return `
-        <tr>
-          <td>
-            <div class="table-team">
-              <span class="team-dot"${color === '#ffffff' ? ' data-contrast="white"' : ` style="background: ${color}"`}></span>
-              ${escapeHtml(game.teamDisplay)}
-            </div>
-          </td>
-          <td>${escapeHtml(game.game)}</td>
-          <td>${escapeHtml(game.location)}</td>
-          <td>${dateStr}</td>
-          <td>
-            <a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="table-link">
-              Profixio
-              <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-            </a>
-          </td>
-        </tr>
-      `;
-    }).join('');
   }
 
   /**

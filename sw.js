@@ -1,17 +1,15 @@
 // Simple service worker for PWA offline support
-const CACHE_NAME = 'central-basket-v3';
+const CACHE_NAME = 'central-basket-v4';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/assets/styles.css',
   '/assets/app.js',
   '/assets/manifest.json',
-  '/data/games.json',
   '/assets/favicon.ico',
   '/assets/favicon-32x32.png',
   '/assets/favicon-16x16.png',
-  '/assets/apple-touch-icon.png',
-  '/assets/central-logo_large.png'
+  '/assets/apple-touch-icon.png'
 ];
 
 // Install event - cache assets
