@@ -13,6 +13,7 @@
   let currentDateFilter = 'upcoming';
   let searchQuery = '';
   let currentTheme = 'light'; // 'light' or 'dark'
+  let liveTimer = null; // "Pågår" refresh interval, paused when tab hidden
 
   // DOM Elements
   const searchInput = document.getElementById('searchInput');
@@ -41,6 +42,16 @@
       attachEventListeners();
       updateDownloadsTitle();
       renderGames();
+      // Refresh live "Pågår" state periodically, only while the tab is visible
+      startLiveTimer();
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopLiveTimer();
+        } else {
+          updateLiveState();
+          startLiveTimer();
+        }
+      });
     } catch (error) {
       console.error('Failed to load games:', error);
       showError('Kunde inte ladda matchdata. Försök igen senare.');
@@ -300,14 +311,23 @@
   }
 
   /**
+   * Today's date as YYYY-MM-DD in Europe/Stockholm.
+   * Venue dates in games.json carry a Stockholm offset, so game.start.slice(0,10)
+   * is the venue date — comparable directly to this.
+   */
+  function todayStockholmDate() {
+    return new Intl.DateTimeFormat('sv-SE', {
+      timeZone: 'Europe/Stockholm',
+      year: 'numeric', month: '2-digit', day: '2-digit'
+    }).format(new Date());
+  }
+
+  /**
    * Filter games based on current filters
    */
   function getFilteredGames() {
     // Today's date in Swedish timezone (venue dates in games.json are Europe/Stockholm)
-    const todayStockholm = new Intl.DateTimeFormat('sv-SE', {
-      timeZone: 'Europe/Stockholm',
-      year: 'numeric', month: '2-digit', day: '2-digit'
-    }).format(new Date());
+    const todayStockholm = todayStockholmDate();
 
     return gamesData.filter(game => {
       // Team filter
@@ -375,6 +395,34 @@
       const color = card.dataset.color;
       if (color) card.style.setProperty('--team-color', color);
     });
+
+    // Mark any game currently in progress
+    updateLiveState();
+  }
+
+  /**
+   * Toggle the "Pågår" state on cards whose start–end window contains now.
+   * Runs after each render and on a 30s interval; only flips classes, no re-render.
+   */
+  function updateLiveState() {
+    const now = Date.now();
+    gamesContainer.querySelectorAll('.game-card').forEach(card => {
+      const start = Number(card.dataset.start);
+      const end = Number(card.dataset.end);
+      const inProgress = start && end && now >= start && now < end;
+      card.classList.toggle('is-live', inProgress);
+    });
+  }
+
+  function startLiveTimer() {
+    if (liveTimer) return;
+    liveTimer = setInterval(updateLiveState, 30000);
+  }
+
+  function stopLiveTimer() {
+    if (!liveTimer) return;
+    clearInterval(liveTimer);
+    liveTimer = null;
   }
 
   /**
@@ -396,11 +444,15 @@
   function renderDateGroup(dateStr, games) {
     const dateLabel = formatDate(dateStr);
     const gamesHtml = games.map(renderGameCard).join('');
+    // Mark today's group (compare venue date to today in Stockholm)
+    const isToday = games[0]?.start && games[0].start.slice(0, 10) === todayStockholmDate();
+    const todayBadge = isToday ? '<span class="date-today-badge">Idag</span>' : '';
 
     return `
-      <div class="date-divider">
+      <div class="date-divider${isToday ? ' is-today' : ''}">
         <div class="date-line"></div>
         <span class="date-text">${dateLabel}</span>
+        ${todayBadge}
         <div class="date-line"></div>
       </div>
       ${gamesHtml}
@@ -413,9 +465,13 @@
   function renderGameCard(game) {
     const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
     const timeStr = formatTime(game.start, game.end);
+    const contrastAttr = color === '#ffffff' ? ' data-contrast="white"' : color === '#fec225' ? ' data-contrast="light"' : '';
+    // Absolute timestamps for the live-state interval (timezone-correct vs Date.now())
+    const startMs = game.start ? new Date(game.start).getTime() : '';
+    const endMs = game.end ? new Date(game.end).getTime() : '';
 
     return `
-      <article class="game-card" data-color="${color}">
+      <article class="game-card" data-color="${color}"${contrastAttr} data-start="${startMs}" data-end="${endMs}">
         <div class="team-strip"></div>
         <div class="game-card-content">
           <div class="game-card-left">
@@ -434,7 +490,8 @@
             </div>
           </div>
           <div class="game-card-right">
-            <span class="team-badge"${color === '#ffffff' ? ' data-contrast="white"' : `${color === '#fec225' ? ' data-contrast="light"' : ''}`}>${escapeHtml(game.teamDisplay)}</span>
+            <span class="team-badge"${contrastAttr}>${escapeHtml(game.teamDisplay)}</span>
+            <span class="live-badge" aria-hidden="true"><span class="live-dot"></span>Pågår</span>
             ${game.url ? `<a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="btn-details">
               Matchdetaljer
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
