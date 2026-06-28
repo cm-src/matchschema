@@ -54,6 +54,7 @@
       });
     } catch (error) {
       console.error('Failed to load games:', error);
+      if (matchCount) matchCount.textContent = '';
       showError('Kunde inte ladda matchdata. Försök igen senare.');
     }
   }
@@ -212,7 +213,14 @@
 
     // Check chip overflow for landscape mode fade indicator
     checkChipOverflow();
-    window.addEventListener('resize', checkChipOverflow);
+    let resizeRaf = 0;
+    window.addEventListener('resize', () => {
+      if (resizeRaf) return;
+      resizeRaf = requestAnimationFrame(() => {
+        resizeRaf = 0;
+        checkChipOverflow();
+      });
+    });
   }
 
   /**
@@ -243,40 +251,50 @@
   }
 
   /**
+   * Select one option within a filter group: update the corresponding state
+   * (currentFilter / currentDateFilter), then sync the DOM to match.
+   */
+  function selectFromGroup(el, group) {
+    if (group === 'chip') {
+      currentFilter = el.dataset.filter;
+      updateDownloadsTitle();
+    } else {
+      currentDateFilter = el.dataset.date;
+    }
+    syncFilterUI();
+    renderGames();
+  }
+
+  /**
+   * Derive active classes and aria-pressed from currentFilter / currentDateFilter.
+   * Single source of truth — avoids the DOM classes drifting out of sync with
+   * the state on each click.
+   */
+  function syncFilterUI() {
+    chips.forEach(chip => {
+      const active = chip.dataset.filter === currentFilter;
+      chip.classList.toggle('chip-active', active);
+      chip.setAttribute('aria-pressed', String(active));
+    });
+    segments.forEach(segment => {
+      const active = segment.dataset.date === currentDateFilter;
+      segment.classList.toggle('segment-active', active);
+      segment.setAttribute('aria-pressed', String(active));
+    });
+  }
+
+  /**
    * Handle chip click
    */
   function handleChipClick(e) {
-    const clickedChip = e.target;
-    const filter = clickedChip.dataset.filter;
-
-    chips.forEach(chip => {
-      chip.classList.remove('chip-active');
-      chip.setAttribute('aria-pressed', 'false');
-    });
-    clickedChip.classList.add('chip-active');
-    clickedChip.setAttribute('aria-pressed', 'true');
-
-    currentFilter = filter;
-    updateDownloadsTitle();
-    renderGames();
+    selectFromGroup(e.currentTarget, 'chip');
   }
 
   /**
    * Handle segment click
    */
   function handleSegmentClick(e) {
-    const clickedSegment = e.target;
-    const dateFilter = clickedSegment.dataset.date;
-
-    segments.forEach(segment => {
-      segment.classList.remove('segment-active');
-      segment.setAttribute('aria-checked', 'false');
-    });
-    clickedSegment.classList.add('segment-active');
-    clickedSegment.setAttribute('aria-checked', 'true');
-
-    currentDateFilter = dateFilter;
-    renderGames();
+    selectFromGroup(e.currentTarget, 'segment');
   }
 
   /**
@@ -285,27 +303,9 @@
   function clearFilters() {
     searchQuery = '';
     if (searchInput) searchInput.value = '';
-
     currentFilter = 'all';
-    chips.forEach(chip => {
-      chip.classList.remove('chip-active');
-      chip.setAttribute('aria-pressed', 'false');
-      if (chip.dataset.filter === 'all') {
-        chip.classList.add('chip-active');
-        chip.setAttribute('aria-pressed', 'true');
-      }
-    });
-
     currentDateFilter = 'upcoming';
-    segments.forEach(segment => {
-      segment.classList.remove('segment-active');
-      segment.setAttribute('aria-checked', 'false');
-      if (segment.dataset.date === 'upcoming') {
-        segment.classList.add('segment-active');
-        segment.setAttribute('aria-checked', 'true');
-      }
-    });
-
+    syncFilterUI();
     updateDownloadsTitle();
     renderGames();
   }
@@ -467,6 +467,7 @@
   function renderGameCard(game) {
     const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
     const timeStr = formatTime(game.start, game.end);
+    const safeUrl = sanitizeUrl(game.url);
     // Normalize for case-insensitive contrast checks (isValidCssColor allows uppercase hex)
     const c = color.toLowerCase();
     const contrastAttr = c === '#ffffff' ? ' data-contrast="white"' : c === '#fec225' ? ' data-contrast="light"' : '';
@@ -482,7 +483,7 @@
             <h3 class="game-title">${escapeHtml(game.game)}</h3>
             <div class="game-meta">
               <div class="meta-item">
-                <a href="${buildGoogleMapsSearchUrl(game.location)}" target="_blank" rel="noopener noreferrer" class="location-link" title="Öppna i Google Maps">
+                <a href="${buildGoogleMapsSearchUrl(game.location)}" target="_blank" rel="noopener noreferrer" class="location-link" aria-label="Öppna ${escapeHtml(game.location)} i Google Maps" title="Öppna i Google Maps">
                   <svg class="meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
                 </a>
                 <span class="meta-text">${escapeHtml(game.location)}</span>
@@ -495,8 +496,8 @@
           </div>
           <div class="game-card-right">
             <span class="team-badge"${contrastAttr}>${escapeHtml(game.teamDisplay)}</span>
-            <span class="live-badge" aria-hidden="true"><span class="live-dot"></span>Pågår</span>
-            ${game.url ? `<a href="${sanitizeUrl(game.url)}" target="_blank" rel="noopener noreferrer" class="btn-details">
+            <span class="live-badge"><span class="live-dot"></span>Pågår</span>
+            ${safeUrl ? `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer" class="btn-details">
               Matchdetaljer
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             </a>` : ''}
@@ -569,12 +570,12 @@
    * Only allows http:// and https:// protocols to prevent javascript: URLs.
    */
   function sanitizeUrl(url) {
-    if (!url) return '#';
+    if (!url) return '';
     try {
       const parsed = new URL(url);
       if (parsed.protocol === 'http:' || parsed.protocol === 'https:') return url;
     } catch { /* invalid URL */ }
-    return '#';
+    return '';
   }
 
   /**
