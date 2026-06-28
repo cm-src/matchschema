@@ -1,5 +1,16 @@
-// Simple service worker for PWA offline support
-const CACHE_NAME = 'central-basket-v5';
+// Service worker for PWA offline support.
+//
+// Caching strategy:
+//   - Navigations / HTML  : network-first (fresh shell, cache fallback offline)
+//   - data/ files         : network-first (always try fresh schedule data)
+//   - other static assets : stale-while-revalidate (serve cache instantly,
+//                           refresh from network in the background)
+//
+// Static assets here have stable, non-hashed filenames that are edited in
+// place, so cache-first would freeze them indefinitely. Stale-while-
+// revalidate propagates edits within ~1 visit without manual CACHE_NAME
+// bumps, which are now emergency-only (force-invalidate the whole cache).
+const CACHE_NAME = 'central-basket-v6';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -14,7 +25,7 @@ const ASSETS_TO_CACHE = [
   '/assets/apple-touch-icon.png'
 ];
 
-// Install event - cache assets
+// Install event - precache the shell so the app works offline from first load
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -36,59 +47,54 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - network-first for data files, cache-first for assets
+// Network-first: try the network, fall back to cache when offline.
+// Used for navigations (fresh HTML shell) and data/ files (fresh schedule).
+function networkFirst(event) {
+  return fetch(event.request)
+    .then((networkResponse) => {
+      if (networkResponse && networkResponse.status === 200) {
+        const cloned = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
+      }
+      return networkResponse;
+    })
+    .catch(() => caches.match(event.request));
+}
+
+// Stale-while-revalidate: serve cached asset instantly (if any), and fetch
+// from the network in the background to update the cache for next time.
+// Falls back to cache/offline when the network is down.
+function staleWhileRevalidate(event) {
+  const fromCache = caches.match(event.request);
+  const fromNetwork = fetch(event.request)
+    .then((networkResponse) => {
+      if (networkResponse && networkResponse.status === 200) {
+        const cloned = networkResponse.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, cloned));
+      }
+      return networkResponse;
+    })
+    .catch(() => caches.match(event.request));
+
+  // Race: cached response wins if present, else wait for the network.
+  return fromCache.then((cached) => cached || fromNetwork);
+}
+
+// Fetch event - route requests by kind
 self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
   const url = new URL(event.request.url);
+  // Only handle same-origin requests; let the browser handle the rest.
+  if (url.origin !== self.location.origin) return;
+
   const pathname = url.pathname;
+  const isNavigation = event.request.mode === 'navigate';
+  const isDataFile = pathname.startsWith('/data/');
 
-  // Data files - use network-first strategy (always try to get fresh data)
-  const dataFiles = ['/data/games.json', '/data/calendar.ics', '/data/games.tsv'];
-  if (dataFiles.includes(pathname)) {
-    event.respondWith(
-      fetch(event.request)
-        .then((networkResponse) => {
-          if (networkResponse && networkResponse.status === 200) {
-            // Update cache with fresh data
-            const clonedResponse = networkResponse.clone();
-            caches.open(CACHE_NAME).then((cache) => {
-              cache.put(event.request, clonedResponse);
-            });
-          }
-          return networkResponse;
-        })
-        .catch(() => {
-          // Fallback to cache if network fails
-          return caches.match(event.request);
-        })
-    );
-    return;
+  if (isNavigation || isDataFile) {
+    event.respondWith(networkFirst(event));
+  } else {
+    event.respondWith(staleWhileRevalidate(event));
   }
-
-  // Static assets - use cache-first strategy
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).then((networkResponse) => {
-          // Don't cache non-successful responses
-          if (!networkResponse || networkResponse.status !== 200) {
-            return networkResponse;
-          }
-          // Cache the new response
-          return caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, networkResponse.clone());
-            return networkResponse;
-          });
-        });
-      })
-      .catch(() => {
-        // Return offline page for navigation requests
-        if (event.request.mode === 'navigate') {
-          return caches.match('/index.html');
-        }
-        return new Response('Offline', { status: 503 });
-      })
-  );
 });
