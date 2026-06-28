@@ -1,13 +1,16 @@
 """Pydantic models for data validation."""
 
-import re
 from datetime import datetime
-from urllib.parse import urlparse
 
 from pydantic import BaseModel, ConfigDict, ValidationInfo, field_validator
 
-# Hex color pattern: # followed by exactly 6 hex characters
-HEX_COLOR_PATTERN = re.compile(r"^#[0-9A-Fa-f]{6}$")
+from central_f10.validation import (
+    HEX_COLOR_PATTERN,  # re-exported for backward compatibility
+    validate_hex_color,
+    validate_http_url,
+)
+
+__all__ = ["HEX_COLOR_PATTERN", "GameEvent"]
 
 
 class GameEvent(BaseModel):
@@ -47,24 +50,13 @@ class GameEvent(BaseModel):
     @classmethod
     def validate_color(cls, v: str) -> str:
         """Validate hex color format."""
-        if not HEX_COLOR_PATTERN.match(v):
-            raise ValueError(
-                f"team_color must be a valid hex color like '#550f38', got '{v}'"
-            )
-        return v
+        return validate_hex_color(v)
 
     @field_validator("url")
     @classmethod
     def validate_url(cls, v: str) -> str:
-        """Validate URL is http or https."""
-        if not v:
-            return v
-        parsed = urlparse(v)
-        if parsed.scheme not in ("http", "https"):
-            raise ValueError(f"URL must use http or https protocol, got '{v}'")
-        if not parsed.netloc:
-            raise ValueError(f"URL must have a valid host, got '{v}'")
-        return v
+        """Validate URL is http or https (empty allowed)."""
+        return validate_http_url(v, allow_empty=True)
 
     @field_validator("endtm")
     @classmethod

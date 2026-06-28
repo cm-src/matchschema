@@ -102,6 +102,11 @@ class TestGameEvent:
         event = GameEvent(**_base_event_kwargs(url=url))
         assert event.url == url
 
+    def test_game_event_allows_empty_url(self) -> None:
+        """GameEvent accepts an empty URL (events may have no detail link)."""
+        event = GameEvent(**_base_event_kwargs(url=""))
+        assert event.url == ""
+
     @pytest.mark.parametrize(
         "url,match",
         [

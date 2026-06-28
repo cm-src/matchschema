@@ -2,12 +2,11 @@
 
 import tomllib
 from pathlib import Path
-from urllib.parse import urlparse
 
 from pydantic import BaseModel, field_validator
 
-from central_f10.models import HEX_COLOR_PATTERN
 from central_f10.paths import CONFIG_FILE
+from central_f10.validation import validate_hex_color, validate_http_url
 
 
 class IcsFileEntry(BaseModel):
@@ -30,12 +29,7 @@ class IcsFileEntry(BaseModel):
     @classmethod
     def validate_url(cls, v: str) -> str:
         """Validate URL uses http or https and has a valid host."""
-        parsed = urlparse(v)
-        if parsed.scheme not in ("http", "https"):
-            raise ValueError(f"URL must use http or https protocol, got '{v}'")
-        if not parsed.netloc:
-            raise ValueError(f"URL must have a valid host, got '{v}'")
-        return v
+        return validate_http_url(v)
 
     @field_validator("filename")
     @classmethod
@@ -49,11 +43,7 @@ class IcsFileEntry(BaseModel):
     @classmethod
     def validate_color(cls, v: str) -> str:
         """Validate hex color format."""
-        if not HEX_COLOR_PATTERN.match(v):
-            raise ValueError(
-                f"team_color must be a valid hex color like '#550f38', got '{v}'"
-            )
-        return v
+        return validate_hex_color(v)
 
 
 def load_ics_files(config_file: Path | None = None) -> list[IcsFileEntry]:
