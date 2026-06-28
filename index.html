@@ -22,11 +22,12 @@
   <meta name="description" content="Matchschema för Central F10/F11 – Se basketmatcher, tider och platser för flickor födda 2010 och 2011.">
 
   <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self';">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Self-hosted variable fonts: preload so they render on first view
+       with zero CLS (font-display: optional in styles.css). -->
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fonts/inter-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="./assets/fonts/outfit-latin.woff2" crossorigin>
   <link rel="stylesheet" href="./assets/styles.css">
 </head>
 <body>
