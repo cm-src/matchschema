@@ -54,10 +54,10 @@ class TestIcsFileEntry:
                 # Missing team_name and others
             )
 
-    def test_optional_division(self) -> None:
-        """Division field is optional and defaults to None."""
-        entry = IcsFileEntry(**_base_entry_kwargs())
-        assert entry.division is None
+    def test_extra_keys_rejected(self) -> None:
+        """Unknown keys (e.g. a config.toml typo) are rejected, not ignored."""
+        with pytest.raises(ValidationError, match="extra"):
+            IcsFileEntry(**_base_entry_kwargs(tema_color="#550f38"))
 
     def test_model_validate_from_dict(self) -> None:
         """model_validate works with dict input (from TOML)."""

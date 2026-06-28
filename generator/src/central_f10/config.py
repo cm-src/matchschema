@@ -13,8 +13,11 @@ from central_f10.paths import CONFIG_FILE
 class IcsFileEntry(BaseModel):
     """ICS file entry with URL, filename, and team metadata.
 
-    All team fields are required for proper UI display.
+    All team fields are required for proper UI display. Unknown keys (e.g.
+    a typo in config.toml) are rejected rather than silently ignored.
     """
+
+    model_config = {"extra": "forbid"}
 
     url: str
     filename: str
@@ -22,7 +25,6 @@ class IcsFileEntry(BaseModel):
     team_slug: str  # URL-safe identifier for web filtering (must be unique)
     team_display: str  # Short name for UI badges
     team_color: str  # Hex color for UI elements
-    division: str | None = None  # Optional: for documentation only
 
     @field_validator("url")
     @classmethod

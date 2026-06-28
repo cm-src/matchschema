@@ -2,6 +2,7 @@
 
 import json
 import logging
+import os
 import time
 from datetime import UTC, datetime
 from pathlib import Path
@@ -233,16 +234,15 @@ def read_ical(ics_file: Path, entry: IcsFileEntry) -> list[GameEvent]:
             validated = GameEvent.model_validate(raw_event)
             events.append(validated)
         except Exception as e:
-            logger.warning("Skipping invalid event in %s: %s", ics_file.name, e)
+            logger.warning(
+                "Skipping invalid event in %s (uid=%s): %s", ics_file.name, raw_uid, e
+            )
 
     return events
 
 
-def generate_json(events: list[GameEvent]) -> None:
-    """Generate games.json for the web app.
-
-    Times are converted to Swedish timezone (CET/CEST) for local display.
-    """
+def generate_json_payload(events: list[GameEvent]) -> str:
+    """Build the games.json document for the web app (no I/O)."""
     games_data = {
         "updated": datetime.now(tz=UTC).isoformat(),
         "timezone": "Europe/Stockholm",
@@ -262,10 +262,15 @@ def generate_json(events: list[GameEvent]) -> None:
             for event in events
         ],
     }
+    return json.dumps(games_data, indent=2, ensure_ascii=False)
 
-    GAMES_JSON.write_text(
-        json.dumps(games_data, indent=2, ensure_ascii=False), encoding="utf-8"
-    )
+
+def generate_json(events: list[GameEvent]) -> None:
+    """Generate games.json for the web app.
+
+    Times are converted to Swedish timezone (CET/CEST) for local display.
+    """
+    _atomic_write(GAMES_JSON, generate_json_payload(events))
     logger.info("Generated %s (%d games)", GAMES_JSON, len(events))
 
 
@@ -274,11 +279,8 @@ def _escape_tsv(value: str) -> str:
     return value.replace("\t", "\\t").replace("\n", "\\n").replace("\r", "\\r")
 
 
-def generate_tsv(events: list[GameEvent]) -> None:
-    """Generate games.tsv for Excel/Sheets import.
-
-    Times are converted to Swedish timezone (CET/CEST) for local display.
-    """
+def generate_tsv_payload(events: list[GameEvent]) -> str:
+    """Build the games.tsv document for Excel/Sheets import (no I/O)."""
     lines = ["team\tgame\tlocation\tstart\tend\turl"]
 
     for event in events:
@@ -290,12 +292,20 @@ def generate_tsv(events: list[GameEvent]) -> None:
             f"{_escape_tsv(event.team)}\t{_escape_tsv(event.game)}\t{_escape_tsv(event.location)}\t{start_str}\t{end_str}\t{_escape_tsv(event.url)}"
         )
 
-    GAMES_TSV.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return "\n".join(lines) + "\n"
+
+
+def generate_tsv(events: list[GameEvent]) -> None:
+    """Generate games.tsv for Excel/Sheets import.
+
+    Times are converted to Swedish timezone (CET/CEST) for local display.
+    """
+    _atomic_write(GAMES_TSV, generate_tsv_payload(events))
     logger.info("Generated %s", GAMES_TSV)
 
 
-def generate_ics(events: list[GameEvent]) -> None:
-    """Generate combined calendar.ics for Google Calendar import."""
+def generate_ics_payload(events: list[GameEvent]) -> bytes:
+    """Build the combined calendar.ics for Google Calendar import (no I/O)."""
     cal = Calendar()
     cal.add("prodid", "-//Central F10 Basketball//central-f10//")
     cal.add("version", "2.0")
@@ -317,8 +327,39 @@ def generate_ics(events: list[GameEvent]) -> None:
             cal_event.add("url", event.url)
         cal.add_component(cal_event)
 
-    CALENDAR_ICS.write_bytes(cal.to_ical())
+    return cal.to_ical()
+
+
+def generate_ics(events: list[GameEvent]) -> None:
+    """Generate combined calendar.ics for Google Calendar import."""
+    _atomic_write(CALENDAR_ICS, generate_ics_payload(events))
     logger.info("Generated %s", CALENDAR_ICS)
+
+
+def _atomic_write(path: Path, data: str | bytes) -> None:
+    """Write to a temp sibling then os.replace for an atomic, crash-safe swap."""
+    tmp = path.with_name(path.name + ".tmp")
+    if isinstance(data, str):
+        tmp.write_text(data, encoding="utf-8")
+    else:
+        tmp.write_bytes(data)
+    os.replace(tmp, path)
+
+
+def _schedule_unchanged(path: Path, new_json_str: str) -> bool:
+    """True if the existing JSON has the same `games` array as the new payload.
+
+    Compares only the games list (not the `updated` timestamp), so unchanged
+    schedules don't produce spurious commits.
+    """
+    if not path.exists():
+        return False
+    try:
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        new = json.loads(new_json_str)
+    except (json.JSONDecodeError, OSError):
+        return False
+    return existing.get("games") == new.get("games")
 
 
 def generate_all(
@@ -394,10 +435,23 @@ def generate_all(
         )
         return len(sorted_events)
 
-    # Generate outputs (already sorted)
-    generate_json(sorted_events)
-    generate_tsv(sorted_events)
-    generate_ics(sorted_events)
+    # Build all payloads in memory first so a serialization failure leaves
+    # data/ unchanged (all-or-nothing across the three outputs).
+    json_payload = generate_json_payload(sorted_events)
+    tsv_payload = generate_tsv_payload(sorted_events)
+    ics_payload = generate_ics_payload(sorted_events)
+
+    # Skip writing (and the downstream commit) when the schedule is unchanged.
+    if _schedule_unchanged(GAMES_JSON, json_payload):
+        logger.info("No schedule changes; skipping output writes")
+        return len(sorted_events)
+
+    _atomic_write(GAMES_JSON, json_payload)
+    logger.info("Generated %s (%d games)", GAMES_JSON, len(sorted_events))
+    _atomic_write(GAMES_TSV, tsv_payload)
+    logger.info("Generated %s", GAMES_TSV)
+    _atomic_write(CALENDAR_ICS, ics_payload)
+    logger.info("Generated %s", CALENDAR_ICS)
 
     logger.info("Complete! Processed %d events", len(sorted_events))
     return len(sorted_events)

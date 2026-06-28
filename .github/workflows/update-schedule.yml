@@ -39,6 +39,13 @@ jobs:
         working-directory: generator
         run: uv sync
 
+      - name: Lint and test
+        working-directory: generator
+        run: |
+          uv run ruff check .
+          uv run pytest -q
+          uv run ty check src/
+
       - name: Generate schedule
         working-directory: generator
         run: uv run app.py

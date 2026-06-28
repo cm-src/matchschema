@@ -570,6 +570,33 @@ END:VCALENDAR
         assert len(events) == 1
         assert events[0].url == "https://profixio.com/calendar"
 
+    def test_all_day_event_is_skipped(
+        self, temp_dir: Path, minimal_team_meta: dict
+    ) -> None:
+        """All-day VEVENTs (DATE, not DATETIME) are skipped, not mishandled."""
+        ics_content = b"""BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Test//EN
+BEGIN:VEVENT
+UID:pro-mce-allday
+DTSTART;VALUE=DATE:20250315
+SUMMARY:All-day tournament
+LOCATION:Arena
+END:VEVENT
+END:VCALENDAR
+"""
+        ics_file = temp_dir / "test.ics"
+        ics_file.write_bytes(ics_content)
+
+        entry = IcsFileEntry(
+            url="https://profixio.com/calendar.ics",
+            filename="test.ics",
+            **minimal_team_meta,
+        )
+        events = read_ical(ics_file, entry=entry)
+
+        assert events == []
+
 
 # ---------------------------------------------------------------------------
 # generate_json / generate_tsv / generate_ics
@@ -950,3 +977,151 @@ class TestGenerateAll:
         summaries = {g["game"] for g in games}
         assert "STALE 2024 GAME" not in summaries, "stale cache was served"
         assert "Central F10 Vinrod vs Opponent" in summaries, "fresh data missing"
+
+    def test_partial_write_failure_leaves_outputs_unchanged(
+        self,
+        temp_dir: Path,
+        sample_ics_content: bytes,
+        valid_config_toml: str,
+    ) -> None:
+        """A serialization failure mid-pipeline must not leave data/ half-updated."""
+        config_file = temp_dir / "config.toml"
+        config_file.write_text(valid_config_toml)
+        cache_dir = temp_dir / "cache"
+        cache_dir.mkdir()
+        data_dir = temp_dir / "data"
+        data_dir.mkdir()
+
+        # Pre-existing outputs that should remain untouched
+        old_json = '{"updated":"old","games":[]}'
+        old_tsv = "team\tgame\tlocation\tstart\tend\turl\nOLD\n"
+        old_ics = b"BEGIN:VCALENDAR\r\nOLD\r\nEND:VCALENDAR\r\n"
+        (data_dir / "games.json").write_text(old_json, encoding="utf-8")
+        (data_dir / "games.tsv").write_text(old_tsv, encoding="utf-8")
+        (data_dir / "calendar.ics").write_bytes(old_ics)
+
+        mock_response = MagicMock()
+        mock_response.ok = True
+        mock_response.content = sample_ics_content
+
+        with (
+            patch("central_f10.data_importer.CACHE_DIR", cache_dir),
+            patch("central_f10.data_importer.GAMES_JSON", data_dir / "games.json"),
+            patch("central_f10.data_importer.GAMES_TSV", data_dir / "games.tsv"),
+            patch(
+                "central_f10.data_importer.CALENDAR_ICS",
+                data_dir / "calendar.ics",
+            ),
+            patch(
+                "central_f10.data_importer.requests.get",
+                return_value=mock_response,
+            ),
+            patch("central_f10.data_importer.ensure_dirs"),
+            patch(
+                "central_f10.data_importer.generate_ics_payload",
+                side_effect=RuntimeError("boom"),
+            ),
+            pytest.raises(RuntimeError, match="boom"),
+        ):
+            generate_all(config_path=config_file)
+
+        assert (data_dir / "games.json").read_text("utf-8") == old_json
+        assert (data_dir / "games.tsv").read_text("utf-8") == old_tsv
+        assert (data_dir / "calendar.ics").read_bytes() == old_ics
+        # No leftover temp files
+        assert not (data_dir / "games.json.tmp").exists()
+
+    def test_dry_run_writes_nothing(
+        self,
+        temp_dir: Path,
+        sample_ics_content: bytes,
+        valid_config_toml: str,
+    ) -> None:
+        """dry_run=True parses and returns a count but writes no outputs."""
+        config_file = temp_dir / "config.toml"
+        config_file.write_text(valid_config_toml)
+        cache_dir = temp_dir / "cache"
+        cache_dir.mkdir()
+        data_dir = temp_dir / "data"
+        data_dir.mkdir()
+
+        mock_response = MagicMock()
+        mock_response.ok = True
+        mock_response.content = sample_ics_content
+
+        with (
+            patch("central_f10.data_importer.CACHE_DIR", cache_dir),
+            patch("central_f10.data_importer.GAMES_JSON", data_dir / "games.json"),
+            patch("central_f10.data_importer.GAMES_TSV", data_dir / "games.tsv"),
+            patch(
+                "central_f10.data_importer.CALENDAR_ICS",
+                data_dir / "calendar.ics",
+            ),
+            patch(
+                "central_f10.data_importer.requests.get",
+                return_value=mock_response,
+            ),
+            patch("central_f10.data_importer.ensure_dirs"),
+        ):
+            count = generate_all(config_path=config_file, dry_run=True)
+
+        assert count > 0
+        assert not (data_dir / "games.json").exists()
+        assert not (data_dir / "games.tsv").exists()
+        assert not (data_dir / "calendar.ics").exists()
+
+    def test_unchanged_schedule_skips_writes(
+        self,
+        temp_dir: Path,
+        sample_ics_content: bytes,
+        valid_config_toml: str,
+    ) -> None:
+        """When the games payload is unchanged, outputs are not rewritten."""
+        config_file = temp_dir / "config.toml"
+        config_file.write_text(valid_config_toml)
+        cache_dir = temp_dir / "cache"
+        cache_dir.mkdir()
+        data_dir = temp_dir / "data"
+        data_dir.mkdir()
+
+        mock_response = MagicMock()
+        mock_response.ok = True
+        mock_response.content = sample_ics_content
+
+        # First run: write outputs
+        with (
+            patch("central_f10.data_importer.CACHE_DIR", cache_dir),
+            patch("central_f10.data_importer.GAMES_JSON", data_dir / "games.json"),
+            patch("central_f10.data_importer.GAMES_TSV", data_dir / "games.tsv"),
+            patch(
+                "central_f10.data_importer.CALENDAR_ICS",
+                data_dir / "calendar.ics",
+            ),
+            patch(
+                "central_f10.data_importer.requests.get",
+                return_value=mock_response,
+            ),
+            patch("central_f10.data_importer.ensure_dirs"),
+        ):
+            generate_all(config_path=config_file)
+
+        json_mtime = (data_dir / "games.json").stat().st_mtime
+
+        # Second run: same data → no rewrite
+        with (
+            patch("central_f10.data_importer.CACHE_DIR", cache_dir),
+            patch("central_f10.data_importer.GAMES_JSON", data_dir / "games.json"),
+            patch("central_f10.data_importer.GAMES_TSV", data_dir / "games.tsv"),
+            patch(
+                "central_f10.data_importer.CALENDAR_ICS",
+                data_dir / "calendar.ics",
+            ),
+            patch(
+                "central_f10.data_importer.requests.get",
+                return_value=mock_response,
+            ),
+            patch("central_f10.data_importer.ensure_dirs"),
+        ):
+            generate_all(config_path=config_file)
+
+        assert (data_dir / "games.json").stat().st_mtime == json_mtime
