@@ -42,6 +42,36 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
+
+  /* Typography */
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Layout */
+  --container-max: 1440px;
+  --btn-height: 48px;
+  --btn-pad-x: 20px;
+
+  /* Semantic tokens — swapped once for dark mode (see body.dark-mode block).
+     Each light value matches the literal it replaces; each dark value matches
+     the previous per-component dark override, so the swap is value-preserving. */
+  --bg-page: var(--neutral-50);
+  --header-bg: var(--vinrod);
+  --surface-1: #FFFFFF;
+  --surface-2: var(--neutral-100);
+  --surface-active: #FFFFFF;
+  --surface-hover: var(--neutral-200);
+  --footer-bg: var(--neutral-900);
+  --text-1: var(--neutral-900);
+  --text-2: var(--neutral-700);
+  --text-3: var(--neutral-500);
+  --text-muted: var(--neutral-400);
+  --text-placeholder: var(--neutral-400);
+  --border: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --border-active: var(--neutral-200);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -56,9 +86,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--neutral-50);
-  color: var(--neutral-900);
+  font-family: var(--font-body);
+  background-color: var(--bg-page);
+  color: var(--text-1);
   line-height: 1.5;
   min-height: 100vh;
   overflow-x: hidden;
@@ -67,12 +97,12 @@ body {
 
 /* Header */
 .header {
-  background-color: var(--vinrod);
+  background-color: var(--header-bg);
   padding: 0;
 }
 
 .header-container {
-  max-width: 1440px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--spacing-3xl);
   height: 80px;
@@ -95,7 +125,7 @@ body {
 }
 
 .header-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 24px;
   font-weight: 700;
   color: #FFFFFF;
@@ -106,8 +136,8 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 48px;
-  padding: 0 20px;
+  height: var(--btn-height);
+  padding: 0 var(--btn-pad-x);
   background-color: var(--gul);
   color: var(--vinrod-dark);
   text-decoration: none;
@@ -143,8 +173,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--btn-height);
+  height: var(--btn-height);
   padding: 0;
   background-color: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.4);
@@ -188,26 +218,17 @@ body {
   display: block;
 }
 
-/* Also support body class for dark mode */
-body.dark-mode .btn-theme-toggle .icon-sun {
-  display: none;
-}
-
-body.dark-mode .btn-theme-toggle .icon-moon {
-  display: block;
-}
-
 /* Filter Section */
 .filter-section {
-  background-color: #FFFFFF;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  background-color: var(--surface-1);
+  box-shadow: var(--shadow-sm);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
 .filter-container {
-  max-width: 1440px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-3xl);
   display: flex;
@@ -228,9 +249,9 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   align-items: center;
   gap: 12px;
   width: 320px;
-  height: 48px;
+  height: var(--btn-height);
   padding: 0 16px;
-  background-color: var(--neutral-100);
+  background-color: var(--surface-2);
   border-radius: var(--radius-full);
 }
 
@@ -246,12 +267,12 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   border: none;
   background: transparent;
   font-size: 14px;
-  color: var(--neutral-900);
+  color: var(--text-1);
   outline: none;
 }
 
 .search-input::placeholder {
-  color: var(--neutral-400);
+  color: var(--text-placeholder);
 }
 
 .filter-chips {
@@ -263,12 +284,12 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .chip {
-  height: 48px;
-  padding: 0 20px;
+  height: var(--btn-height);
+  padding: 0 var(--btn-pad-x);
   border-radius: 24px;
-  border: 1px solid var(--neutral-200);
-  background-color: var(--neutral-100);
-  color: var(--neutral-700);
+  border: 1px solid var(--border);
+  background-color: var(--surface-2);
+  color: var(--text-2);
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
@@ -278,7 +299,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .chip:hover {
-  background-color: var(--neutral-200);
+  background-color: var(--surface-hover);
 }
 
 .chip-active {
@@ -299,20 +320,20 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 .date-segmented {
   display: flex;
   align-items: center;
-  height: 48px;
+  height: var(--btn-height);
   padding: 4px;
-  background-color: var(--neutral-100);
+  background-color: var(--surface-2);
   border-radius: 24px;
   gap: 4px;
 }
 
 .segment {
   height: 40px;
-  padding: 0 20px;
+  padding: 0 var(--btn-pad-x);
   border-radius: 20px;
   border: none;
   background: transparent;
-  color: var(--neutral-500);
+  color: var(--text-3);
   font-size: 14px;
   font-weight: 500;
   font-family: inherit;
@@ -325,9 +346,9 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .segment-active {
-  background-color: #FFFFFF;
-  color: var(--neutral-900);
-  border: 1px solid var(--neutral-200);
+  background-color: var(--surface-active);
+  color: var(--text-1);
+  border: 1px solid var(--border-active);
   font-weight: 600;
 }
 
@@ -337,7 +358,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .content-container {
-  max-width: 1440px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--spacing-3xl);
 }
@@ -350,21 +371,21 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .section-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 32px;
   font-weight: 800;
-  color: var(--neutral-900);
+  color: var(--text-1);
 }
 
 .match-count {
   font-size: 16px;
   font-weight: 500;
-  color: var(--neutral-500);
+  color: var(--text-3);
 }
 
 .updated-text {
   font-size: 13px;
-  color: var(--neutral-400);
+  color: var(--text-muted);
 }
 
 /* Games Container */
@@ -390,14 +411,14 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 .date-line {
   flex: 1;
   height: 1px;
-  background-color: var(--neutral-200);
+  background-color: var(--border);
 }
 
 .date-text {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 14px;
   font-weight: 600;
-  color: var(--neutral-500);
+  color: var(--text-3);
   letter-spacing: 1px;
   text-transform: uppercase;
   white-space: nowrap;
@@ -405,7 +426,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 
 /* "Idag" pill marks today's date group */
 .date-today-badge {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -420,15 +441,15 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 /* Game Card */
 .game-card {
   display: flex;
-  background-color: #FFFFFF;
+  background-color: var(--surface-1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .game-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
   transform: translateY(-1px);
 }
 
@@ -461,10 +482,10 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .game-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
-  color: var(--neutral-900);
+  color: var(--text-1);
   margin: 0;
 }
 
@@ -503,7 +524,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 
 .meta-text {
   font-size: 14px;
-  color: var(--neutral-500);
+  color: var(--text-3);
 }
 
 .game-card-right {
@@ -574,12 +595,12 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   display: flex;
   align-items: center;
   gap: 8px;
-  height: 48px;
-  padding: 0 20px;
-  background-color: var(--neutral-100);
-  border: 1px solid var(--neutral-200);
+  height: var(--btn-height);
+  padding: 0 var(--btn-pad-x);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  color: var(--neutral-700);
+  color: var(--text-2);
   font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -587,7 +608,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .btn-details:hover {
-  background-color: var(--neutral-200);
+  background-color: var(--surface-hover);
 }
 
 .btn-details .btn-icon {
@@ -599,16 +620,16 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 .downloads-section {
   margin-top: var(--spacing-2xl);
   padding: var(--spacing-xl);
-  background-color: #FFFFFF;
+  background-color: var(--surface-1);
   border-radius: var(--radius-lg);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--shadow-sm);
 }
 
 .downloads-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 600;
-  color: var(--neutral-700);
+  color: var(--text-2);
   margin-bottom: var(--spacing-md);
 }
 
@@ -622,13 +643,13 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 48px;
-  padding: 0 20px;
+  height: var(--btn-height);
+  padding: 0 var(--btn-pad-x);
   flex: 1;
-  background-color: var(--neutral-100);
-  border: 1px solid var(--neutral-200);
+  background-color: var(--surface-2);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  color: var(--neutral-700);
+  color: var(--text-2);
   font-family: inherit;
   font-size: 14px;
   font-weight: 500;
@@ -638,8 +659,8 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .download-link:hover {
-  background-color: var(--neutral-200);
-  border-color: var(--neutral-300);
+  background-color: var(--surface-hover);
+  border-color: var(--border-strong);
 }
 
 .download-icon {
@@ -670,21 +691,21 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 }
 
 .empty-title {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-display);
   font-size: 20px;
   font-weight: 600;
-  color: var(--neutral-900);
+  color: var(--text-1);
   margin-bottom: var(--spacing-sm);
 }
 
 .empty-description {
   font-size: 14px;
-  color: var(--neutral-500);
+  color: var(--text-3);
   margin-bottom: var(--spacing-lg);
 }
 
 .btn-clear {
-  height: 48px;
+  height: var(--btn-height);
   padding: 0 28px;
   background-color: var(--vinrod);
   color: #FFFFFF;
@@ -703,12 +724,12 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 
 /* Footer */
 .footer {
-  background-color: var(--neutral-900);
+  background-color: var(--footer-bg);
   margin-top: var(--spacing-2xl);
 }
 
 .footer-container {
-  max-width: 1440px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding: var(--spacing-3xl);
 }
@@ -716,13 +737,7 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 .footer-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-}
-
-.footer-left {
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-lg);
+  justify-content: flex-end;
 }
 
 .footer-social {
@@ -735,8 +750,8 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: var(--btn-height);
+  height: var(--btn-height);
   background-color: var(--neutral-700);
   color: #FFFFFF;
   text-decoration: none;
@@ -763,15 +778,9 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   margin: var(--spacing-xl) 0;
 }
 
-.footer-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
 .footer-copy {
   font-size: 13px;
-  color: var(--neutral-500);
+  color: var(--text-3);
 }
 
 /* Responsive - Tablet */
@@ -873,7 +882,6 @@ body.dark-mode .btn-theme-toggle .icon-moon {
 
   .segment {
     flex: 1;
-    height: 40px;
     font-size: 13px;
   }
 
@@ -975,20 +983,12 @@ body.dark-mode .btn-theme-toggle .icon-moon {
     gap: var(--spacing-md);
   }
 
-  .btn-streams {
-    height: 44px;
-    padding: 0 12px;
-    font-size: 13px;
-  }
-
   .btn-social {
     width: 44px;
     height: 44px;
   }
 
   .footer-bottom {
-    flex-direction: column;
-    gap: 8px;
     text-align: center;
   }
 }
@@ -1114,104 +1114,39 @@ body.dark-mode .btn-theme-toggle .icon-moon {
   .game-card-right .btn-details { order: 2; }
 }
 
-/* Dark Mode - Explicit via body class */
+/* Dark Mode - Explicit via body class.
+   Swaps the semantic tokens; components pick up the new values automatically.
+   Only cases that don't fit a shared token (brand colors, live indicator)
+   are spelled out explicitly below. */
 body.dark-mode {
-  background-color: var(--bg-dark);
-  color: var(--text-dark-primary);
+  --bg-page: var(--bg-dark);
+  --header-bg: var(--vinrod-dark);
+  --surface-1: var(--bg-dark-elevated);
+  --surface-2: var(--neutral-800);
+  --surface-active: var(--neutral-700);
+  --surface-hover: var(--neutral-700);
+  --footer-bg: var(--bg-dark);
+  --text-1: var(--text-dark-primary);
+  --text-2: var(--text-dark-secondary);
+  --text-3: var(--text-dark-secondary);
+  --text-muted: var(--text-dark-secondary);
+  --text-placeholder: var(--neutral-500);
+  --border: var(--neutral-700);
+  --border-strong: var(--neutral-600);
+  --border-active: var(--neutral-600);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  background-color: var(--bg-page);
+  color: var(--text-1);
 }
 
-body.dark-mode .header {
-  background-color: var(--vinrod-dark);
-}
-
-body.dark-mode .filter-section {
-  background-color: var(--bg-dark-elevated);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .search-field {
-  background-color: var(--neutral-800);
-}
-
-body.dark-mode .search-input {
-  color: var(--text-dark-primary);
-}
-
-body.dark-mode .search-input::placeholder {
-  color: var(--neutral-500);
-}
-
-body.dark-mode .chip {
-  background-color: var(--neutral-800);
-  border-color: var(--neutral-700);
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .chip:hover {
-  background-color: var(--neutral-700);
-}
-
-body.dark-mode .chip-active {
-  background-color: var(--vinrod);
-  border-color: var(--vinrod);
-  color: #FFFFFF;
-}
-
-body.dark-mode .chip-active:hover {
-  background-color: var(--vinrod-light);
-}
-
-body.dark-mode .date-segmented {
-  background-color: var(--neutral-800);
-}
-
-body.dark-mode .segment {
-  color: var(--text-dark-secondary);
-}
-
+/* segment:hover brightens to primary text in dark mode (no shared token) */
 body.dark-mode .segment:hover {
   color: var(--text-dark-primary);
 }
 
-body.dark-mode .segment-active {
-  background-color: var(--neutral-700);
-  border-color: var(--neutral-600);
-  color: var(--text-dark-primary);
-}
-
-body.dark-mode .section-title {
-  color: var(--text-dark-primary);
-}
-
-body.dark-mode .game-card {
-  background-color: var(--bg-dark-elevated);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .game-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .game-title {
-  color: var(--text-dark-primary);
-}
-
-body.dark-mode .meta-text {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .date-text {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .updated-text {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .date-line {
-  background-color: var(--neutral-700);
-}
-
+/* White team's ghost badge and strip outline use brand colors, not neutrals */
 body.dark-mode .team-badge[data-contrast="white"] {
   color: var(--text-dark-primary);
   border-color: var(--text-dark-secondary);
@@ -1221,6 +1156,7 @@ body.dark-mode .game-card[data-contrast="white"] .team-strip {
   outline-color: var(--neutral-700);
 }
 
+/* "Pågår" live indicator uses a soft mauve in dark mode for contrast */
 body.dark-mode .live-badge {
   background: rgba(255, 255, 255, 0.08);
   color: #f0b8d0;
@@ -1228,56 +1164,6 @@ body.dark-mode .live-badge {
 
 body.dark-mode .live-dot {
   background: #f0b8d0;
-}
-
-body.dark-mode .btn-details {
-  background-color: var(--neutral-800);
-  border-color: var(--neutral-700);
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .btn-details:hover {
-  background-color: var(--neutral-700);
-}
-
-body.dark-mode .downloads-section {
-  background-color: var(--bg-dark-elevated);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode .downloads-title {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .download-link {
-  background-color: var(--neutral-800);
-  border-color: var(--neutral-700);
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .download-link:hover {
-  background-color: var(--neutral-700);
-  border-color: var(--neutral-600);
-}
-
-body.dark-mode .empty-title {
-  color: var(--text-dark-primary);
-}
-
-body.dark-mode .empty-description {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .footer {
-  background-color: var(--bg-dark);
-}
-
-body.dark-mode .footer-copy {
-  color: var(--text-dark-secondary);
-}
-
-body.dark-mode .match-count {
-  color: var(--text-dark-secondary);
 }
 
 /* Focus visible styles for keyboard navigation */
