@@ -344,13 +344,8 @@ def generate_all(
     files = load_ics_files(config_file=config_path)
     logger.info("Loading %d ICS sources from config", len(files))
 
-    # Build filename -> metadata map
-    team_meta: dict[str, IcsFileEntry] = {}
-    config_filenames: set[str] = set()
-    for entry in files:
-        filename = entry.filename
-        config_filenames.add(filename)
-        team_meta[filename] = entry
+    # Build set of configured filenames (used to clean stale cache files)
+    config_filenames: set[str] = {entry.filename for entry in files}
 
     # Clean up stale cache files (not in current config)
     for cache_file in CACHE_DIR.glob("*.ics"):
@@ -372,18 +367,17 @@ def generate_all(
             "Check URLs in config.toml and network connectivity."
         )
 
-    # Find and parse all .ics files
-    ics_files = list(CACHE_DIR.glob("*.ics"))
-    logger.info("Found %d ICS files to parse", len(ics_files))
-
+    # Parse only successfully downloaded files. The download result is the
+    # source of truth — a failed download's leftover cache file must never be
+    # served as fresh data (e.g. 403 on an expired Profixio signature).
     all_events: list[GameEvent] = []
-    for ics_file in ics_files:
-        meta = team_meta.get(ics_file.name)
-        if not meta:
-            logger.warning("No config metadata for %s, skipping", ics_file.name)
+    for entry in files:
+        if not results.get(entry.filename):
+            logger.warning("Skipping %s (download failed)", entry.filename)
             continue
 
-        events = read_ical(ics_file, entry=meta)
+        ics_file = CACHE_DIR / entry.filename
+        events = read_ical(ics_file, entry=entry)
         all_events.extend(events)
         logger.info("Parsed %d events from %s", len(events), ics_file.name)
 

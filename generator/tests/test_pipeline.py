@@ -896,3 +896,57 @@ class TestGenerateAll:
             pytest.raises(RuntimeError, match="No events found"),
         ):
             generate_all(config_path=config_file)
+
+    def test_failed_download_does_not_serve_stale_cache(
+        self,
+        temp_dir: Path,
+        sample_ics_content: bytes,
+        valid_config_toml: str,
+    ) -> None:
+        """A failed download must not fall back to its previous cache file.
+
+        Reproduces the 403-on-expired-signature scenario: team2's download
+        fails, but an older team2.ics is still in the cache dir. The pipeline
+        must parse only successful downloads — never the stale file.
+        """
+        config_file = temp_dir / "config.toml"
+        config_file.write_text(valid_config_toml)
+        cache_dir = temp_dir / "cache"
+        cache_dir.mkdir()
+        data_dir = temp_dir / "data"
+        data_dir.mkdir()
+
+        # Leftover cache from a prior successful run of team2 — distinct content
+        stale_team2 = sample_ics_content.replace(
+            b"Central F10 Vinrod vs Opponent", b"STALE 2024 GAME"
+        ).replace(b"pro-mce-test123", b"stale-uid")
+        (cache_dir / "team2.ics").write_bytes(stale_team2)
+
+        def fake_get(url: str, *args: object, **kwargs: object) -> MagicMock:
+            resp = MagicMock()
+            if url.endswith("calendar1.ics"):
+                resp.ok = True
+                resp.content = sample_ics_content
+            else:
+                resp.ok = False
+                resp.status_code = 403
+            return resp
+
+        with (
+            patch("central_f10.data_importer.CACHE_DIR", cache_dir),
+            patch("central_f10.data_importer.GAMES_JSON", data_dir / "games.json"),
+            patch("central_f10.data_importer.GAMES_TSV", data_dir / "games.tsv"),
+            patch(
+                "central_f10.data_importer.CALENDAR_ICS",
+                data_dir / "calendar.ics",
+            ),
+            patch("central_f10.data_importer.requests.get", side_effect=fake_get),
+            patch("central_f10.data_importer.time.sleep"),
+            patch("central_f10.data_importer.ensure_dirs"),
+        ):
+            generate_all(config_path=config_file)
+
+        games = json.loads((data_dir / "games.json").read_text("utf-8"))["games"]
+        summaries = {g["game"] for g in games}
+        assert "STALE 2024 GAME" not in summaries, "stale cache was served"
+        assert "Central F10 Vinrod vs Opponent" in summaries, "fresh data missing"

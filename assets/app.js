@@ -431,7 +431,9 @@
   function groupByDate(games) {
     const grouped = {};
     games.forEach(game => {
-      const date = game.start ? new Date(game.start).toDateString() : 'unknown';
+      // Venue date (game.start is ISO with Stockholm offset) — grouping by
+      // browser-local date would mislabel games for non-Swedish viewers.
+      const date = game.start ? game.start.slice(0, 10) : 'unknown';
       if (!grouped[date]) grouped[date] = [];
       grouped[date].push(game);
     });
@@ -444,8 +446,8 @@
   function renderDateGroup(dateStr, games) {
     const dateLabel = formatDate(dateStr);
     const gamesHtml = games.map(renderGameCard).join('');
-    // Mark today's group (compare venue date to today in Stockholm)
-    const isToday = games[0]?.start && games[0].start.slice(0, 10) === todayStockholmDate();
+    // Mark today's group (group key is the venue date; compare to today in Stockholm)
+    const isToday = dateStr !== 'unknown' && dateStr === todayStockholmDate();
     const todayBadge = isToday ? '<span class="date-today-badge">Idag</span>' : '';
 
     return `
@@ -465,7 +467,9 @@
   function renderGameCard(game) {
     const color = isValidCssColor(game.teamColor) ? game.teamColor : '#6B7280';
     const timeStr = formatTime(game.start, game.end);
-    const contrastAttr = color === '#ffffff' ? ' data-contrast="white"' : color === '#fec225' ? ' data-contrast="light"' : '';
+    // Normalize for case-insensitive contrast checks (isValidCssColor allows uppercase hex)
+    const c = color.toLowerCase();
+    const contrastAttr = c === '#ffffff' ? ' data-contrast="white"' : c === '#fec225' ? ' data-contrast="light"' : '';
     // Absolute timestamps for the live-state interval (timezone-correct vs Date.now())
     const startMs = game.start ? new Date(game.start).getTime() : '';
     const endMs = game.end ? new Date(game.end).getTime() : '';
@@ -509,6 +513,7 @@
     if (dateStr === 'unknown') return 'Okänt datum';
     const date = new Date(dateStr);
     return date.toLocaleDateString('sv-SE', {
+      timeZone: 'Europe/Stockholm',
       weekday: 'short',
       day: 'numeric',
       month: 'short',
@@ -675,7 +680,7 @@
       lines.push(`LOCATION:${location}`);
       lines.push(`DTSTART;TZID=Europe/Stockholm:${dtstart}`);
       if (dtend) lines.push(`DTEND;TZID=Europe/Stockholm:${dtend}`);
-      lines.push(`URL:${game.url}`);
+      if (game.url) lines.push(`URL:${escapeICS(game.url)}`);
       lines.push('END:VEVENT');
     }
 
