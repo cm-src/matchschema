@@ -1,19 +1,7 @@
 {
-  "updated": "2026-07-06T23:57:23.782860+00:00",
+  "updated": "2026-07-13T23:41:47.633450+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "pro-mce-32566993",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "Central gul - AIK Gul",
-      "location": "Tellusborgshallarna 2",
-      "start": "2026-03-14T13:45:00+01:00",
-      "end": "2026-03-14T15:30:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32566993"
-    },
     {
       "id": "pro-mce-32567009",
       "team": "f10gul",
