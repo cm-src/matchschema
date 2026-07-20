@@ -1,19 +1,7 @@
 {
-  "updated": "2026-07-13T23:41:47.633450+00:00",
+  "updated": "2026-07-20T23:45:16.831018+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
-    {
-      "id": "pro-mce-32567009",
-      "team": "f10gul",
-      "teamDisplay": "FU16 Gul",
-      "teamFull": "F10/F11 Gul",
-      "teamColor": "#fec225",
-      "game": "Hammarby Vit - Central gul",
-      "location": "Hagsätrahallen",
-      "start": "2026-03-21T14:00:00+01:00",
-      "end": "2026-03-21T15:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid17559/match/32567009"
-    },
     {
       "id": "pro-mce-32580935",
       "team": "f10gul",
