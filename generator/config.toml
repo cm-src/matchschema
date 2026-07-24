@@ -34,7 +34,7 @@
 #               Used for team strips, badges, and filter chips, e.g. "#550f38"
 
 [[ics.files]]
-# Team: Central F10/F11 Vinröd
+# Team: Central F10 Vinröd
 url = "https://www.profixio.com/app/api/calendars/teams/1585516/matches.ics?signature=5fa587aaa11e9be20892210e67a301f65cbefa4e3a109497500c45480758f57e"
 filename = "f10vinrod.ics"
 team_name = "F10 Vinröd"
@@ -42,11 +42,20 @@ team_slug = "f10vinrod"
 team_display = "DU17 VR"
 team_color = "#550f38"
 
-[[ics.files]]
-# Team: Central F10/F11 Gul
-url = "https://www.profixio.com/app/api/calendars/teams/1585517/matches.ics?signature=c8569aab87c19708c561576811ad2dc78e142ed30a2ddeec611412ddc3607728"
-filename = "f10vit.ics"
-team_name = "F10 Vit"
-team_slug = "f10gul"
-team_display = "DU17 Vit"
-team_color = "#ffffff"
+# [[ics.files]]
+# Team: Central F10 Vit
+# url = "https://www.profixio.com/app/api/calendars/teams/1585517/matches.ics?signature=c8569aab87c19708c561576811ad2dc78e142ed30a2ddeec611412ddc3607728"
+# filename = "f10vit.ics"
+# team_name = "F10 Vit"
+# team_slug = "f10gul"
+# team_display = "DU17 Vit"
+# team_color = "#ffffff"
+
+# [[ics.files]]
+# Team: Central DU19 Vinröd
+# url = "https://www.profixio.com/app/api/calendars/teams/1585513/matches.ics?signature=5c1e4b17ca919206a74016b23282e7ad072c92c231bf259490e894e2cb32ff4b"
+# filename = "du19vinrod.ics"
+# team_name = "DU19 Vinröd"
+# team_slug = "du19vinrod"
+# team_display = "DU19 VR"
+# team_color = "#550f38"
