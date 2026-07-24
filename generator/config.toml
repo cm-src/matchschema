@@ -35,36 +35,18 @@
 
 [[ics.files]]
 # Team: Central F10/F11 Vinröd
-url = "https://www.profixio.com/app/api/calendars/teams/1402985/matches.ics?signature=0e7dd13ec4a4b551e3d0adc72a6a6353b41388baa59379faeeb1672360cf104d"
+url = "https://www.profixio.com/app/api/calendars/teams/1585516/matches.ics?signature=5fa587aaa11e9be20892210e67a301f65cbefa4e3a109497500c45480758f57e"
 filename = "f10vinrod.ics"
-team_name = "F10/F11 Vinröd"
+team_name = "F10 Vinröd"
 team_slug = "f10vinrod"
-team_display = "FU16 VR"
-team_color = "#550f38"
-
-[[ics.files]]
-# Team: Central F10/F11 Vinröd
-url = "https://basketballfestival.se/service/GetTeamCalendarService?teamId=72857252"
-filename = "f10vinrod_goteborg26.ics"
-team_name = "F10/F11 Vinröd"
-team_slug = "f10vinrod"
-team_display = "FU16 VR"
+team_display = "DU17 VR"
 team_color = "#550f38"
 
 [[ics.files]]
 # Team: Central F10/F11 Gul
-url = "https://www.profixio.com/app/api/calendars/teams/1410624/matches.ics?signature=f55d58a863834031adfccd206225fde4b7576d3ecc7cfb7801230aad2dc0d701"
-filename = "f10gul.ics"
-team_name = "F10/F11 Gul"
+url = "https://www.profixio.com/app/api/calendars/teams/1585517/matches.ics?signature=c8569aab87c19708c561576811ad2dc78e142ed30a2ddeec611412ddc3607728"
+filename = "f10vit.ics"
+team_name = "F10 Vit"
 team_slug = "f10gul"
-team_display = "FU16 Gul"
-team_color = "#fec225"
-
-[[ics.files]]
-# Team: Central F10/F11 Vit
-url = "https://basketballfestival.se/service/GetTeamCalendarService?teamId=72923534"
-filename = "f10vit_goteborg26.ics"
-team_name = "F10/F11 Vit"
-team_slug = "f10vit"
-team_display = "FU16 Vit"
+team_display = "DU17 Vit"
 team_color = "#ffffff"
