@@ -7,153 +7,274 @@ DESCRIPTION:Basketball schedule for Central F10 teams
 NAME:Central F10 Matchschema
 X-PUBLISH-URL:https://basket.mtln.se/
 BEGIN:VEVENT
-SUMMARY:[FU16 Gul] Central gul - Vallentuna
-DTSTART:20260328T093000Z
-DTEND:20260328T111500Z
-DTSTAMP:20260720T234516Z
-UID:central-pro-mce-32580935
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - KFUM Blackebergs IK Röd
+DTSTART:20260912T114500Z
+DTEND:20260912T131500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730956
 LOCATION:Gärdeshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32580935
+URL:https://www.profixio.com/app/leagueid27812/match/32730956
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] Central vinröd - Sigtuna Basket FU16
-DTSTART:20260328T164500Z
-DTEND:20260328T183000Z
-DTSTAMP:20260720T234516Z
-UID:central-pro-mce-32583717
+SUMMARY:[DU17 Vit] Hässelby HEAT - KFUM Central Basket Vit
+DTSTART:20260912T150000Z
+DTEND:20260912T163000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731361
+LOCATION:Vinstahallen 2 Bana 1
+URL:https://www.profixio.com/app/leagueid27812/match/32731361
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] Fryshuset Svart - KFUM Central Basket Vinröd
+DTSTART:20260918T180000Z
+DTEND:20260918T193000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730958
+LOCATION:Hagsätrahallen
+URL:https://www.profixio.com/app/leagueid27812/match/32730958
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] SBBK DJU17 Vit - KFUM Central Basket Vit
+DTSTART:20260919T101500Z
+DTEND:20260919T114500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731365
+LOCATION:Rosenborgsskolan
+URL:https://www.profixio.com/app/leagueid27812/match/32731365
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Alvik Vit
+DTSTART:20260927T110000Z
+DTEND:20260927T123000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731370
+LOCATION:Enskedehallen L
+URL:https://www.profixio.com/app/leagueid27812/match/32731370
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Sollentuna Basket
+DTSTART:20261010T113000Z
+DTEND:20261010T130000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730978
 LOCATION:Gärdeshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32583717
+URL:https://www.profixio.com/app/leagueid27812/match/32730978
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Gul] Hammarby Vit - Central gul
-DTSTART:20260419T130000Z
-DTEND:20260419T144500Z
-DTSTAMP:20260720T234516Z
-UID:central-pro-mce-32580950
-LOCATION:Farstahallen 4 (Farsta IP)
-URL:https://www.profixio.com/app/leagueid17559/match/32580950
+SUMMARY:[DU17 Vit] KFUM Blackebergs IK Svart - KFUM Central Basket Vit
+DTSTART:20261011T114500Z
+DTEND:20261011T131500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731379
+LOCATION:Vinstahallen 1
+URL:https://www.profixio.com/app/leagueid27812/match/32731379
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] Central vinröd - Duvbo Röd
-DTSTART:20260420T171500Z
-DTEND:20260420T190000Z
-DTSTAMP:20260720T234516Z
-UID:central-pro-mce-32578171
-LOCATION:Hjorthagshallen
-URL:https://www.profixio.com/app/leagueid17559/match/32578171
+SUMMARY:[DU17 VR] Tyresö Basket - KFUM Central Basket Vinröd
+DTSTART:20261011T160000Z
+DTEND:20261011T173000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730984
+LOCATION:Forellhallen
+URL:https://www.profixio.com/app/leagueid27812/match/32730984
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Gul] Central gul - Sollentuna Basket
-DTSTART:20260509T150000Z
-DTEND:20260509T164500Z
-DTSTAMP:20260720T234516Z
-UID:central-pro-mce-32580954
-LOCATION:Vintervikens sph
-URL:https://www.profixio.com/app/leagueid17559/match/32580954
+SUMMARY:[DU17 VR] IK Fyris - KFUM Central Basket Vinröd
+DTSTART:20261017T134500Z
+DTEND:20261017T151500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730987
+LOCATION:Fyrisskolan
+URL:https://www.profixio.com/app/leagueid27812/match/32730987
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against TNT Towers BK
-DTSTART:20260514T070000Z
-DTEND:20260514T074500Z
-DTSTAMP:20260720T234516Z
-UID:central-77691369-72857252@cupmanager.net
-LOCATION:Mölnlycke Idrottshall B - Idrottsgatan 2\, 435 35 Mölnlycke\, 4
- 35 35\, Mölnlycke
-URL:https://basketballfestival.se/2026/result/match/77691369
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Norrort Basket Svart
+DTSTART:20261018T114500Z
+DTEND:20261018T131500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731382
+LOCATION:Tellusborgshallarna 2
+URL:https://www.profixio.com/app/leagueid27812/match/32731382
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against Haga Haninge
-DTSTART:20260514T100000Z
-DTEND:20260514T104500Z
-DTSTAMP:20260720T234516Z
-UID:central-77691373-72857252@cupmanager.net
-LOCATION:Mölnlycke Idrottshall B - Idrottsgatan 2\, 435 35 Mölnlycke\, 4
- 35 35\, Mölnlycke
-URL:https://basketballfestival.se/2026/result/match/77691373
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Fryshuset F11 Svart
+DTSTART:20261023T163000Z
+DTEND:20261023T180000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730992
+LOCATION:Tellusborgshallarna 2
+URL:https://www.profixio.com/app/leagueid27812/match/32730992
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Vit] GU16: match against Köping Stars
-DTSTART:20260514T121500Z
-DTEND:20260514T130000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691237-72923534@cupmanager.net
-LOCATION:Lundbystrand 2 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691237
+SUMMARY:[DU17 Vit] Duvbo IK - KFUM Central Basket Vit
+DTSTART:20261107T143000Z
+DTEND:20261107T160000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731384
+LOCATION:Löthallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731384
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Vit] GU16: match against Högsbo Basket
-DTSTART:20260514T164500Z
-DTEND:20260514T173000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691239-72923534@cupmanager.net
-LOCATION:Lundbystrand 2 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691239
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Viby Röd
+DTSTART:20261108T124500Z
+DTEND:20261108T141500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32730998
+LOCATION:Enskedehallen L
+URL:https://www.profixio.com/app/leagueid27812/match/32730998
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Vit] GU16: match against KFUM Tigers Helsingborg Blaze
-DTSTART:20260515T121500Z
-DTEND:20260515T130000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691242-72923534@cupmanager.net
-LOCATION:Lundbystrand 2 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691242
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Fryshuset Blå
+DTSTART:20261121T124500Z
+DTEND:20261121T141500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731389
+LOCATION:Thorildshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731389
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against Tyresö Basket
-DTSTART:20260515T134500Z
-DTEND:20260515T143000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691378-72857252@cupmanager.net
-LOCATION:Mölnlycke Idrottshall B - Idrottsgatan 2\, 435 35 Mölnlycke\, 4
- 35 35\, Mölnlycke
-URL:https://basketballfestival.se/2026/result/match/77691378
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Uppsala Basket
+DTSTART:20261129T123000Z
+DTEND:20261129T140000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731008
+LOCATION:Gärdeshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731008
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against Eastside Basketklubb Eagles
-DTSTART:20260515T190000Z
-DTEND:20260515T194500Z
-DTSTAMP:20260720T234516Z
-UID:central-77691382-72857252@cupmanager.net
-LOCATION:Mölnlycke Idrottshall B - Idrottsgatan 2\, 435 35 Mölnlycke\, 4
- 35 35\, Mölnlycke
-URL:https://basketballfestival.se/2026/result/match/77691382
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - SBBK DJU17 Vit
+DTSTART:20261205T161500Z
+DTEND:20261205T174500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731396
+LOCATION:Enskedehallen L
+URL:https://www.profixio.com/app/leagueid27812/match/32731396
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against KFUM Kristianstad Basket C4 Queens 1
- 0/11
-DTSTART:20260516T083000Z
-DTEND:20260516T091500Z
-DTSTAMP:20260720T234516Z
-UID:central-77691458-72857252@cupmanager.net
-LOCATION:Lundbystrand 5 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691458
+SUMMARY:[DU17 Vit] Viby Vit - KFUM Central Basket Vit
+DTSTART:20261206T124500Z
+DTEND:20261206T141500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731398
+LOCATION:Edsbergshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731398
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Vit] GU16: match against OSC Junior Panthers
-DTSTART:20260516T091500Z
-DTEND:20260516T100000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691452-72923534@cupmanager.net
-LOCATION:Lundbystrand 2 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691452
+SUMMARY:[DU17 VR] KFUM Örebro Basket - KFUM Central Basket Vinröd
+DTSTART:20261206T134500Z
+DTEND:20261206T151500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731016
+LOCATION:Kämpetorpshallen 2
+URL:https://www.profixio.com/app/leagueid27812/match/32731016
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 Vit] GU16: match against Norrköpings basketlag G16 orange O
- range
-DTSTART:20260516T143000Z
-DTEND:20260516T151500Z
-DTSTAMP:20260720T234516Z
-UID:central-77691451-72923534@cupmanager.net
-LOCATION:Lundbystrand 4 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691451
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Viby Vit
+DTSTART:20261212T111500Z
+DTEND:20261212T124500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731400
+LOCATION:Gärdeshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731400
 END:VEVENT
 BEGIN:VEVENT
-SUMMARY:[FU16 VR] GU16: match against Fryshuset Basket 2 Röd
-DTSTART:20260516T151500Z
-DTEND:20260516T160000Z
-DTSTAMP:20260720T234516Z
-UID:central-77691457-72857252@cupmanager.net
-LOCATION:Lundbystrand 1 - Anders Carlssons Gata\, 41755\, Göteborg
-URL:https://basketballfestival.se/2026/result/match/77691457
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Norrort Basket Vit
+DTSTART:20261219T161500Z
+DTEND:20261219T174500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731020
+LOCATION:Enskedehallen L
+URL:https://www.profixio.com/app/leagueid27812/match/32731020
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] Alvik Vit - KFUM Central Basket Vit
+DTSTART:20261220T124500Z
+DTEND:20261220T141500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731407
+LOCATION:Åkeshovshallen 2
+URL:https://www.profixio.com/app/leagueid27812/match/32731407
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - KFUM Blackebergs IK Svart
+DTSTART:20270116T143000Z
+DTEND:20270116T160000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731414
+LOCATION:Gärdeshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731414
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] KFUM Central Basket Vinröd - Alvik Grön
+DTSTART:20270123T124500Z
+DTEND:20270123T141500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731032
+LOCATION:Gärdeshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731032
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] Norrort Basket Svart - KFUM Central Basket Vit
+DTSTART:20270124T130000Z
+DTEND:20270124T143000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731419
+LOCATION:Fribergahallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731419
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] Norrköping Dolphins DU16-19 Orange - KFUM Central Baske
+ t Vinröd
+DTSTART:20270124T150000Z
+DTEND:20270124T163000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731036
+LOCATION:Åkeshovshallen 2
+URL:https://www.profixio.com/app/leagueid27812/match/32731036
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Duvbo IK
+DTSTART:20270130T154500Z
+DTEND:20270130T171500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731423
+LOCATION:Thorildshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731423
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] SBBK F11 EF - KFUM Central Basket Vinröd
+DTSTART:20270131T151500Z
+DTEND:20270131T164500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731044
+LOCATION:Rosenborgsskolan
+URL:https://www.profixio.com/app/leagueid27812/match/32731044
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] Fryshuset Blå - KFUM Central Basket Vit
+DTSTART:20270207T111500Z
+DTEND:20270207T124500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731427
+LOCATION:Tellusborgshallarna 2
+URL:https://www.profixio.com/app/leagueid27812/match/32731427
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 Vit] KFUM Central Basket Vit - Hässelby HEAT
+DTSTART:20270221T163000Z
+DTEND:20270221T180000Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731432
+LOCATION:Gärdeshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731432
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:[DU17 VR] Kungsholmen - KFUM Central Basket Vinröd
+DTSTART:20270320T161500Z
+DTEND:20270320T174500Z
+DTSTAMP:20260724T123517Z
+UID:central-pro-mce-32731057
+LOCATION:Thorildshallen
+URL:https://www.profixio.com/app/leagueid27812/match/32731057
 END:VEVENT
 END:VCALENDAR
