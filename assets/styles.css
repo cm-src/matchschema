@@ -567,7 +567,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-xl);
-  min-height: 280px; /* Reserve space for ~2 game cards - balance CLS vs empty space */
+  /* Push the downloads section + footer below the fold during load so the
+     list growing from empty → N cards doesn't shove them downward (CLS).
+     240px ≈ sticky filter + section header + main padding above this box.
+     Cost: a little extra whitespace on sparse filtered views. */
+  min-height: calc(100vh - 240px);
+  min-height: calc(100dvh - 240px); /* mobile: accounts for browser chrome */
 }
 
 /* Date Divider */
@@ -850,6 +855,10 @@ body {
   justify-content: center;
   padding: var(--spacing-3xl);
   text-align: center;
+  /* Match .games-container's reservation so swapping list → empty state on
+     load (e.g. off-season) is height-neutral and doesn't shift the footer. */
+  min-height: calc(100vh - 240px);
+  min-height: calc(100dvh - 240px);
 }
 
 .empty-icon {
@@ -899,7 +908,6 @@ body {
 /* Footer */
 .footer {
   background-color: var(--footer-bg);
-  margin-top: var(--spacing-2xl);
 }
 
 .footer-container {
@@ -1115,6 +1123,14 @@ body {
 
   .games-container {
     gap: var(--spacing-lg);
+    /* Less chrome above the list in landscape — reserve closer to the fold. */
+    min-height: calc(100vh - 190px);
+    min-height: calc(100dvh - 190px);
+  }
+
+  .empty-state {
+    min-height: calc(100vh - 190px);
+    min-height: calc(100dvh - 190px);
   }
 
   .game-card-content {
