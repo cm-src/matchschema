@@ -14,6 +14,7 @@
   let searchQuery = '';
   let currentTheme = 'light'; // 'light' or 'dark'
   let liveTimer = null; // "Pågår" refresh interval, paused when tab hidden
+  let favoriteTeam = null; // team slug saved as the default landing filter, or null
 
   // DOM Elements
   const searchInput = document.getElementById('searchInput');
@@ -32,6 +33,11 @@
   const downloadIcsBtn = document.getElementById('downloadIcs');
   const themeToggle = document.getElementById('themeToggle');
 
+  // Narrow viewports (tablet/mobile/landscape) where chips would wrap and
+  // consume too much vertical space. Matches the existing CSS breakpoints:
+  // (max-width: 1024px) tablet OR (max-height: 500px) landscape. Comma = OR.
+  const NARROW_MQ = window.matchMedia('(max-width: 1024px), (max-height: 500px)');
+
   /**
    * Initialize the application
    */
@@ -39,7 +45,9 @@
     try {
       initTheme();
       await loadGames();
+      applyFavoriteTeam(); // may set currentFilter to the saved favorite team
       attachEventListeners();
+      syncFilterUI(); // reflect the favorite as the active filter + render its star
       updateDownloadsTitle();
       renderGames();
       // Refresh live "Pågår" state periodically, only while the tab is visible
@@ -150,7 +158,10 @@
   }
 
   /**
-   * Build filter chips from unique teams in games data
+   * Build the team filter control from unique teams in games data.
+   * On narrow viewports with more than two teams, render a compact native
+   * <select> dropdown instead of chips to save vertical space. Otherwise
+   * render the chip row (also used unchanged when there are ≤2 teams).
    */
   function buildFilterChips() {
     if (!filterChips) return;
@@ -163,15 +174,42 @@
       }
     });
 
-    // Build HTML: "Alla" chip first, then team chips
-    let html = '<button class="chip chip-active" data-filter="all" aria-pressed="true">Alla</button>';
-    teamMap.forEach((display, slug) => {
-      html += `<button class="chip" data-filter="${escapeHtml(slug)}" aria-pressed="false">${escapeHtml(display)}</button>`;
-    });
+    // With 0–1 teams the filter is redundant (Alla == the only team). Hide it.
+    if (teamMap.size <= 1) {
+      filterChips.innerHTML = '';
+      filterChips.classList.add('is-hidden');
+      chips = document.querySelectorAll('.chip');
+      return;
+    }
+    filterChips.classList.remove('is-hidden');
 
-    filterChips.innerHTML = html;
+    if (NARROW_MQ.matches && teamMap.size > 2) {
+      // Dropdown: "Alla" option first, then one option per team.
+      // Wrapped so CSS can draw a theme-aware chevron (select elements don't
+      // support ::before/::after).
+      let html = '<div class="select-wrap">';
+      // Leading icon mirrors the search field's icon, giving the dropdown the
+      // same [icon][value] shape. aria-hidden: the select's aria-label covers SR.
+      html += '<svg class="select-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>';
+      html += '<select class="team-select" aria-label="Filtrera efter lag">';
+      html += '<option value="all">Alla</option>';
+      teamMap.forEach((display, slug) => {
+        html += `<option value="${escapeHtml(slug)}">${escapeHtml(display)}</option>`;
+      });
+      html += '</select>';
+      html += '</div>';
+      filterChips.innerHTML = html;
+      filterChips.querySelector('.team-select').value = currentFilter;
+    } else {
+      // Chips: "Alla" chip first, then team chips
+      let html = '<button class="chip chip-active" data-filter="all" aria-pressed="true">Alla</button>';
+      teamMap.forEach((display, slug) => {
+        html += `<button class="chip" data-filter="${escapeHtml(slug)}" aria-pressed="false">${escapeHtml(display)}</button>`;
+      });
+      filterChips.innerHTML = html;
+    }
 
-    // Update chips reference for event listeners
+    // Refresh chip reference for delegation (empty in dropdown mode)
     chips = document.querySelectorAll('.chip');
   }
 
@@ -187,9 +225,25 @@
       });
     }
 
-    chips.forEach(chip => {
-      chip.addEventListener('click', handleChipClick);
-    });
+    // Delegation on the persistent filter container: one set of listeners
+    // covers both chips (click) and the dropdown (change) across re-renders,
+    // so swapping control on breakpoint change needs no re-binding.
+    if (filterChips) {
+      filterChips.addEventListener('click', (e) => {
+        const fav = e.target.closest('.fav-star');
+        if (fav) { toggleFavorite(); return; }
+        const chip = e.target.closest('.chip');
+        if (chip) selectFromGroup(chip, 'chip');
+      });
+      filterChips.addEventListener('change', (e) => {
+        if (e.target.matches('.team-select')) {
+          currentFilter = e.target.value;
+          updateDownloadsTitle();
+          syncFilterUI();
+          renderGames();
+        }
+      });
+    }
 
     segments.forEach(segment => {
       segment.addEventListener('click', handleSegmentClick);
@@ -220,6 +274,13 @@
         resizeRaf = 0;
         checkChipOverflow();
       });
+    });
+
+    // Re-render the team control when crossing the narrow/wide breakpoint,
+    // keeping the active filter in sync. Fires only on crossover, not resize.
+    NARROW_MQ.addEventListener('change', () => {
+      buildFilterChips();
+      syncFilterUI();
     });
   }
 
@@ -271,6 +332,10 @@
    * the state on each click.
    */
   function syncFilterUI() {
+    // Dropdown mode: selection state is implicit via the option value.
+    const teamSelect = document.querySelector('.team-select');
+    if (teamSelect) teamSelect.value = currentFilter;
+
     chips.forEach(chip => {
       const active = chip.dataset.filter === currentFilter;
       chip.classList.toggle('chip-active', active);
@@ -281,13 +346,8 @@
       segment.classList.toggle('segment-active', active);
       segment.setAttribute('aria-pressed', String(active));
     });
-  }
 
-  /**
-   * Handle chip click
-   */
-  function handleChipClick(e) {
-    selectFromGroup(e.currentTarget, 'chip');
+    updateFavoriteStar();
   }
 
   /**
@@ -654,6 +714,95 @@
       }
     }
     return teamSlug;
+  }
+
+  /**
+   * Favorite team — saved in localStorage and applied as the default landing
+   * filter. The filled star means "land here next time"; tapping it again
+   * clears the favorite (landing reverts to Alla). Switching to Alla during a
+   * session is a one-off view change and never clears the favorite.
+   */
+  function loadFavoriteTeam() {
+    try {
+      return localStorage.getItem('favoriteTeam') || null;
+    } catch { return null; }
+  }
+
+  function saveFavoriteTeam(slug) {
+    try {
+      if (slug) localStorage.setItem('favoriteTeam', slug);
+      else localStorage.removeItem('favoriteTeam');
+    } catch (e) {
+      console.warn('Could not save favorite team:', e);
+    }
+  }
+
+  function teamExists(slug) {
+    return gamesData.some(game => game.team === slug);
+  }
+
+  /** On load: if a saved favorite exists, make it the active filter. */
+  function applyFavoriteTeam() {
+    const saved = loadFavoriteTeam();
+    if (saved && saved !== 'all' && teamExists(saved)) {
+      favoriteTeam = saved;
+      currentFilter = saved;
+    } else if (saved) {
+      // Stale favorite (team no longer in the schedule) — clear it.
+      favoriteTeam = null;
+      saveFavoriteTeam(null);
+    }
+  }
+
+  /** Toggle the current team as the saved favorite (does not change the view). */
+  function toggleFavorite() {
+    if (currentFilter === 'all') return;
+    if (favoriteTeam === currentFilter) {
+      favoriteTeam = null;
+      saveFavoriteTeam(null);
+    } else {
+      favoriteTeam = currentFilter;
+      saveFavoriteTeam(currentFilter);
+    }
+    updateFavoriteStar();
+  }
+
+  /**
+   * Render the favorite star for the active team. In dropdown mode it overlays
+   * the trigger's right side (chevron shifts left); in chips mode it sits right
+   * after the active chip. No star when "Alla" is active (nothing to favorite).
+   */
+  function updateFavoriteStar() {
+    filterChips.querySelectorAll('.fav-star').forEach(el => el.remove());
+    filterChips.querySelectorAll('.chip.has-fav').forEach(c => c.classList.remove('has-fav'));
+    const selectWrap = filterChips.querySelector('.select-wrap');
+    if (selectWrap) selectWrap.classList.remove('is-team');
+
+    if (currentFilter === 'all' || filterChips.classList.contains('is-hidden')) return;
+
+    const isFav = favoriteTeam === currentFilter;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fav-star' + (isFav ? ' is-fav' : '');
+    const hint = isFav ? 'Ta bort favoritlag' : 'Spara som favoritlag';
+    btn.setAttribute('aria-label', hint);
+    btn.setAttribute('title', hint); // native hover tooltip for sighted users
+    btn.setAttribute('aria-pressed', String(isFav));
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26"/></svg>';
+
+    if (selectWrap) {
+      selectWrap.classList.add('is-team');
+      selectWrap.appendChild(btn);
+    } else {
+      // Chips mode: fuse the star as the right segment of the active chip
+      const activeChip = filterChips.querySelector('.chip-active');
+      if (activeChip) {
+        activeChip.classList.add('has-fav');
+        activeChip.after(btn);
+      } else {
+        filterChips.appendChild(btn);
+      }
+    }
   }
 
   /**

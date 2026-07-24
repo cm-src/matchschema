@@ -335,6 +335,157 @@ body {
   background-color: var(--vinrod-light);
 }
 
+/* Team filter dropdown — shown on narrow viewports when there are >2 teams.
+   Mirrors the chip aesthetic via the same semantic tokens (dark-mode safe).
+   The native arrow is removed and a CSS chevron is drawn on .select-wrap
+   (select elements don't support ::before/::after) so the chevron color
+   tracks --text-3 and adapts to dark mode automatically. */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Leading icon inside the dropdown trigger — mirrors the search field's icon
+   so both inputs share the same [icon][value] shape and left alignment. */
+.select-icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--neutral-400);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.team-select {
+  height: var(--btn-height);
+  width: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 46px;
+  /* Extra right room reserved only when the favorite star is shown (is-team). */
+  padding-right: calc(var(--select-pad-r, 36px) + var(--star-pad, 0px));
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  background-color: var(--surface-2);
+  color: var(--text-2);
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.team-select:hover {
+  background-color: var(--surface-hover);
+}
+
+/* Favorite star shown → reserve room for it and shift the chevron left. */
+.select-wrap.is-team {
+  --star-pad: 28px;
+}
+
+/* Theme-aware chevron drawn with borders so it inherits --text-3 (dark-mode safe) */
+.select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-right: 2px solid var(--text-3);
+  border-bottom: 2px solid var(--text-3);
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+.select-wrap.is-team::after {
+  right: 44px;
+}
+
+/* Favorite star — toggles the saved landing team. Filled (gold) when active.
+   Gold is the conventional favorite color and stays visible in dark mode
+   (vinrod goes muddy there). */
+.fav-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--neutral-400);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  flex: none;
+  transition: color 0.2s;
+}
+
+.fav-star:hover,
+.fav-star.is-fav {
+  color: var(--gul);
+}
+
+.fav-star svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+}
+
+.fav-star.is-fav svg {
+  fill: currentColor;
+}
+
+/* Dropdown mode: overlay the star at the trigger's right edge (on surface-2). */
+.select-wrap .fav-star {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+/* Chips mode: fuse the star as the right segment of the active chip so it
+   reads as one capsule [Team ⭐]. Shares the active chip's burgundy fill;
+   outline star is light, favorited star is gold. */
+.chip-active.has-fav {
+  padding-right: 10px; /* tighten so the star sits closer to the label */
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.filter-chips > .fav-star {
+  height: var(--btn-height);
+  width: 44px;
+  padding: 0;
+  background: var(--vinrod);
+  border: 1px solid var(--vinrod);
+  border-left: none;
+  /* Cancel the .filter-chips flex gap (var(--spacing-sm)) and merge the
+     shared border so the star fuses flush to the active chip. */
+  margin-left: calc(-1px - var(--spacing-sm));
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+  color: #fff; /* outline star on burgundy */
+  align-self: center;
+}
+
+.filter-chips > .fav-star:hover,
+.filter-chips > .fav-star.is-fav {
+  color: var(--gul);
+}
+
 .filter-right {
   display: flex;
   align-items: center;
@@ -876,6 +1027,11 @@ body {
     min-height: 172px; /* 48px search + 48px segmented + 44px chips row + 32px padding */
   }
 
+  /* No team filter (≤1 team) — don't reserve the chips row */
+  .filter-section:has(.filter-chips.is-hidden) {
+    min-height: 128px;
+  }
+
   .filter-container {
     padding: var(--spacing-lg);
     display: flex;
@@ -918,6 +1074,16 @@ body {
     height: 44px;
     padding: 0 12px;
     font-size: 13px;
+  }
+
+  .team-select {
+    height: 44px;
+    --select-pad-r: 32px;
+    font-size: 13px;
+  }
+
+  .filter-chips > .fav-star {
+    height: 44px;
   }
 
   .main-content {
@@ -1028,6 +1194,11 @@ body {
     min-height: 88px; /* 40px search + 40px segmented + 8px padding (single row layout) */
   }
 
+  /* No team filter (≤1 team) — single row only */
+  .filter-section:has(.filter-chips.is-hidden) {
+    min-height: 48px;
+  }
+
   .logo {
     width: 32px;
     height: 32px;
@@ -1107,6 +1278,15 @@ body {
   .chip {
     height: 36px;
     padding: 0 14px;
+  }
+
+  .team-select {
+    height: 36px;
+    --select-pad-r: 30px;
+  }
+
+  .filter-chips > .fav-star {
+    height: 36px;
   }
 
   .filter-chips::-webkit-scrollbar {
@@ -1190,8 +1370,9 @@ body.dark-mode .live-dot {
 }
 
 /* Focus visible styles for keyboard navigation */
-.search-input:focus-visible,
 .chip:focus-visible,
+.team-select:focus-visible,
+.fav-star:focus-visible,
 .segment:focus-visible,
 .btn-details:focus-visible,
 .btn-streams:focus-visible,
@@ -1199,6 +1380,13 @@ body.dark-mode .live-dot {
 .btn-theme-toggle:focus-visible,
 .btn-clear:focus-visible,
 .download-link:focus-visible {
+  outline: 2px solid var(--vinrod);
+  outline-offset: 2px;
+}
+
+/* Search field: ring wraps the whole pill (the input is nested inside it).
+   Without this the ring hugs the inner input and reads as an "inner border". */
+.search-field:focus-within {
   outline: 2px solid var(--vinrod);
   outline-offset: 2px;
 }
