@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-24T17:21:07.033486+00:00",
+  "updated": "2026-08-27T15:58:15.028058+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -25,18 +25,6 @@
       "start": "2026-09-18T20:00:00+02:00",
       "end": "2026-09-18T21:30:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730958"
-    },
-    {
-      "id": "pro-mce-32730978",
-      "team": "f10vinrod",
-      "teamDisplay": "DU17 VR",
-      "teamFull": "F10 Vinröd",
-      "teamColor": "#550f38",
-      "game": "KFUM Central Basket Vinröd - Sollentuna Basket",
-      "location": "Gärdeshallen, Gärdeshallen",
-      "start": "2026-10-10T13:30:00+02:00",
-      "end": "2026-10-10T15:00:00+02:00",
-      "url": "https://www.profixio.com/app/leagueid27812/match/32730978"
     },
     {
       "id": "pro-mce-32730984",
