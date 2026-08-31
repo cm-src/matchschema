@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-27T15:58:15.028058+00:00",
+  "updated": "2026-08-31T11:12:45.225506+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -63,18 +63,6 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32730992"
     },
     {
-      "id": "pro-mce-32730998",
-      "team": "f10vinrod",
-      "teamDisplay": "DU17 VR",
-      "teamFull": "F10 Vinröd",
-      "teamColor": "#550f38",
-      "game": "KFUM Central Basket Vinröd - Viby Röd",
-      "location": "Enskedehallen L, Enskedehallen L",
-      "start": "2026-11-08T13:45:00+01:00",
-      "end": "2026-11-08T15:15:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid27812/match/32730998"
-    },
-    {
       "id": "pro-mce-32731008",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -97,6 +85,18 @@
       "start": "2026-12-06T14:45:00+01:00",
       "end": "2026-12-06T16:15:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731016"
+    },
+    {
+      "id": "pro-mce-32730998",
+      "team": "f10vinrod",
+      "teamDisplay": "DU17 VR",
+      "teamFull": "F10 Vinröd",
+      "teamColor": "#550f38",
+      "game": "KFUM Central Basket Vinröd - Viby Röd",
+      "location": "Konradsbergshallen, Konradsbergshallen",
+      "start": "2027-01-17T17:15:00+01:00",
+      "end": "2027-01-17T18:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32730998"
     },
     {
       "id": "pro-mce-32731032",
