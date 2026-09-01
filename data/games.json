@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T11:12:45.225506+00:00",
+  "updated": "2026-09-01T09:38:40.801771+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -49,18 +49,6 @@
       "start": "2026-10-17T15:45:00+02:00",
       "end": "2026-10-17T17:15:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730987"
-    },
-    {
-      "id": "pro-mce-32730992",
-      "team": "f10vinrod",
-      "teamDisplay": "DU17 VR",
-      "teamFull": "F10 Vinröd",
-      "teamColor": "#550f38",
-      "game": "KFUM Central Basket Vinröd - Fryshuset F11 Svart",
-      "location": "Tellusborgshallarna 2, Tellusborgshallarna 2",
-      "start": "2026-10-23T18:30:00+02:00",
-      "end": "2026-10-23T20:00:00+02:00",
-      "url": "https://www.profixio.com/app/leagueid27812/match/32730992"
     },
     {
       "id": "pro-mce-32731008",
