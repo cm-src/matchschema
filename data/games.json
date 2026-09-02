@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-01T09:38:40.801771+00:00",
+  "updated": "2026-09-02T09:09:58.479736+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -130,8 +130,8 @@
       "teamColor": "#550f38",
       "game": "Kungsholmen - KFUM Central Basket Vinröd",
       "location": "Thorildshallen, Thorildshallen",
-      "start": "2027-03-20T17:15:00+01:00",
-      "end": "2027-03-20T18:45:00+01:00",
+      "start": "2027-03-21T14:15:00+01:00",
+      "end": "2027-03-21T15:45:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731057"
     }
   ]
