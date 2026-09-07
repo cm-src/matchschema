@@ -1,7 +1,19 @@
 {
-  "updated": "2026-09-07T17:20:05.752047+00:00",
+  "updated": "2026-09-07T17:39:51.332326+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
+    {
+      "id": "pro-mce-32731262",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Fryshuset Svart - Central Vinröd",
+      "location": "Tellusborgshallarna 2, Tellusborgshallarna 2",
+      "start": "2026-09-11T18:15:00+02:00",
+      "end": "2026-09-11T19:45:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731262"
+    },
     {
       "id": "pro-mce-32730956",
       "team": "f10vinrod",
@@ -51,6 +63,30 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731365"
     },
     {
+      "id": "pro-mce-32731274",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Duvbo Röd - Central Vinröd",
+      "location": "Rissne Sph (Grönkullaskolan), Rissne Sph (Grönkullaskolan)",
+      "start": "2026-09-19T17:15:00+02:00",
+      "end": "2026-09-19T18:45:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731274"
+    },
+    {
+      "id": "pro-mce-32731284",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Alvik grön",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2026-09-26T16:45:00+02:00",
+      "end": "2026-09-26T18:15:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731284"
+    },
+    {
       "id": "pro-mce-32731370",
       "team": "f10gul",
       "teamDisplay": "DU17 Vit",
@@ -61,6 +97,18 @@
       "start": "2026-09-27T17:15:00+02:00",
       "end": "2026-09-27T18:45:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731370"
+    },
+    {
+      "id": "pro-mce-32731291",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "SBBK DJU19 - Central Vinröd",
+      "location": "Rosenborgsskolan, Rosenborgsskolan",
+      "start": "2026-10-03T14:00:00+02:00",
+      "end": "2026-10-03T15:30:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731291"
     },
     {
       "id": "pro-mce-32731379",
@@ -75,6 +123,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731379"
     },
     {
+      "id": "pro-mce-32731353",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - AIK",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2026-10-11T13:45:00+02:00",
+      "end": "2026-10-11T15:15:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731353"
+    },
+    {
       "id": "pro-mce-32730984",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -85,6 +145,18 @@
       "start": "2026-10-11T18:00:00+02:00",
       "end": "2026-10-11T19:30:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730984"
+    },
+    {
+      "id": "pro-mce-32731357",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "KFUM Blackebergs IK - Central Vinröd",
+      "location": "Grimsta sporthall (Vällingby), Grimsta sporthall (Vällingby)",
+      "start": "2026-10-16T18:15:00+02:00",
+      "end": "2026-10-16T19:45:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731357"
     },
     {
       "id": "pro-mce-32731382",
@@ -111,6 +183,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32730987"
     },
     {
+      "id": "pro-mce-32731437",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Viby Basket",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2026-11-08T17:30:00+01:00",
+      "end": "2026-11-08T19:00:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731437"
+    },
+    {
       "id": "pro-mce-32731384",
       "team": "f10gul",
       "teamDisplay": "DU17 Vit",
@@ -135,6 +219,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731389"
     },
     {
+      "id": "pro-mce-32731438",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Skuru Basket - Central Vinröd",
+      "location": "Nacka Sporthall, Nacka Sporthall",
+      "start": "2026-11-21T14:00:00+01:00",
+      "end": "2026-11-21T15:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731438"
+    },
+    {
       "id": "pro-mce-32731008",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -145,6 +241,18 @@
       "start": "2026-11-29T13:30:00+01:00",
       "end": "2026-11-29T15:00:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731008"
+    },
+    {
+      "id": "pro-mce-32731447",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Sollentuna Basket - Central Vinröd",
+      "location": "Sollentuna Sporthall B, Sollentuna Sporthall B",
+      "start": "2026-11-29T17:00:00+01:00",
+      "end": "2026-11-29T18:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731447"
     },
     {
       "id": "pro-mce-32731396",
@@ -169,6 +277,42 @@
       "start": "2026-12-06T14:45:00+01:00",
       "end": "2026-12-06T16:15:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731016"
+    },
+    {
+      "id": "pro-mce-32731451",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Kungsholmen - Central Vinröd",
+      "location": "Tellusborgshallarna 2, Tellusborgshallarna 2",
+      "start": "2026-12-11T18:15:00+01:00",
+      "end": "2026-12-11T19:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731451"
+    },
+    {
+      "id": "pro-mce-32731458",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Fryshuset Svart",
+      "location": "Tellusborgshallarna 3, Tellusborgshallarna 3",
+      "start": "2026-12-18T20:00:00+01:00",
+      "end": "2026-12-18T21:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731458"
+    },
+    {
+      "id": "pro-mce-32731460",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Norrköping Dolphins DU 16-19",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2026-12-19T16:30:00+01:00",
+      "end": "2026-12-19T18:00:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731460"
     },
     {
       "id": "pro-mce-32731407",
@@ -243,6 +387,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731036"
     },
     {
+      "id": "pro-mce-32731473",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Kungsholmen",
+      "location": "Enskedehallen L, Enskedehallen L",
+      "start": "2027-01-29T20:15:00+01:00",
+      "end": "2027-01-29T21:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731473"
+    },
+    {
       "id": "pro-mce-32731423",
       "team": "f10gul",
       "teamDisplay": "DU17 Vit",
@@ -255,6 +411,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731423"
     },
     {
+      "id": "pro-mce-32731475",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Norrköping Dolphins DU 16-19 - Central Vinröd",
+      "location": "Enskedehallen L, Enskedehallen L",
+      "start": "2027-01-31T12:00:00+01:00",
+      "end": "2027-01-31T13:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731475"
+    },
+    {
       "id": "pro-mce-32731044",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -265,6 +433,18 @@
       "start": "2027-01-31T16:15:00+01:00",
       "end": "2027-01-31T17:45:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731044"
+    },
+    {
+      "id": "pro-mce-32731480",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - Skuru Basket",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2027-02-06T17:00:00+01:00",
+      "end": "2027-02-06T18:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731480"
     },
     {
       "id": "pro-mce-32731427",
@@ -301,6 +481,18 @@
       "start": "2027-03-21T14:15:00+01:00",
       "end": "2027-03-21T15:45:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731057"
+    },
+    {
+      "id": "pro-mce-32731496",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Central Vinröd - SBBK DJU19",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2027-03-21T17:15:00+01:00",
+      "end": "2027-03-21T18:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731496"
     }
   ]
 }
