@@ -51,11 +51,11 @@ team_slug = "f10gul"
 team_display = "DU17 Vit"
 team_color = "#ffffff"
 
-# [[ics.files]]
+[[ics.files]]
 # Team: Central DU19 Vinröd
-# url = "https://www.profixio.com/app/api/calendars/teams/1585513/matches.ics?signature=5c1e4b17ca919206a74016b23282e7ad072c92c231bf259490e894e2cb32ff4b"
-# filename = "du19vinrod.ics"
-# team_name = "DU19 Vinröd"
-# team_slug = "du19vinrod"
-# team_display = "DU19 VR"
-# team_color = "#550f38"
+url = "https://www.profixio.com/app/api/calendars/teams/1585513/matches.ics?signature=5c1e4b17ca919206a74016b23282e7ad072c92c231bf259490e894e2cb32ff4b"
+filename = "du19vinrod.ics"
+team_name = "DU19 Vinröd"
+team_slug = "du19vinrod"
+team_display = "DU19 VR"
+team_color = "#550f38"
