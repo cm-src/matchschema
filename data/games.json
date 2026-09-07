@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-02T09:09:58.479736+00:00",
+  "updated": "2026-09-07T17:20:05.752047+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -15,6 +15,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32730956"
     },
     {
+      "id": "pro-mce-32731361",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "Hässelby HEAT - KFUM Central Basket Vit",
+      "location": "Vinstahallen 2 Bana 1, Vinstahallen 2 Bana 1",
+      "start": "2026-09-12T17:00:00+02:00",
+      "end": "2026-09-12T18:30:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731361"
+    },
+    {
       "id": "pro-mce-32730958",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -25,6 +37,42 @@
       "start": "2026-09-18T20:00:00+02:00",
       "end": "2026-09-18T21:30:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730958"
+    },
+    {
+      "id": "pro-mce-32731365",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "SBBK DJU17 Vit - KFUM Central Basket Vit",
+      "location": "Rosenborgsskolan, Rosenborgsskolan",
+      "start": "2026-09-19T12:15:00+02:00",
+      "end": "2026-09-19T13:45:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731365"
+    },
+    {
+      "id": "pro-mce-32731370",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - Alvik Vit",
+      "location": "Tellusborgshallarna 3, Tellusborgshallarna 3",
+      "start": "2026-09-27T17:15:00+02:00",
+      "end": "2026-09-27T18:45:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731370"
+    },
+    {
+      "id": "pro-mce-32731379",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Blackebergs IK Svart - KFUM Central Basket Vit",
+      "location": "Vinstahallen 1, Vinstahallen 1",
+      "start": "2026-10-11T13:45:00+02:00",
+      "end": "2026-10-11T15:15:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731379"
     },
     {
       "id": "pro-mce-32730984",
@@ -39,6 +87,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32730984"
     },
     {
+      "id": "pro-mce-32731382",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - Norrort Basket Svart",
+      "location": "Thorildshallen, Thorildshallen",
+      "start": "2026-10-17T12:00:00+02:00",
+      "end": "2026-10-17T13:30:00+02:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731382"
+    },
+    {
       "id": "pro-mce-32730987",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -49,6 +109,30 @@
       "start": "2026-10-17T15:45:00+02:00",
       "end": "2026-10-17T17:15:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730987"
+    },
+    {
+      "id": "pro-mce-32731384",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "Duvbo IK - KFUM Central Basket Vit",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2026-11-15T14:00:00+01:00",
+      "end": "2026-11-15T15:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731384"
+    },
+    {
+      "id": "pro-mce-32731389",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - Fryshuset Vit",
+      "location": "Thorildshallen, Thorildshallen",
+      "start": "2026-11-21T13:45:00+01:00",
+      "end": "2026-11-21T15:15:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731389"
     },
     {
       "id": "pro-mce-32731008",
@@ -63,6 +147,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731008"
     },
     {
+      "id": "pro-mce-32731396",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - SBBK DJU17 Vit",
+      "location": "Enskedehallen L, Enskedehallen L",
+      "start": "2026-12-05T17:15:00+01:00",
+      "end": "2026-12-05T18:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731396"
+    },
+    {
       "id": "pro-mce-32731016",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -73,6 +169,30 @@
       "start": "2026-12-06T14:45:00+01:00",
       "end": "2026-12-06T16:15:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731016"
+    },
+    {
+      "id": "pro-mce-32731407",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "Alvik Vit - KFUM Central Basket Vit",
+      "location": "Åkeshovshallen 2, Åkeshovshallen 2",
+      "start": "2026-12-20T13:45:00+01:00",
+      "end": "2026-12-20T15:15:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731407"
+    },
+    {
+      "id": "pro-mce-32731414",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - KFUM Blackebergs IK Svart",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2027-01-16T15:30:00+01:00",
+      "end": "2027-01-16T17:00:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731414"
     },
     {
       "id": "pro-mce-32730998",
@@ -99,6 +219,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731032"
     },
     {
+      "id": "pro-mce-32731419",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "Norrort Basket Svart - KFUM Central Basket Vit",
+      "location": "Fribergahallen, Fribergahallen",
+      "start": "2027-01-24T14:00:00+01:00",
+      "end": "2027-01-24T15:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731419"
+    },
+    {
       "id": "pro-mce-32731036",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -111,6 +243,18 @@
       "url": "https://www.profixio.com/app/leagueid27812/match/32731036"
     },
     {
+      "id": "pro-mce-32731423",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - Duvbo IK",
+      "location": "Thorildshallen, Thorildshallen",
+      "start": "2027-01-30T16:45:00+01:00",
+      "end": "2027-01-30T18:15:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731423"
+    },
+    {
       "id": "pro-mce-32731044",
       "team": "f10vinrod",
       "teamDisplay": "DU17 VR",
@@ -121,6 +265,30 @@
       "start": "2027-01-31T16:15:00+01:00",
       "end": "2027-01-31T17:45:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731044"
+    },
+    {
+      "id": "pro-mce-32731427",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "Fryshuset Vit - KFUM Central Basket Vit",
+      "location": "Tellusborgshallarna 2, Tellusborgshallarna 2",
+      "start": "2027-02-07T12:15:00+01:00",
+      "end": "2027-02-07T13:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731427"
+    },
+    {
+      "id": "pro-mce-32731432",
+      "team": "f10gul",
+      "teamDisplay": "DU17 Vit",
+      "teamFull": "F10 Vit",
+      "teamColor": "#ffffff",
+      "game": "KFUM Central Basket Vit - Hässelby HEAT",
+      "location": "Gärdeshallen, Gärdeshallen",
+      "start": "2027-02-21T17:30:00+01:00",
+      "end": "2027-02-21T19:00:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731432"
     },
     {
       "id": "pro-mce-32731057",
