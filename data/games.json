@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-16T19:47:36.112810+00:00",
+  "updated": "2026-09-17T19:56:10.642249+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -375,18 +375,6 @@
       "url": "https://www.profixio.com/app/leagueid27811/match/32731475"
     },
     {
-      "id": "pro-mce-32731044",
-      "team": "f10vinrod",
-      "teamDisplay": "DU17 VR",
-      "teamFull": "F10 Vinröd",
-      "teamColor": "#550f38",
-      "game": "SBBK F11 EF - KFUM Central Basket Vinröd",
-      "location": "Rosenborgsskolan, Rosenborgsskolan",
-      "start": "2027-01-31T16:15:00+01:00",
-      "end": "2027-01-31T17:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid27812/match/32731044"
-    },
-    {
       "id": "pro-mce-32731480",
       "team": "du19vinrod",
       "teamDisplay": "DU19 VR",
@@ -421,6 +409,18 @@
       "start": "2027-02-21T17:30:00+01:00",
       "end": "2027-02-21T19:00:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731432"
+    },
+    {
+      "id": "pro-mce-32731044",
+      "team": "f10vinrod",
+      "teamDisplay": "DU17 VR",
+      "teamFull": "F10 Vinröd",
+      "teamColor": "#550f38",
+      "game": "SBBK F11 EF - KFUM Central Basket Vinröd",
+      "location": "Rosenborgsskolan, Rosenborgsskolan",
+      "start": "2027-03-20T10:00:00+01:00",
+      "end": "2027-03-20T11:30:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27812/match/32731044"
     },
     {
       "id": "pro-mce-32731057",
