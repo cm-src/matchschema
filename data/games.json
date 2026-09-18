@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T19:56:10.642249+00:00",
+  "updated": "2026-09-18T19:16:12.511233+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -152,7 +152,7 @@
       "teamDisplay": "DU17 VR",
       "teamFull": "F10 Vinröd",
       "teamColor": "#550f38",
-      "game": "IK Fyris - KFUM Central Basket Vinröd",
+      "game": "IK Fyris basket/ Sloga Basket  - KFUM Central Basket Vinröd",
       "location": "Fyrisskolan, Fyrisskolan",
       "start": "2026-10-17T15:45:00+02:00",
       "end": "2026-10-17T17:15:00+02:00",
@@ -236,23 +236,11 @@
       "teamDisplay": "DU17 VR",
       "teamFull": "F10 Vinröd",
       "teamColor": "#550f38",
-      "game": "Örebro - KFUM Central Basket Vinröd",
+      "game": "KFUM Örebro Basket - KFUM Central Basket Vinröd",
       "location": "Kämpetorpshallen 2, Kämpetorpshallen 2",
       "start": "2026-12-06T14:45:00+01:00",
       "end": "2026-12-06T16:15:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731016"
-    },
-    {
-      "id": "pro-mce-32731451",
-      "team": "du19vinrod",
-      "teamDisplay": "DU19 VR",
-      "teamFull": "DU19 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Kungsholmen - Central Vinröd",
-      "location": "Tellusborgshallarna 2, Tellusborgshallarna 2",
-      "start": "2026-12-11T18:15:00+01:00",
-      "end": "2026-12-11T19:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid27811/match/32731451"
     },
     {
       "id": "pro-mce-32731458",
@@ -337,18 +325,6 @@
       "start": "2027-01-24T16:00:00+01:00",
       "end": "2027-01-24T17:30:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731036"
-    },
-    {
-      "id": "pro-mce-32731473",
-      "team": "du19vinrod",
-      "teamDisplay": "DU19 VR",
-      "teamFull": "DU19 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Central Vinröd - Kungsholmen",
-      "location": "Enskedehallen L, Enskedehallen L",
-      "start": "2027-01-29T20:15:00+01:00",
-      "end": "2027-01-29T21:45:00+01:00",
-      "url": "https://www.profixio.com/app/leagueid27811/match/32731473"
     },
     {
       "id": "pro-mce-32731423",
