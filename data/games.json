@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-06T11:35:06.153078+00:00",
+  "updated": "2026-10-08T21:37:01.906282+00:00",
   "timezone": "Europe/Stockholm",
   "games": [
     {
@@ -49,18 +49,6 @@
       "start": "2026-09-18T20:00:00+02:00",
       "end": "2026-09-18T21:30:00+02:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32730958"
-    },
-    {
-      "id": "pro-mce-32731274",
-      "team": "du19vinrod",
-      "teamDisplay": "DU19 VR",
-      "teamFull": "DU19 Vinröd",
-      "teamColor": "#550f38",
-      "game": "Duvbo Röd - Central Vinröd",
-      "location": "Rissne Sph (Grönkullaskolan), Rissne Sph (Grönkullaskolan)",
-      "start": "2026-09-19T17:15:00+02:00",
-      "end": "2026-09-19T18:45:00+02:00",
-      "url": "https://www.profixio.com/app/leagueid27811/match/32731274"
     },
     {
       "id": "pro-mce-32731284",
@@ -277,6 +265,18 @@
       "start": "2026-12-20T13:45:00+01:00",
       "end": "2026-12-20T15:15:00+01:00",
       "url": "https://www.profixio.com/app/leagueid27812/match/32731407"
+    },
+    {
+      "id": "pro-mce-32731274",
+      "team": "du19vinrod",
+      "teamDisplay": "DU19 VR",
+      "teamFull": "DU19 Vinröd",
+      "teamColor": "#550f38",
+      "game": "Duvbo Röd - Central Vinröd",
+      "location": "Rissne Sph (Grönkullaskolan), Rissne Sph (Grönkullaskolan)",
+      "start": "2026-12-31T17:15:00+01:00",
+      "end": "2026-12-31T18:45:00+01:00",
+      "url": "https://www.profixio.com/app/leagueid27811/match/32731274"
     },
     {
       "id": "pro-mce-32730998",
